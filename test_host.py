@@ -87,10 +87,28 @@ class HostRoutingTests(unittest.TestCase):
         }
         self.assertEqual(len(set(pages.values())), 3)
 
-    def test_shared_css(self) -> None:
-        status, body = self.fetch("devoutshaman.com", "/shared/style.css")
-        self.assertEqual(status, 200)
-        self.assertIn("--measure", body)
+    def test_shared_assets(self) -> None:
+        conn = HTTPConnection("127.0.0.1", PORT, timeout=5)
+        try:
+            conn.request("GET", "/shared/style.css", headers={"Host": "devoutshaman.com"})
+            res = conn.getresponse()
+            body = res.read().decode("utf-8")
+            self.assertEqual(res.status, 200)
+            self.assertIn("text/css", res.getheader("Content-Type", ""))
+            self.assertIn("--measure", body)
+        finally:
+            conn.close()
+
+        conn = HTTPConnection("127.0.0.1", PORT, timeout=5)
+        try:
+            conn.request("GET", "/shared/preview.js", headers={"Host": "localhost"})
+            res = conn.getresponse()
+            body = res.read().decode("utf-8")
+            self.assertEqual(res.status, 200)
+            self.assertIn("javascript", res.getheader("Content-Type", ""))
+            self.assertIn("data-local", body)
+        finally:
+            conn.close()
 
     def test_unknown_path(self) -> None:
         status, _ = self.fetch("devoutshaman.com", "/no-such-page")

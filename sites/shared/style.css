@@ -1,8 +1,7 @@
 :root {
   --bg: #fff;
   --fg: #111;
-  --muted: #111;
-  --measure: 34rem;
+  --measure: 36rem;
 }
 
 *,
@@ -69,32 +68,46 @@ a:hover {
   line-height: 1.4;
 }
 
-.products {
-  margin: 4rem 0 0;
+.directory {
+  margin: 3.25rem 0 0;
   padding: 0;
   list-style: none;
   display: grid;
+  gap: 0.7rem;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   gap: 2.25rem;
-}
-
-.products a {
+  min-height: 7.25rem;
+  padding: 1.05rem 1.1rem 1rem;
+  border: 1.5px solid var(--fg);
   text-decoration: none;
-  display: block;
 }
 
-.products h2 {
-  margin: 0 0 0.4rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
-}
-
-.products p {
+.tile h2 {
   margin: 0;
-  max-width: 26em;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.tile p {
+  margin: 0;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tile:hover,
+.tile:focus-visible {
+  background: var(--fg);
+  color: var(--bg);
+  outline: none;
 }
 
 .product-name {
@@ -119,8 +132,7 @@ a:hover {
     padding: 3rem 2.5rem 4rem;
   }
 
-  .products {
+  .directory {
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem 2rem;
   }
 }

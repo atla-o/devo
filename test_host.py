@@ -48,6 +48,9 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn("parent holding of a lateral health corporation", body)
             self.assertIn("Phenomatch", body)
             self.assertIn("Antiporn", body)
+            self.assertIn("The fund", body)
+            self.assertIn("Lessfret", body)
+            self.assertIn('class="tile"', body)
             self.assertNotIn("Install is not available yet", body)
             self.assertNotIn("Not launched.", body)
 
@@ -74,18 +77,39 @@ class HostRoutingTests(unittest.TestCase):
 
         status, body = self.fetch("127.0.0.1", "/phenomatch")
         self.assertEqual(status, 200)
-        self.assertIn("Not launched.", body)
+        self.assertIn("matches people by phenotype", body)
 
-    def test_three_hosts_are_distinct(self) -> None:
+        status, body = self.fetch("devoutshaman.com", "/fund")
+        self.assertEqual(status, 200)
+        self.assertIn("fertility program", body)
+
+        status, body = self.fetch("localhost", "/lessfret")
+        self.assertEqual(status, 200)
+        self.assertIn("A Devo product.", body)
+
+    def test_fund_and_lessfret_hosts(self) -> None:
+        status, body = self.fetch("fund.devoutshaman.com")
+        self.assertEqual(status, 200)
+        self.assertIn("fertility program", body)
+        self.assertNotIn("parent holding of a lateral health corporation", body)
+
+        status, body = self.fetch("lessfret.devoutshaman.com")
+        self.assertEqual(status, 200)
+        self.assertIn("A Devo product.", body)
+        self.assertNotIn("parent holding of a lateral health corporation", body)
+
+    def test_pages_are_distinct(self) -> None:
         pages = {
             host: self.fetch(host)[1]
             for host in (
                 "devoutshaman.com",
                 "antiporn.devoutshaman.com",
                 "phenomatch.devoutshaman.com",
+                "fund.devoutshaman.com",
+                "lessfret.devoutshaman.com",
             )
         }
-        self.assertEqual(len(set(pages.values())), 3)
+        self.assertEqual(len(set(pages.values())), 5)
 
     def test_shared_assets(self) -> None:
         conn = HTTPConnection("127.0.0.1", PORT, timeout=5)

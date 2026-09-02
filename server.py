@@ -14,14 +14,18 @@ SITES = ROOT / "sites"
 HOST_SITES = {
     "antiporn.devoutshaman.com": "antiporn",
     "phenomatch.devoutshaman.com": "phenomatch",
+    "fund.devoutshaman.com": "fund",
+    "lessfret.devoutshaman.com": "lessfret",
     "devoutshaman.com": "holding",
     "www.devoutshaman.com": "holding",
 }
 
 LOCAL_HOSTS = {"localhost", "127.0.0.1", "::1"}
-LOCAL_PATH_SITES = (
+PATH_SITES = (
     ("/antiporn", "antiporn"),
     ("/phenomatch", "phenomatch"),
+    ("/fund", "fund"),
+    ("/lessfret", "lessfret"),
 )
 
 MIME = {
@@ -78,8 +82,8 @@ class Handler(BaseHTTPRequestHandler):
         path = unquote(parsed.path) or "/"
         site = site_for_host(host)
 
-        if is_local_host(host):
-            for prefix, name in LOCAL_PATH_SITES:
+        if site == "holding" or is_local_host(host):
+            for prefix, name in PATH_SITES:
                 if path == prefix or path.startswith(prefix + "/"):
                     site = name
                     path = path[len(prefix) :] or "/"

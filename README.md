@@ -19,6 +19,8 @@ One Cloud Run service (`devo-web`, `us-west1`) switches on the `Host` header:
 | `devoutshaman.com`, `www.devoutshaman.com` | Holding |
 | `antiporn.devoutshaman.com` | Antiporn landing |
 | `phenomatch.devoutshaman.com` | Phenomatch landing |
+| `fund.devoutshaman.com` | The fund (also `/fund`) |
+| `lessfret.devoutshaman.com` | Lessfret (also `/lessfret`) |
 | unknown host, including `*.run.app` | Holding |
 
 `antiporn` and `phenomatch` subdomains are already mapped. Apex mapping comes later.
@@ -37,7 +39,7 @@ curl -s -H 'Host: antiporn.devoutshaman.com' localhost:8080 | head
 curl -s -H 'Host: phenomatch.devoutshaman.com' localhost:8080 | head
 ```
 
-Browser on localhost: `/` (holding), `/antiporn`, `/phenomatch`.
+Browser on localhost: `/` (holding), `/phenomatch`, `/antiporn`, `/fund`, `/lessfret`.
 
 ```bash
 python3 test_host.py

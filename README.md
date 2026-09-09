@@ -14,22 +14,37 @@ App data lives on Google Cloud project `devo-holding`.
 
 ## Public site
 
-One Cloud Run service (`devo-web`, `us-west1`) switches on the `Host` header:
+This repo is the holding lander. Merge to `main` deploys Cloud Run `devo-web`
+(`devo-holding`, `us-west1`) and updates the holding pages on
+[devoutshaman.com](https://devoutshaman.com).
+
+Product apps that have their own Cloud Run services live in **other repos** and
+do not deploy from here:
+
+| Service | Repo |
+| --- | --- |
+| `phenomatch-web` | [atla-o/phenomatch](https://github.com/atla-o/phenomatch) |
+| `lessfret-web` (soon) | [atla-o/lessfret](https://github.com/atla-o/lessfret) |
+| `lightround-web` (soon) | [atla-o/lightround](https://github.com/atla-o/lightround) |
+
+### Hosts on `devo-web`
+
+The container still switches on `Host` (and localhost path prefixes). In
+production, only hosts that still map to this service hit it:
 
 | Host | Page |
 | --- | --- |
 | `devoutshaman.com`, `www.devoutshaman.com` | Holding |
-| `phenomatch.devoutshaman.com` | Phenomatch landing |
-| `antiporn.devoutshaman.com` | Antiporn landing |
-| `lessfret.devoutshaman.com` | Lessfret (also `/lessfret`) |
-| `lightround.devoutshaman.com` | Lightround (also `/lightround`; `/fund` aliases here) |
-| `fund.devoutshaman.com` | Redirects to Lightround |
+| `antiporn.devoutshaman.com` | Antiporn stub (until Antiporn has its own web app) |
+| `fund.devoutshaman.com` | Redirects to Lightround (until remapped) |
 | unknown host, including `*.run.app` | Holding |
 
-`phenomatch` and `antiporn` are already mapped. Prefer Lightround over a generic
-`fund` host. After deploy, map `lessfret.devoutshaman.com` and
-`lightround.devoutshaman.com` on Cloud Run `devo-web`, then add Cloudflare
-CNAME records (DNS-only, not proxied) to `ghs.googlehosted.com`.
+Local preview can still serve Phenomatch / Lessfret / Lightround stubs on those
+hosts or `/phenomatch`, `/lessfret`, `/lightround`. Production DNS for product
+apps should point at their own services when those exist.
+
+Cloudflare is **DNS-only** (grey cloud), CNAME to `ghs.googlehosted.com` (apex
+already uses Google A records). No Workers. No orange-cloud proxy. No beta host.
 
 ### Local preview
 
@@ -56,17 +71,51 @@ python3 test_host.py
 
 ### Deploy
 
-Do not deploy from Cloudflare. Build the image and replace Cloud Run service
-`devo-web` in project `devo-holding`, region `us-west1`. The container listens
-on `$PORT` (Cloud Run default 8080).
+Push to `main` runs `.github/workflows/deploy.yml`: host-routing tests, then
+`gcloud run deploy devo-web --source . --project=devo-holding --region=us-west1`.
+That uses this `Dockerfile` (optional `cloudbuild.yaml` tags `$_IMAGE` for
+Artifact Registry). The container listens on `$PORT` (Cloud Run default 8080).
+
+**Invoker IAM:** never `--allow-unauthenticated`. Org policy (domain restricted
+sharing) blocks binding `allUsers` as Cloud Run Invoker. Public traffic uses
+**invoker-iam-disabled** (`run.googleapis.com/invoker-iam-disabled: true`),
+already set on the live service.
+
+CI does not pass `--no-invoker-iam-check` or `--invoker-iam-check=disabled`.
+Current `gcloud run deploy` docs list `--[no-]invoker-iam-check`, but operator
+gcloud rejected `--invoker-iam-check=disabled`. If a revision loses public
+access, update the annotation (do not grant `allUsers`):
 
 ```bash
-gcloud run deploy deo-web \
-  --source . \
-  --region=us-west1 \
+gcloud run services update devo-web \
   --project=devo-holding \
-  --allow-unauthenticated
+  --region=us-west1 \
+  --update-annotations=run.googleapis.com/invoker-iam-disabled=true
 ```
 
-That rebuilds from this `Dockerfile` and updates the existing service. Map
-`devoutshaman.com` / `www` to `devo-web` when ready.
+Do not deploy from Cloudflare. Cloud agents must not run `gcloud run deploy`;
+merging to `main` is the path.
+
+#### One-time GitHub → GCP
+
+Workload Identity Federation from `atla-o/devo` to a deploy service account
+that can source-deploy Cloud Run (`roles/run.sourceDeveloper`,
+`roles/iam.serviceAccountUser`, `roles/serviceusage.serviceUsageConsumer`; the
+Cloud Build SA needs `roles/run.builder`). Then set repository **variables**
+(Settings → Secrets and variables → Actions):
+
+| Variable | Example |
+| --- | --- |
+| `GCP_WORKLOAD_IDENTITY_PROVIDER` | `projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github/providers/github` |
+| `GCP_SERVICE_ACCOUNT` | `github-devo-web@devo-holding.iam.gserviceaccount.com` |
+
+#### Manual
+
+Same flags as CI. Do not pass `--allow-unauthenticated`.
+
+```bash
+gcloud run deploy devo-web \
+  --source . \
+  --project=devo-holding \
+  --region=us-west1
+```

@@ -16,3 +16,9 @@ A Linux cloud VM cannot drive local audio or UI.
 - Cursor web UI workspace: `devon-schauman/antiporn`
 
 GitHub publisher is `atla-o` (`github.com/devo` is taken). GCP: project `devo-holding`, org `atla-o.com`, folder `Devo`. Not Firebase.
+
+## Public site
+
+Host-routed pages for devoutshaman.com live in this repo. Cloud Run service
+`devo-web` (`us-west1`, `devo-holding`). No Cloudflare Workers. See the README
+for local preview and deploy.

@@ -13,6 +13,13 @@ import server
 
 PORT = int(os.environ.get("TEST_PORT", "18080"))
 
+PRODUCT_HOSTS = (
+    "https://phenomatch.devoutshaman.com",
+    "https://antiporn.devoutshaman.com",
+    "https://lessfret.devoutshaman.com",
+    "https://lightround.devoutshaman.com",
+)
+
 
 class HostRoutingTests(unittest.TestCase):
     @classmethod
@@ -27,12 +34,16 @@ class HostRoutingTests(unittest.TestCase):
         cls.httpd.server_close()
 
     def fetch(self, host: str, path: str = "/") -> tuple[int, str]:
+        status, body, _ = self.fetch_full(host, path)
+        return status, body
+
+    def fetch_full(self, host: str, path: str = "/") -> tuple[int, str, str | None]:
         conn = HTTPConnection("127.0.0.1", PORT, timeout=5)
         try:
             conn.request("GET", path, headers={"Host": host})
             res = conn.getresponse()
             body = res.read().decode("utf-8")
-            return res.status, body
+            return res.status, body, res.getheader("Location")
         finally:
             conn.close()
 
@@ -48,9 +59,14 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn("parent holding of a lateral health corporation", body)
             self.assertIn("Phenomatch", body)
             self.assertIn("Antiporn", body)
-            self.assertIn("The fund", body)
             self.assertIn("Lessfret", body)
+            self.assertIn("Lightround", body)
             self.assertIn('class="tile"', body)
+            for href in PRODUCT_HOSTS:
+                self.assertIn(f'href="{href}"', body, host)
+            self.assertNotIn("The fund", body)
+            self.assertNotIn('href="/fund"', body)
+            self.assertNotIn('href="/lessfret"', body)
             self.assertNotIn("Install is not available yet", body)
             self.assertNotIn("Not launched.", body)
 
@@ -79,24 +95,44 @@ class HostRoutingTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertIn("matches people by phenotype", body)
 
+        status, body = self.fetch("devoutshaman.com", "/lightround")
+        self.assertEqual(status, 200)
+        self.assertIn("counterdecadence fund", body)
+
         status, body = self.fetch("devoutshaman.com", "/fund")
         self.assertEqual(status, 200)
-        self.assertIn("fertility program", body)
+        self.assertIn("Lightround", body)
+        self.assertIn("counterdecadence fund", body)
+        self.assertNotIn("The fund", body)
 
         status, body = self.fetch("localhost", "/lessfret")
         self.assertEqual(status, 200)
-        self.assertIn("A Devo product.", body)
+        self.assertIn("Coaching and care coordination", body)
+        self.assertIn("Not therapy.", body)
 
-    def test_fund_and_lessfret_hosts(self) -> None:
-        status, body = self.fetch("fund.devoutshaman.com")
+    def test_lightround_and_lessfret_hosts(self) -> None:
+        status, body = self.fetch("lightround.devoutshaman.com")
         self.assertEqual(status, 200)
-        self.assertIn("fertility program", body)
+        self.assertIn("Lightround", body)
+        self.assertIn("counterdecadence fund", body)
+        self.assertNotIn("The fund", body)
         self.assertNotIn("parent holding of a lateral health corporation", body)
 
         status, body = self.fetch("lessfret.devoutshaman.com")
         self.assertEqual(status, 200)
-        self.assertIn("A Devo product.", body)
+        self.assertIn("Coaching and care coordination", body)
+        self.assertIn("Not therapy.", body)
         self.assertNotIn("parent holding of a lateral health corporation", body)
+
+    def test_fund_host_redirects_to_lightround(self) -> None:
+        status, body, location = self.fetch_full("fund.devoutshaman.com")
+        self.assertEqual(status, 301)
+        self.assertEqual(location, "https://lightround.devoutshaman.com")
+        self.assertIn("lightround.devoutshaman.com", body)
+
+        status, _, location = self.fetch_full("fund.devoutshaman.com", "/thesis")
+        self.assertEqual(status, 301)
+        self.assertEqual(location, "https://lightround.devoutshaman.com/thesis")
 
     def test_pages_are_distinct(self) -> None:
         pages = {
@@ -105,7 +141,7 @@ class HostRoutingTests(unittest.TestCase):
                 "devoutshaman.com",
                 "antiporn.devoutshaman.com",
                 "phenomatch.devoutshaman.com",
-                "fund.devoutshaman.com",
+                "lightround.devoutshaman.com",
                 "lessfret.devoutshaman.com",
             )
         }

@@ -7,6 +7,8 @@ separate companies.
 
 - [Phenomatch](https://github.com/atla-o/phenomatch) — match people by phenotype. Revenue toward a fertility program.
 - [Antiporn](https://github.com/atla-o/antiporn) — computer restriction. Blocks porn and anything the user flags as a net negative.
+- [Lessfret](https://github.com/atla-o/lessfret) — coaching and care coordination. Not therapy.
+- [Lightround](https://github.com/atla-o/lightround) — counterdecadence fund.
 
 App data lives on Google Cloud project `devo-holding`.
 
@@ -17,13 +19,17 @@ One Cloud Run service (`devo-web`, `us-west1`) switches on the `Host` header:
 | Host | Page |
 | --- | --- |
 | `devoutshaman.com`, `www.devoutshaman.com` | Holding |
-| `antiporn.devoutshaman.com` | Antiporn landing |
 | `phenomatch.devoutshaman.com` | Phenomatch landing |
-| `fund.devoutshaman.com` | The fund (also `/fund`) |
+| `antiporn.devoutshaman.com` | Antiporn landing |
 | `lessfret.devoutshaman.com` | Lessfret (also `/lessfret`) |
+| `lightround.devoutshaman.com` | Lightround (also `/lightround`; `/fund` aliases here) |
+| `fund.devoutshaman.com` | Redirects to Lightround |
 | unknown host, including `*.run.app` | Holding |
 
-`antiporn` and `phenomatch` subdomains are already mapped. Apex mapping comes later.
+`phenomatch` and `antiporn` are already mapped. Prefer Lightround over a generic
+`fund` host. After deploy, map `lessfret.devoutshaman.com` and
+`lightround.devoutshaman.com` on Cloud Run `devo-web`, then add Cloudflare
+CNAME records (DNS-only, not proxied) to `ghs.googlehosted.com`.
 
 ### Local preview
 
@@ -35,11 +41,14 @@ Host routing (the production path):
 
 ```bash
 curl -s -H 'Host: devoutshaman.com' localhost:8080 | head
-curl -s -H 'Host: antiporn.devoutshaman.com' localhost:8080 | head
 curl -s -H 'Host: phenomatch.devoutshaman.com' localhost:8080 | head
+curl -s -H 'Host: antiporn.devoutshaman.com' localhost:8080 | head
+curl -s -H 'Host: lessfret.devoutshaman.com' localhost:8080 | head
+curl -s -H 'Host: lightround.devoutshaman.com' localhost:8080 | head
 ```
 
-Browser on localhost: `/` (holding), `/phenomatch`, `/antiporn`, `/fund`, `/lessfret`.
+Browser on localhost: `/` (holding), `/phenomatch`, `/antiporn`, `/lessfret`,
+`/lightround`.
 
 ```bash
 python3 test_host.py

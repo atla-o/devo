@@ -38,6 +38,7 @@ a:hover {
 .page {
   min-height: 100svh;
   max-width: var(--measure);
+  margin: 0 auto;
   padding: 2.25rem 1.35rem 3.5rem;
   display: flex;
   flex-direction: column;
@@ -49,6 +50,7 @@ a:hover {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .mark a {

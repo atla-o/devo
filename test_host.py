@@ -86,7 +86,7 @@ class HostRoutingTests(unittest.TestCase):
 
         status, body = self.fetch("localhost", "/lessfret")
         self.assertEqual(status, 200)
-        self.assertIn("A Devo product.", body)
+        self.assertIn("A Devo service.", body)
 
     def test_fund_and_lessfret_hosts(self) -> None:
         status, body = self.fetch("fund.devoutshaman.com")
@@ -96,7 +96,7 @@ class HostRoutingTests(unittest.TestCase):
 
         status, body = self.fetch("lessfret.devoutshaman.com")
         self.assertEqual(status, 200)
-        self.assertIn("A Devo product.", body)
+        self.assertIn("A Devo service.", body)
         self.assertNotIn("parent holding of a lateral health corporation", body)
 
     def test_pages_are_distinct(self) -> None:

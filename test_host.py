@@ -56,7 +56,8 @@ class HostRoutingTests(unittest.TestCase):
         ):
             status, body = self.fetch(host)
             self.assertEqual(status, 200, host)
-            self.assertIn("parent holding of a lateral health corporation", body)
+            self.assertIn("devo - lateral health corp", body)
+            self.assertNotIn("parent holding of a lateral health corporation", body)
             self.assertIn("Phenomatch", body)
             self.assertIn("Antiporn", body)
             self.assertIn("Lessfret", body)

@@ -38,6 +38,7 @@ a:hover {
 .page {
   min-height: 100svh;
   max-width: var(--measure);
+  margin: 0 auto;
   padding: 2.25rem 1.35rem 3.5rem;
   display: flex;
   flex-direction: column;
@@ -47,8 +48,8 @@ a:hover {
   margin: 0;
   font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .mark a {
@@ -58,14 +59,6 @@ a:hover {
 .mark a:hover {
   text-decoration: underline;
   text-underline-offset: 0.22em;
-}
-
-.lede {
-  margin: 5.5rem 0 0;
-  max-width: 22em;
-  font-size: 1.15rem;
-  font-weight: 500;
-  line-height: 1.4;
 }
 
 .directory {
@@ -85,6 +78,7 @@ a:hover {
   padding: 1.05rem 1.1rem 1rem;
   border: 1.5px solid var(--fg);
   text-decoration: none;
+  text-align: center;
 }
 
 .tile h2 {
@@ -116,6 +110,7 @@ a:hover {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .product-copy {
@@ -125,6 +120,14 @@ a:hover {
 
 .product-status {
   margin: 2.25rem 0 0;
+}
+
+.fineprint {
+  margin-top: auto;
+  padding-top: 3rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-align: center;
 }
 
 @media (min-width: 640px) {

@@ -72,15 +72,26 @@ python3 test_host.py
 ### Deploy
 
 Push to `main` runs `.github/workflows/deploy.yml`: host-routing tests, then
-`gcloud run deploy deo-web --source . --project=devo-holding --region=us-west1`.
+`gcloud run deploy devo-web --source . --project=devo-holding --region=us-west1`.
 That uses this `Dockerfile` (optional `cloudbuild.yaml` tags `$_IMAGE` for
 Artifact Registry). The container listens on `$PORT` (Cloud Run default 8080).
 
 **Invoker IAM:** never `--allow-unauthenticated`. Org policy (domain restricted
 sharing) blocks binding `allUsers` as Cloud Run Invoker. Public traffic uses
-**invoker-iam-disabled** — the service annotation
-`run.googleapis.com/invoker-iam-disabled: true`, set by `--no-invoker-iam-check`
-on deploy.
+**invoker-iam-disabled** (`run.googleapis.com/invoker-iam-disabled: true`),
+already set on the live service.
+
+CI does not pass `--no-invoker-iam-check` or `--invoker-iam-check=disabled`.
+Current `gcloud run deploy` docs list `--[no-]invoker-iam-check`, but operator
+gcloud rejected `--invoker-iam-check=disabled`. If a revision loses public
+access, update the annotation (do not grant `allUsers`):
+
+```bash
+gcloud run services update devo-web \
+  --project=devo-holding \
+  --region=us-west1 \
+  --update-annotations=run.googleapis.com/invoker-iam-disabled=true
+```
 
 Do not deploy from Cloudflare. Cloud agents must not run `gcloud run deploy`;
 merging to `main` is the path.
@@ -103,9 +114,8 @@ Cloud Build SA needs `roles/run.builder`). Then set repository **variables**
 Same flags as CI. Do not pass `--allow-unauthenticated`.
 
 ```bash
-gcloud run deploy deo-web \
+gcloud run deploy devo-web \
   --source . \
   --project=devo-holding \
-  --region=us-west1 \
-  --no-invoker-iam-check
+  --region=us-west1
 ```

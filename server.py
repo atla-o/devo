@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Host-routed static site for Cloud Run service deo-web."""
+"""Host-routed static site for Cloud Run service devo-web."""
 
 from __future__ import annotations
 

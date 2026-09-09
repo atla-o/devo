@@ -1,13 +1,17 @@
-# Deploy Cloud Run service deo-web on push to main.
+# Deploy Cloud Run service devo-web on push to main.
 #
-# Public access is invoker-iam-disabled (--no-invoker-iam-check). Never pass
-# --allow-unauthenticated: org policy (domain restricted sharing) blocks allUsers.
+# Public access is invoker-iam-disabled (annotation already true on the live
+# service). Never --allow-unauthenticated: org policy blocks allUsers.
+# Do not pass --no-invoker-iam-check / --invoker-iam-check=disabled here;
+# operator gcloud rejected --invoker-iam-check=disabled. Follow-up if needed:
+# gcloud run services update devo-web --region=us-west1 --project=devo-holding \
+#   --update-annotations=run.googleapis.com/invoker-iam-disabled=true
 #
 # One-time: Workload Identity Federation from this repo to a deploy SA, then
 # repository variables GCP_WORKLOAD_IDENTITY_PROVIDER and GCP_SERVICE_ACCOUNT.
 # See README.md.
 
-name: Deploy deo-web
+name: Deploy devo-web
 
 on:
   push:
@@ -19,13 +23,13 @@ permissions:
   contents: read
 
 concurrency:
-  group: deo-web-${{ github.workflow }}-${{ github.ref }}
+  group: devo-web-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
 env:
-  PROJECT_ID: deo-holding
+  PROJECT_ID: devo-holding
   REGION: us-west1
-  SERVICE: deo-web
+  SERVICE: devo-web
 
 jobs:
   test:
@@ -72,11 +76,10 @@ jobs:
       - name: Set up gcloud
         uses: google-github-actions/setup-gcloud@v2
 
-      - name: Deploy deo-web
+      - name: Deploy devo-web
         run: |
           gcloud run deploy "${SERVICE}" \
             --source=. \
             --project="${PROJECT_ID}" \
             --region="${REGION}" \
-            --no-invoker-iam-check \
             --quiet

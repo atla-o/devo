@@ -33,7 +33,9 @@ not deploy from here: `phenomatch-web` today; `lessfret-web` / `lightround-web`
 soon.
 
 Cloudflare is DNS-only (grey cloud) to `ghs.googlehosted.com`. No Workers. No
-beta host. Public access is invoker-iam-disabled (`--no-invoker-iam-check`);
-never `--allow-unauthenticated` (org policy blocks `allUsers`). Cloud agents
-must not run `gcloud run deploy`; merging to main is the deploy path. See the
-README.
+beta host. Public access is invoker-iam-disabled (already true on the live
+service). Never `--allow-unauthenticated` (org policy blocks `allUsers`). If a
+revision loses public access, set
+`--update-annotations=run.googleapis.com/invoker-iam-disabled=true`. Cloud
+agents must not run `gcloud run deploy`; merging to main is the deploy path.
+See the README.

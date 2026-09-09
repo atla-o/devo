@@ -1,8 +1,10 @@
 .git
 .gitignore
+.github
 .cursor
 **/__pycache__
 **/*.pyc
 test_host.py
 README.md
 AGENTS.md
+cloudbuild.yaml

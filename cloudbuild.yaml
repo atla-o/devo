@@ -1,0 +1,18 @@
+# Optional Cloud Build config for `gcloud run deploy deo-web --source .`
+# (and for a manual Dockerfile → Artifact Registry build).
+#
+# Cloud Run source deploys inject $_IMAGE. A manual `gcloud builds submit`
+# uses the default below (cloud-run-source-deploy repo in us-west1).
+
+substitutions:
+  _IMAGE: us-west1-docker.pkg.dev/devo-holding/cloud-run-source-deploy/devo-web
+
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-t", "${_IMAGE}", "."]
+
+images:
+  - ${_IMAGE}
+
+options:
+  logging: CLOUD_LOGGING_ONLY

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Host-routed static site for Cloud Run service deo-web."""
+"""Host-routed static site for Cloud Run service devo-web."""
 
 from __future__ import annotations
 
@@ -14,17 +14,21 @@ SITES = ROOT / "sites"
 HOST_SITES = {
     "antiporn.devoutshaman.com": "antiporn",
     "phenomatch.devoutshaman.com": "phenomatch",
-    "fund.devoutshaman.com": "fund",
+    "lightround.devoutshaman.com": "lightround",
     "lessfret.devoutshaman.com": "lessfret",
     "devoutshaman.com": "holding",
     "www.devoutshaman.com": "holding",
 }
 
+FUND_HOST = "fund.devoutshaman.com"
+LIGHTROUND_ORIGIN = "https://lightround.devoutshaman.com"
+
 LOCAL_HOSTS = {"localhost", "127.0.0.1", "::1"}
 PATH_SITES = (
     ("/antiporn", "antiporn"),
     ("/phenomatch", "phenomatch"),
-    ("/fund", "fund"),
+    ("/lightround", "lightround"),
+    ("/fund", "lightround"),
     ("/lessfret", "lessfret"),
 )
 
@@ -80,6 +84,16 @@ class Handler(BaseHTTPRequestHandler):
         host = normalize_host(self.headers.get("Host", ""))
         parsed = urlparse(self.path)
         path = unquote(parsed.path) or "/"
+
+        if host == FUND_HOST:
+            dest = LIGHTROUND_ORIGIN
+            if path != "/":
+                dest += path
+            if parsed.query:
+                dest += "?" + parsed.query
+            self._redirect(dest, body=body)
+            return
+
         site = site_for_host(host)
 
         if site == "holding" or is_local_host(host):
@@ -119,6 +133,17 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         if body:
             self.wfile.write(data)
+
+    def _redirect(self, location: str, *, body: bool, code: int = 301) -> None:
+        payload = f"Redirecting to {location}\n".encode() if body else b""
+        self.send_response(code)
+        self.send_header("Location", location)
+        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Content-Length", str(len(payload)))
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.end_headers()
+        if body:
+            self.wfile.write(payload)
 
     def _plain(self, code: int, payload: bytes) -> None:
         self.send_response(code)

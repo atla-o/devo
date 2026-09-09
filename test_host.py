@@ -63,6 +63,7 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn("Lessfret", body)
             self.assertIn("Lightround", body)
             self.assertIn('class="tile"', body)
+            self.assertIn('class="cluster"', body)
             for href in PRODUCT_HOSTS:
                 self.assertIn(f'href="{href}"', body, host)
             self.assertNotIn("The fund", body)

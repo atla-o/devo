@@ -36,12 +36,19 @@ a:hover {
 }
 
 .page {
+  box-sizing: border-box;
   min-height: 100svh;
-  max-width: var(--measure);
-  margin: 0 auto;
+  width: min(100%, var(--measure));
+  margin-inline: auto;
   padding: 2.25rem 1.35rem 3.5rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.cluster {
+  width: 100%;
+  margin-block: auto;
 }
 
 .mark {
@@ -105,7 +112,7 @@ a:hover {
 }
 
 .product-name {
-  margin: 5.5rem 0 0;
+  margin: 3.25rem 0 0;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -114,17 +121,20 @@ a:hover {
 }
 
 .product-copy {
-  margin: 1.25rem 0 0;
+  margin: 1.25rem auto 0;
   max-width: 24em;
+  text-align: center;
 }
 
 .product-status {
-  margin: 2.25rem 0 0;
+  margin: 2.25rem auto 0;
+  text-align: center;
 }
 
 .fineprint {
-  margin-top: auto;
-  padding-top: 3rem;
+  flex-shrink: 0;
+  margin: 0;
+  padding-top: 2rem;
   font-size: 0.62rem;
   letter-spacing: 0.04em;
   text-align: center;

@@ -51,6 +51,7 @@ a:hover {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-align: center;
+  line-height: 1.2;
 }
 
 .mark a {
@@ -60,14 +61,6 @@ a:hover {
 .mark a:hover {
   text-decoration: underline;
   text-underline-offset: 0.22em;
-}
-
-.lede {
-  margin: 5.5rem 0 0;
-  max-width: 22em;
-  font-size: 1.15rem;
-  font-weight: 500;
-  line-height: 1.4;
 }
 
 .directory {
@@ -127,6 +120,14 @@ a:hover {
 
 .product-status {
   margin: 2.25rem 0 0;
+}
+
+.fineprint {
+  margin-top: auto;
+  padding-top: 3rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-align: center;
 }
 
 @media (min-width: 640px) {

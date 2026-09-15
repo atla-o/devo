@@ -40,10 +40,14 @@ a:hover {
   min-height: 100svh;
   width: min(100%, var(--measure));
   margin-inline: auto;
-  padding: 2.25rem 1.35rem 3.5rem;
+  padding: 1.15rem 1.2rem 1.35rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.page--home {
+  height: 100svh;
 }
 
 .cluster {
@@ -69,20 +73,23 @@ a:hover {
 }
 
 .directory {
-  margin: 3.25rem 0 0;
+  width: 100%;
+  max-width: 20rem;
+  margin: 1.15rem auto 0;
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.7rem;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
 }
 
 .tile {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 2.25rem;
-  min-height: 7.25rem;
-  padding: 1.05rem 1.1rem 1rem;
+  justify-content: center;
+  gap: 0.28rem;
+  min-height: 0;
+  padding: 0.72rem 0.95rem;
   border: 1.5px solid var(--fg);
   text-decoration: none;
   text-align: center;
@@ -134,7 +141,7 @@ a:hover {
 .fineprint {
   flex-shrink: 0;
   margin: 0;
-  padding-top: 2rem;
+  padding-top: 1rem;
   font-size: 0.62rem;
   letter-spacing: 0.04em;
   text-align: center;
@@ -142,10 +149,20 @@ a:hover {
 
 @media (min-width: 640px) {
   .page {
-    padding: 3rem 2.5rem 4rem;
+    padding: 2.5rem 2.5rem 3rem;
   }
 
   .directory {
-    grid-template-columns: 1fr 1fr;
+    margin-top: 1.5rem;
+    gap: 0.5rem;
+    max-width: 18rem;
+  }
+
+  .tile {
+    padding: 0.85rem 1.05rem;
+  }
+
+  .fineprint {
+    padding-top: 1.5rem;
   }
 }

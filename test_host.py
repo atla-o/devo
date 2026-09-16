@@ -14,11 +14,12 @@ import server
 PORT = int(os.environ.get("TEST_PORT", "18080"))
 
 PRODUCT_HOSTS = (
-    "https://phenomatch.devoutshaman.com",
-    "https://antiporn.devoutshaman.com",
-    "https://lessfret.devoutshaman.com",
     "https://lightround.devoutshaman.com",
+    "https://lessfret.devoutshaman.com",
+    "https://antiporn.devoutshaman.com",
+    "https://phenomatch.devoutshaman.com",
 )
+TILE_NAMES = ("Lightround", "Lessfret", "Antiporn", "Phenomatch")
 
 
 class HostRoutingTests(unittest.TestCase):
@@ -64,8 +65,13 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn("Lightround", body)
             self.assertIn('class="tile"', body)
             self.assertIn('class="cluster"', body)
+            self.assertNotIn("<p>Product</p>", body)
+            self.assertNotIn("<p>Service</p>", body)
+            self.assertNotIn("<p>Fund</p>", body)
             for href in PRODUCT_HOSTS:
                 self.assertIn(f'href="{href}"', body, host)
+            positions = [body.index(name) for name in TILE_NAMES]
+            self.assertEqual(positions, sorted(positions), host)
             self.assertNotIn("The fund", body)
             self.assertNotIn('href="/fund"', body)
             self.assertNotIn('href="/lessfret"', body)

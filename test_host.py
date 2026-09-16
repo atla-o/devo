@@ -18,8 +18,9 @@ PRODUCT_HOSTS = (
     "https://lessfret.devoutshaman.com",
     "https://antiporn.devoutshaman.com",
     "https://phenomatch.devoutshaman.com",
+    "https://acashi.devoutshaman.com",
 )
-TILE_NAMES = ("Lightround", "Lessfret", "Antiporn", "Phenomatch")
+TILE_NAMES = ("Lightround", "Lessfret", "Antiporn", "Phenomatch", "Acashi")
 
 
 class HostRoutingTests(unittest.TestCase):
@@ -63,6 +64,7 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn("Antiporn", body)
             self.assertIn("Lessfret", body)
             self.assertIn("Lightround", body)
+            self.assertIn("Acashi", body)
             self.assertIn('class="tile"', body)
             self.assertIn('class="cluster"', body)
             self.assertNotIn("<p>Product</p>", body)
@@ -75,6 +77,7 @@ class HostRoutingTests(unittest.TestCase):
             self.assertNotIn("The fund", body)
             self.assertNotIn('href="/fund"', body)
             self.assertNotIn('href="/lessfret"', body)
+            self.assertNotIn('href="/acashi"', body)
             self.assertNotIn("Install is not available yet", body)
             self.assertNotIn("Not launched.", body)
 
@@ -118,6 +121,11 @@ class HostRoutingTests(unittest.TestCase):
         self.assertIn("Coaching and care coordination", body)
         self.assertIn("Not therapy.", body)
 
+        status, body = self.fetch("localhost", "/acashi")
+        self.assertEqual(status, 200)
+        self.assertIn("Affordable Care Act subsidized health insurance", body)
+        self.assertIn("Not launched.", body)
+
     def test_lightround_and_lessfret_hosts(self) -> None:
         status, body = self.fetch("lightround.devoutshaman.com")
         self.assertEqual(status, 200)
@@ -130,6 +138,13 @@ class HostRoutingTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertIn("Coaching and care coordination", body)
         self.assertIn("Not therapy.", body)
+        self.assertNotIn("parent holding of a lateral health corporation", body)
+
+        status, body = self.fetch("acashi.devoutshaman.com")
+        self.assertEqual(status, 200)
+        self.assertIn("Acashi", body)
+        self.assertIn("Affordable Care Act subsidized health insurance", body)
+        self.assertIn("Not launched.", body)
         self.assertNotIn("parent holding of a lateral health corporation", body)
 
     def test_fund_host_redirects_to_lightround(self) -> None:
@@ -151,9 +166,10 @@ class HostRoutingTests(unittest.TestCase):
                 "phenomatch.devoutshaman.com",
                 "lightround.devoutshaman.com",
                 "lessfret.devoutshaman.com",
+                "acashi.devoutshaman.com",
             )
         }
-        self.assertEqual(len(set(pages.values())), 5)
+        self.assertEqual(len(set(pages.values())), 6)
 
     def test_shared_assets(self) -> None:
         conn = HTTPConnection("127.0.0.1", PORT, timeout=5)

@@ -1,8 +1,8 @@
 # Devo workspace
 
-Parent holding. Products ship under Devo: Phenomatch, Antiporn, Lessfret, and
-Lightround. Phenomatch and Antiporn use the **same** process: half cloud, half
-local.
+Parent holding. Products ship under Devo: Phenomatch, Antiporn, Lessfret,
+Lightround, and Acashi. Phenomatch and Antiporn use the **same** process: half
+cloud, half local.
 
 ## Half cloud / half local
 
@@ -17,6 +17,7 @@ A Linux cloud VM cannot drive local audio or UI.
 - [antiporn](https://github.com/atla-o/antiporn) (public) / [anti-porn](https://github.com/atla-o/anti-porn) (private Swift)
 - [lessfret](https://github.com/atla-o/lessfret)
 - [lightround](https://github.com/atla-o/lightround)
+- [acashi](https://github.com/atla-o/acashi)
 - Cursor web UI workspace: `devon-schauman/antiporn`
 
 GitHub publisher is `atla-o` (`github.com/devo` is taken). GCP: project `devo-holding`, org `atla-o.com`, folder `Devo`. Not Firebase.

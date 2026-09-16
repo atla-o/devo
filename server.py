@@ -16,6 +16,7 @@ HOST_SITES = {
     "phenomatch.devoutshaman.com": "phenomatch",
     "lightround.devoutshaman.com": "lightround",
     "lessfret.devoutshaman.com": "lessfret",
+    "acashi.devoutshaman.com": "acashi",
     "devoutshaman.com": "holding",
     "www.devoutshaman.com": "holding",
 }
@@ -30,6 +31,7 @@ PATH_SITES = (
     ("/lightround", "lightround"),
     ("/fund", "lightround"),
     ("/lessfret", "lessfret"),
+    ("/acashi", "acashi"),
 )
 
 MIME = {

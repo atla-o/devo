@@ -9,6 +9,7 @@ separate companies.
 - [Antiporn](https://github.com/atla-o/antiporn) — computer restriction. Blocks porn and anything the user flags as a net negative.
 - [Lessfret](https://github.com/atla-o/lessfret) — coaching and care coordination. Not therapy.
 - [Lightround](https://github.com/atla-o/lightround) — counterdecadence fund.
+- [Acashi](https://github.com/atla-o/acashi) — Affordable Care Act subsidized health insurance. Bare-bones application and account status.
 
 App data lives on Google Cloud project `devo-holding`.
 
@@ -39,9 +40,10 @@ production, only hosts that still map to this service hit it:
 | `fund.devoutshaman.com` | Redirects to Lightround (until remapped) |
 | unknown host, including `*.run.app` | Holding |
 
-Local preview can still serve Phenomatch / Lessfret / Lightround stubs on those
-hosts or `/phenomatch`, `/lessfret`, `/lightround`. Production DNS for product
-apps should point at their own services when those exist.
+Local preview can still serve Phenomatch / Lessfret / Lightround / Acashi stubs
+on those hosts or `/phenomatch`, `/lessfret`, `/lightround`, `/acashi`.
+Production DNS for product apps should point at their own services when those
+exist.
 
 Cloudflare is **DNS-only** (grey cloud), CNAME to `ghs.googlehosted.com` (apex
 already uses Google A records). No Workers. No orange-cloud proxy. No beta host.
@@ -60,10 +62,11 @@ curl -s -H 'Host: phenomatch.devoutshaman.com' localhost:8080 | head
 curl -s -H 'Host: antiporn.devoutshaman.com' localhost:8080 | head
 curl -s -H 'Host: lessfret.devoutshaman.com' localhost:8080 | head
 curl -s -H 'Host: lightround.devoutshaman.com' localhost:8080 | head
+curl -s -H 'Host: acashi.devoutshaman.com' localhost:8080 | head
 ```
 
 Browser on localhost: `/` (holding), `/phenomatch`, `/antiporn`, `/lessfret`,
-`/lightround`.
+`/lightround`, `/acashi`.
 
 ```bash
 python3 test_host.py

@@ -62,12 +62,42 @@ curl -s -H 'Host: lessfret.devoutshaman.com' localhost:8080 | head
 curl -s -H 'Host: lightround.devoutshaman.com' localhost:8080 | head
 ```
 
-Browser on localhost: `/` (holding), `/phenomatch`, `/antiporn`, `/lessfret`,
-`/lightround`.
+Browser on localhost: `/` (holding), `/insurance` (ACA intake; `/aca` redirects here),
+`/phenomatch`, `/antiporn`, `/lessfret`, `/lightround`.
 
 ```bash
 python3 test_host.py
 ```
+
+### ACA subsidized insurance
+
+The holding directory includes an **Insurance** tile that opens `/insurance`
+(also `/aca`). That page is Devo intake for Affordable Care Act subsidized
+insurance interest: a short form and a status lookup. It is not insurance
+advice, a quote, or a broker service. Enrollment stays on
+[HealthCare.gov](https://www.healthcare.gov) or the state exchange.
+
+Submit `POST /api/aca/applications` (JSON). Look up
+`GET /api/aca/applications?receipt_id=aca_…` or `?email=…`. New applications
+start as `received` (`in_review`, `needs_info`, `submitted_to_marketplace` are
+stored for later review). The browser keeps the receipt id in `localStorage`.
+
+Local/tests persist to a JSON file (`ACA_STORE=json`, default
+`ACA_DATA_PATH=/tmp/devo-aca-applications.json`). On Cloud Run, the same
+endpoints write Firestore collection `aca_applications` in project
+`devo-holding` (native mode). The `devo-web` runtime service account needs
+`roles/datastore.user`. If Firestore is not created yet:
+
+```bash
+gcloud firestore databases create --database="(default)" --location=us-west1 \
+  --project=devo-holding
+gcloud projects add-iam-policy-binding devo-holding \
+  --member="serviceAccount:RUNTIME_SA" \
+  --role=roles/datastore.user
+```
+
+Use the Cloud Run runtime account for `RUNTIME_SA` (not the GitHub deploy
+account). Spell the project id `devo-holding`.
 
 ### Deploy
 

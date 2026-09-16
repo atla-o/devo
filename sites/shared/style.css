@@ -47,7 +47,8 @@ a:hover {
 }
 
 .page--home {
-  height: 100svh;
+  min-height: 100svh;
+  height: auto;
 }
 
 .cluster {
@@ -154,4 +155,207 @@ a:hover {
   .fineprint {
     padding-top: 1.5rem;
   }
+}
+
+.page--intake {
+  height: auto;
+  align-items: stretch;
+}
+
+.page--intake .cluster {
+  margin-block: 0;
+}
+
+.page--intake .mark {
+  margin-top: 0.35rem;
+}
+
+.intake-form,
+.lookup-form {
+  width: 100%;
+  max-width: 22rem;
+  margin: 1.5rem auto 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  text-align: left;
+}
+
+fieldset.field {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-inline-size: 0;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.field label,
+.field .label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1.5px solid var(--fg);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.field textarea {
+  min-height: 5rem;
+  resize: vertical;
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.15rem;
+  min-height: 2.4rem;
+  align-items: center;
+}
+
+.choices label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: pointer;
+}
+
+.field-error {
+  min-height: 1em;
+  font-size: 0.72rem;
+}
+
+.form-error {
+  margin: 0;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.72rem 0.95rem;
+  border: 1.5px solid var(--fg);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: var(--fg);
+  color: var(--bg);
+  outline: none;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+
+.btn:disabled:hover {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.disclaimer {
+  margin: 1rem auto 0;
+  max-width: 28em;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.disclaimer a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.status-card {
+  width: 100%;
+  max-width: 22rem;
+  margin: 1.75rem auto 0;
+  padding: 1rem 0.95rem;
+  border: 1.5px solid var(--fg);
+  text-align: center;
+}
+
+.status-card[hidden],
+.form-error:empty {
+  display: none;
+}
+
+.status-card h2 {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.status-label {
+  margin: 0.55rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.status-detail,
+.status-meta {
+  margin: 0.45rem 0 0;
+  font-size: 0.85rem;
+}
+
+.status-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+.section-label {
+  margin: 2.25rem 0 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.lookup-copy {
+  margin: 0.65rem auto 0;
+  max-width: 24em;
+  text-align: center;
+  font-size: 0.85rem;
 }

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Insurance — Devo</title>
+    <meta
+      name="description"
+      content="Devo ACA subsidized insurance intake. Not insurance advice. Enrollment through HealthCare.gov or your state exchange."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/shared/style.css" />
+  </head>
+  <body>
+    <main class="page page--intake">
+      <div class="cluster">
+        <p class="mark">
+          <a href="/" aria-label="Devo">o</a>
+        </p>
+        <h1 class="product-name">Insurance</h1>
+        <p class="product-copy">
+          Affordable Care Act (ACA) subsidized insurance. Bare-bones interest
+          form, then a receipt so you can check status.
+        </p>
+        <p class="disclaimer">
+          Not insurance advice, a quote, or coverage. Devo is not a licensed
+          broker. Final eligibility and enrollment are through
+          <a href="https://www.healthcare.gov" rel="noopener noreferrer"
+            >HealthCare.gov</a
+          >
+          or your state exchange. Devo only gathers this intake and tracks
+          status.
+        </p>
+
+        <section id="status-card" class="status-card" hidden aria-live="polite">
+          <h2>Application status</h2>
+          <p class="status-label" id="status-label"></p>
+          <p class="status-detail" id="status-detail"></p>
+          <p class="status-meta" id="status-meta"></p>
+        </section>
+
+        <form id="aca-form" class="intake-form" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              maxlength="120"
+              required
+            />
+            <p class="field-error" data-error-for="name"></p>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              required
+            />
+            <p class="field-error" data-error-for="email"></p>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              inputmode="tel"
+              required
+            />
+            <p class="field-error" data-error-for="phone"></p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="state">State</label>
+              <select id="state" name="state" autocomplete="address-level1" required>
+                <option value="">Select</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>
+              <p class="field-error" data-error-for="state"></p>
+            </div>
+            <div class="field">
+              <label for="zip">ZIP</label>
+              <input
+                id="zip"
+                name="zip"
+                type="text"
+                inputmode="numeric"
+                autocomplete="postal-code"
+                maxlength="10"
+                required
+              />
+              <p class="field-error" data-error-for="zip"></p>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="household_size">Household</label>
+              <input
+                id="household_size"
+                name="household_size"
+                type="number"
+                inputmode="numeric"
+                min="1"
+                max="15"
+                step="1"
+                required
+              />
+              <p class="field-error" data-error-for="household_size"></p>
+            </div>
+            <div class="field">
+              <label for="income_band">Income</label>
+              <select id="income_band" name="income_band" required>
+                <option value="">Select</option>
+                <option value="under-20k">Under $20,000</option>
+                <option value="20k-40k">$20,000–$40,000</option>
+                <option value="40k-60k">$40,000–$60,000</option>
+                <option value="60k-80k">$60,000–$80,000</option>
+                <option value="80k-100k">$80,000–$100,000</option>
+                <option value="100k-150k">$100,000–$150,000</option>
+                <option value="over-150k">Over $150,000</option>
+              </select>
+              <p class="field-error" data-error-for="income_band"></p>
+            </div>
+          </div>
+          <fieldset class="field">
+            <legend class="label">Preferred contact</legend>
+            <div class="choices">
+              <label>
+                <input
+                  type="radio"
+                  name="preferred_contact"
+                  value="email"
+                  required
+                />
+                Email
+              </label>
+              <label>
+                <input type="radio" name="preferred_contact" value="phone" />
+                Phone
+              </label>
+            </div>
+            <p class="field-error" data-error-for="preferred_contact"></p>
+          </fieldset>
+          <div class="field">
+            <label for="notes">Notes (optional)</label>
+            <textarea id="notes" name="notes" maxlength="2000"></textarea>
+            <p class="field-error" data-error-for="notes"></p>
+          </div>
+          <p class="form-error" id="form-error"></p>
+          <button class="btn" type="submit" id="submit-btn">Submit</button>
+        </form>
+
+        <h2 class="section-label">Status</h2>
+        <p class="lookup-copy">
+          Look up a submitted form with your receipt ID or email. This browser
+          also keeps your latest receipt.
+        </p>
+        <form id="lookup-form" class="lookup-form">
+          <div class="field">
+            <label for="lookup">Receipt or email</label>
+            <input id="lookup" name="lookup" type="text" autocomplete="off" />
+            <p class="field-error" data-error-for="lookup"></p>
+          </div>
+          <button class="btn" type="submit" id="lookup-btn">Check status</button>
+        </form>
+      </div>
+      <p class="fineprint">devo - lateral health corp</p>
+    </main>
+    <script src="/insurance/app.js"></script>
+  </body>
+</html>

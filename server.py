@@ -3,13 +3,19 @@
 
 from __future__ import annotations
 
+import json
 import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
+
+import aca
 
 ROOT = Path(__file__).resolve().parent
 SITES = ROOT / "sites"
+
+ACA_API_PATH = "/api/aca/applications"
+MAX_ACA_BODY = 32_768
 
 HOST_SITES = {
     "antiporn.devoutshaman.com": "antiporn",
@@ -75,15 +81,105 @@ class Handler(BaseHTTPRequestHandler):
         print(f"{self.address_string()} {fmt % args}", flush=True)
 
     def do_GET(self) -> None:
+        if self._aca_api():
+            return
         self._serve(body=True)
 
     def do_HEAD(self) -> None:
         self._serve(body=False)
 
+    def do_POST(self) -> None:
+        if self._aca_api():
+            return
+        self._plain(404, b"Not found\n")
+
+    def _aca_api(self) -> bool:
+        parsed = urlparse(self.path)
+        path = (unquote(parsed.path) or "/").rstrip("/") or "/"
+        if path != ACA_API_PATH:
+            return False
+
+        if self.command == "POST":
+            payload, err = self._read_json_body()
+            if not self._same_origin():
+                self._json(403, {"error": "forbidden"})
+                return True
+            if err:
+                self._json(400, {"error": err})
+                return True
+            try:
+                created = aca.create(payload)
+            except aca.ValidationError as exc:
+                self._json(400, {"error": "validation", "fields": exc.fields})
+                return True
+            except aca.StoreError:
+                self._json(503, {"error": "Could not save application."})
+                return True
+            self._json(201, created)
+            return True
+
+        if self.command != "GET":
+            self._json(405, {"error": "method not allowed"})
+            return True
+
+        query = parse_qs(parsed.query)
+        receipt_id = (query.get("receipt_id") or query.get("receipt") or [""])[0]
+        email = (query.get("email") or [""])[0]
+        if not receipt_id and not email:
+            self._json(400, {"error": "Provide receipt_id or email."})
+            return True
+        try:
+            found = aca.lookup(receipt_id=receipt_id or None, email=email or None)
+        except aca.StoreError:
+            self._json(503, {"error": "Could not look up application."})
+            return True
+        if found is None:
+            self._json(404, {"error": "Application not found."})
+            return True
+        self._json(200, found)
+        return True
+
+    def _same_origin(self) -> bool:
+        origin = self.headers.get("Origin")
+        if not origin:
+            return True
+        origin_host = normalize_host(urlparse(origin).netloc)
+        request_host = normalize_host(self.headers.get("Host", ""))
+        return bool(origin_host) and origin_host == request_host
+
+    def _read_json_body(self) -> tuple[object | None, str | None]:
+        try:
+            length = int(self.headers.get("Content-Length") or "0")
+        except ValueError:
+            return None, "Invalid Content-Length."
+        if length < 0 or length > MAX_ACA_BODY:
+            return None, "Payload too large."
+        raw = self.rfile.read(length) if length else b""
+        if not raw:
+            return None, "Send a JSON body."
+        try:
+            return json.loads(raw.decode("utf-8")), None
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            return None, "Invalid JSON."
+
+    def _json(self, code: int, payload: dict) -> None:
+        data = json.dumps(payload).encode("utf-8")
+        self.send_response(code)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.end_headers()
+        self.wfile.write(data)
+
     def _serve(self, *, body: bool) -> None:
         host = normalize_host(self.headers.get("Host", ""))
         parsed = urlparse(self.path)
         path = unquote(parsed.path) or "/"
+
+        if path.rstrip("/") == "/aca":
+            self._redirect("/insurance", body=body)
+            return
 
         if host == FUND_HOST:
             dest = LIGHTROUND_ORIGIN

@@ -11,6 +11,7 @@
 }
 
 html {
+  color-scheme: light;
   font-size: 18px;
   -webkit-text-size-adjust: 100%;
 }
@@ -153,5 +154,22 @@ a:hover {
 
   .fineprint {
     padding-top: 1.5rem;
+  }
+}
+
+/* Force light UI: black on white, ignore system dark mode */
+html,
+body {
+  background: #fff;
+  color: #000;
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: light;
+  }
+  html,
+  body {
+    background: #fff;
+    color: #000;
   }
 }

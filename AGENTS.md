@@ -35,7 +35,7 @@ A Linux cloud VM cannot drive local audio or UI.
 - [lessfret](https://github.com/atla-o/lessfret)
 - [lightround](https://github.com/atla-o/lightround)
 - [acashi](https://github.com/atla-o/acashi)
-- Cursor web UI workspace: `devon-schauman/antiporn`
+- Antiporn web cloud workspace is only `atla-o/antiporn`; archive any `devon-schauman/antiporn` Cursor workspace.
 
 GitHub publisher is `atla-o` (`github.com/devo` is taken). GCP: project `devo-holding`, org `atla-o.com`, folder `Devo`. Not Firebase.
 

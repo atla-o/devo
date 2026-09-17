@@ -1,5 +1,22 @@
 # Devo workspace
 
+## Standing objective (Devo UI-first)
+
+Cursor cloud work for this product: **one promptable environment / one cloud workspace**, kept current.
+
+Priority order for every task unless Devo says otherwise:
+1. **Complete functional UI** — usable end-to-end (persist data, real submit paths, loading/empty/error/success). No blocking coming-soon for core flows.
+2. Black text on **white** backgrounds always — never follow system dark mode / white-on-black.
+3. Ship via merge to `main` (Cloud Run Actions). Do not deploy from the agent unless Devo explicitly says push/ship/merge and deploy.
+
+Parent: Devo (lateral health). Publisher: atla-o. GCP app data: project `devo-holding`. Public hosts on `*.devoutshaman.com` (Cloudflare DNS-only → Cloud Run).
+
+Siblings: Phenomatch, Antiporn, Lessfret, Lightround, Acashi. Holding lander: atla-o/devo → devoutshaman.com.
+
+## This product
+
+Holding lander + directory tiles; hostname routing in `server.py`.
+
 Parent holding. Products ship under Devo: Phenomatch, Antiporn, Lessfret,
 Lightround, and Acashi. Phenomatch and Antiporn use the **same** process: half
 cloud, half local.

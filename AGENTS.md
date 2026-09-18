@@ -13,6 +13,10 @@ Parent: Devo (lateral health). Publisher: atla-o. GCP app data: project `devo-ho
 
 Siblings: Phenomatch, Antiporn, Lessfret, Lightround, Acashi. Holding lander: atla-o/devo → devoutshaman.com.
 
+## Live UI preview
+
+Whenever UI changes are **not yet on `main`** (local/dev server, feature branch, unmerged PR), the reply **must** include a full clickable preview URL Devo can open in Cursor — the Cloud Agent preview / tunnel / forwarded-port URL for the running app. Screenshots are extra, not a substitute. Production `devoutshaman.com` is only for work already merged to `main`.
+
 ## This product
 
 Holding lander + directory tiles; hostname routing in `server.py`.

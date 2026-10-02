@@ -1,15 +1,24 @@
 # Devo
 
-Parent holding for a lateral health company. Products ship under Devo, not as
-separate companies.
+Parent holding. The public lander shows four tops: Arcada, Lightround,
+Humanehealth, and Mattercircle.
 
-## Products
+## Tops
 
-- [Phenomatch](https://github.com/atla-o/phenomatch) — match people by phenotype. Revenue toward a fertility program.
-- [Antiporn](https://github.com/atla-o/antiporn) — computer restriction. Blocks porn and anything the user flags as a net negative.
-- [Lessfret](https://github.com/atla-o/lessfret) — coaching and care coordination. Not therapy.
+- [Arcada](https://github.com/atla-o/arcada) — social club. Tile links to `https://arcada.devoutshaman.com` (Arcada’s own app).
 - [Lightround](https://github.com/atla-o/lightround) — counterdecadence fund.
-- [Acashi](https://github.com/atla-o/acashi) — Affordable Care Act subsidized health insurance. Bare-bones application and account status.
+- [Humanehealth](https://github.com/atla-o/humanehealth) — clinic network.
+- [Mattercircle](https://github.com/atla-o/mattercircle) — matter and physics. Factory essentials.
+
+### Inside the Humanehealth clinic network
+
+These are not lander tops:
+
+- [Acashi](https://github.com/atla-o/acashi) — Affordable Care Act subsidized health insurance.
+- [Phenomatch](https://github.com/atla-o/phenomatch) — fertility arm. Matches people by phenotype.
+- [Antiporn](https://github.com/atla-o/antiporn) — fertility arm. Computer restriction.
+- [Lessfret](https://github.com/atla-o/lessfret) — coaching and care coordination. Not therapy.
+- devoutshaman — consumer sell-health.
 
 App data lives on Google Cloud project `devo-holding`.
 
@@ -35,15 +44,21 @@ production, only hosts that still map to this service hit it:
 
 | Host | Page |
 | --- | --- |
-| `devoutshaman.com`, `www.devoutshaman.com` | Holding |
-| `antiporn.devoutshaman.com` | Antiporn stub (until Antiporn has its own web app) |
+| `devoutshaman.com`, `www.devoutshaman.com` | Holding (four tops) |
+| `humanehealth.devoutshaman.com` | Humanehealth clinic network (soft-wire on this service) |
+| `mattercircle.devoutshaman.com` | Mattercircle (soft-wire on this service) |
+| `lightround.devoutshaman.com` | Lightround |
+| `antiporn.devoutshaman.com` | Antiporn stub (clinic network; until Antiporn has its own web app) |
 | `fund.devoutshaman.com` | Redirects to Lightround (until remapped) |
 | unknown host, including `*.run.app` | Holding |
 
-Local preview can still serve Phenomatch / Lessfret / Lightround / Acashi stubs
-on those hosts or `/phenomatch`, `/lessfret`, `/lightround`, `/acashi`.
-Production DNS for product apps should point at their own services when those
-exist.
+`arcada.devoutshaman.com` is Arcada’s own app. The lander links there and this
+service does not serve that host.
+
+Local preview can still serve the clinic-network stubs and the two soft-wires
+on their hosts or `/phenomatch`, `/antiporn`, `/lessfret`, `/lightround`,
+`/acashi`, `/humanehealth`, `/mattercircle`. Production DNS for product apps
+should point at their own services when those exist.
 
 Cloudflare is **DNS-only** (grey cloud), CNAME to `ghs.googlehosted.com` (apex
 already uses Google A records). No Workers. No orange-cloud proxy. No beta host.
@@ -58,15 +73,17 @@ Host routing (the production path):
 
 ```bash
 curl -s -H 'Host: devoutshaman.com' localhost:8080 | head
+curl -s -H 'Host: humanehealth.devoutshaman.com' localhost:8080 | head
+curl -s -H 'Host: mattercircle.devoutshaman.com' localhost:8080 | head
+curl -s -H 'Host: lightround.devoutshaman.com' localhost:8080 | head
 curl -s -H 'Host: phenomatch.devoutshaman.com' localhost:8080 | head
 curl -s -H 'Host: antiporn.devoutshaman.com' localhost:8080 | head
-curl -s -H 'Host: lessfret.devoutshaman.com' localhost:8080 | head
-curl -s -H 'Host: lightround.devoutshaman.com' localhost:8080 | head
-curl -s -H 'Host: acashi.devoutshaman.com' localhost:8080 | head
 ```
 
-Browser on localhost: `/` (holding), `/phenomatch`, `/antiporn`, `/lessfret`,
-`/lightround`, `/acashi`.
+Browser on localhost: `/` (holding), `/humanehealth`, `/mattercircle`,
+`/lightround`, `/phenomatch`, `/antiporn`, `/lessfret`, `/acashi`. On
+localhost, `preview.js` rewrites `data-local` hrefs. The Arcada tile stays on
+`https://arcada.devoutshaman.com`.
 
 ```bash
 python3 test_host.py

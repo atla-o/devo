@@ -86,7 +86,7 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn("halo--fractured", lightround, host)
             for whole in ("Arcada", "Mattercircle"):
                 after = body.split(f"<h2>{whole}</h2>", 1)[1].split("</li>", 1)[0]
-                self.assertIn('class="halo"', after, host)
+                self.assertIn('class="halo halo--whole"', after, host)
                 self.assertNotIn("halo--fractured", after, host)
             positions = [body.index(name) for name in TILE_NAMES]
             self.assertEqual(positions, sorted(positions), host)

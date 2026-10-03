@@ -75,23 +75,26 @@ a:hover {
   text-underline-offset: 0.22em;
 }
 
-/* Top mark is a small halo. No disk, no glow. */
+/* Top mark is a small halo ring. No disk, no glow. */
 .mark--halo {
   position: sticky;
   top: 0.65rem;
   z-index: 1;
   align-self: center;
-  width: auto;
-  height: auto;
+  width: 1.7rem;
+  height: 1.7rem;
   margin: 0;
   border: 0;
   background: transparent;
   box-shadow: none;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.7rem;
-  font-weight: 400;
-  line-height: 0.85;
   color: #000;
+  line-height: 0;
+}
+
+.mark--halo svg {
+  display: block;
+  width: 1.7rem;
+  height: 1.7rem;
 }
 
 .holdings {
@@ -166,9 +169,10 @@ a:hover {
   transform: translateY(-50%);
 }
 
+.halo--whole,
 .halo--fractured {
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.15rem;
+  height: 1.15rem;
   display: block;
 }
 

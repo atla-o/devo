@@ -21,6 +21,10 @@ This lander agent handles **code**. Devo handles human UI and reiterates it. Do 
 
 Whenever UI is not yet what Devo should look at, the reply **must** include a full clickable preview: the Cloud Agent preview / tunnel / forwarded-port URL before it is on the public host, and `https://devoutshaman.com` once that is the thing to look at. Screenshots are extra, not a substitute. Publish only through GitHub → `main` → the existing devoutshaman.com host. No throwaway host.
 
+## Ship exact UI
+
+When Devo says a UI is good and says **push**, ship that exact UI to GitHub `main`. Do not restyle it. Do not open a new agent. Do not change DNS. `main` already serves the existing devoutshaman.com host. No throwaway host.
+
 ## Investor surface
 
 Holdings has two avenues. They are not lander tiles:

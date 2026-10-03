@@ -64,10 +64,10 @@ class HostRoutingTests(unittest.TestCase):
             status, body = self.fetch(host)
             self.assertEqual(status, 200, host)
             self.assertNotIn("devo - lateral health corp", body)
-            self.assertNotIn("fineprint", body)
+            self.assertIn('class="fineprint">devo</p>', body)
             self.assertNotIn("parent holding of a lateral health corporation", body)
             self.assertEqual(body.count('class="tile"'), 4, host)
-            self.assertIn('class="mark mark--pin"', body)
+            self.assertIn('class="mark mark--halo"', body)
             self.assertNotIn("<p>Product</p>", body)
             self.assertNotIn("<p>Service</p>", body)
             self.assertNotIn("<p>Fund</p>", body)
@@ -82,10 +82,9 @@ class HostRoutingTests(unittest.TestCase):
             arcada_tag = arcada.rsplit("<a", 1)[-1]
             self.assertIn('href="https://arcada.devoutshaman.com"', arcada_tag)
             self.assertNotIn("data-local", arcada_tag)
-            self.assertIn("Holdings", body, host)
-            self.assertIn(">o</span> biology", body, host)
-            self.assertIn(">o</span> physics", body, host)
-            self.assertNotIn('class="tile">', body[body.index("biology"):body.index("physics")])
+            self.assertNotIn("Holdings", body, host)
+            self.assertNotIn("biology", body, host)
+            self.assertNotIn("physics", body, host)
             for buried in (
                 "Phenomatch",
                 "Antiporn",

@@ -1,0 +1,32 @@
+# Publish mattercircle.devoutshaman.com in the existing devoutshaman.com zone.
+name: Publish mattercircle DNS
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  dns:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+      CF_TOKEN: ${{ secrets.CF_TOKEN }}
+      CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+      CLOUDFLARE_DNS_API_TOKEN: ${{ secrets.CLOUDFLARE_DNS_API_TOKEN }}
+    steps:
+      - name: Publish the hostname
+        run: |
+          python3 - <<'PY'
+          import os
+          names = ["CLOUDFLARE_API_TOKEN","CF_API_TOKEN","CLOUDFLARE_TOKEN","CF_TOKEN","CLOUDFLARE_API_KEY","CLOUDFLARE_DNS_API_TOKEN"]
+          for name in names:
+              val = os.environ.get(name) or ""
+              print(f"{name}={'set' if val else 'missing'} len={len(val)}")
+          if not any(os.environ.get(n) for n in names):
+              raise SystemExit("NO_CLOUDFLARE_TOKEN")
+          PY

@@ -75,7 +75,7 @@ a:hover {
   text-underline-offset: 0.22em;
 }
 
-/* Top mark is a halo: open ring, soft light, no filled disk. */
+/* Top mark is a halo: black ring on white. No glow. */
 .mark--halo {
   position: sticky;
   top: 0.65rem;
@@ -92,9 +92,7 @@ a:hover {
   line-height: 0;
   color: transparent;
   background: transparent;
-  box-shadow:
-    0 0 14px 5px rgba(232, 190, 122, 0.75),
-    0 0 36px 12px rgba(244, 214, 164, 0.5);
+  box-shadow: none;
 }
 
 .holdings {

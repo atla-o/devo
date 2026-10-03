@@ -19,12 +19,11 @@ TOP_HOSTS = (
     "https://humanehealth.devoutshaman.com",
     "https://mattercircle.devoutshaman.com",
 )
-TILE_NAMES = ("Arcada", "Lightround", "Humanehealth", "Mattercircle")
+TILE_NAMES = ("Arcada", "Mattercircle", "Humanehealth", "Lightround")
 TILE_BLURBS = (
     "Social club",
-    "Counterdecadence fund",
-    "Clinic network",
-    "Factory essentials",
+    "fund",
+    "material products",
 )
 
 
@@ -76,6 +75,11 @@ class HostRoutingTests(unittest.TestCase):
             for blurb in TILE_BLURBS:
                 self.assertIn(blurb, body, host)
                 self.assertLessEqual(len(blurb.split()), 3, blurb)
+            self.assertNotIn("Clinic network", body, host)
+            self.assertNotIn("Counterdecadence", body, host)
+            self.assertNotIn("Factory essentials", body, host)
+            humane = body.split("<h2>Humanehealth</h2>", 1)[1].split("</a>", 1)[0]
+            self.assertNotIn("tile-blurb", humane, host)
             positions = [body.index(name) for name in TILE_NAMES]
             self.assertEqual(positions, sorted(positions), host)
             arcada = body.split("<h2>Arcada</h2>", 1)[0]

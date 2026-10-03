@@ -155,6 +155,8 @@ class HostRoutingTests(unittest.TestCase):
         self.assertIn("Lightround", body)
         self.assertIn("counterdecadence fund", body)
         self.assertNotIn("The fund", body)
+        self.assertNotIn("fineprint", body)
+        self.assertNotIn("devo - lateral health corp", body)
         self.assertNotIn("parent holding of a lateral health corporation", body)
 
         status, body = self.fetch("lessfret.devoutshaman.com")
@@ -241,6 +243,7 @@ class HostRoutingTests(unittest.TestCase):
             self.assertEqual(res.status, 200)
             self.assertIn("javascript", res.getheader("Content-Type", ""))
             self.assertIn("data-local", body)
+            self.assertIn("devoutshaman.com", body)
         finally:
             conn.close()
 

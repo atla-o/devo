@@ -13,14 +13,19 @@ import server
 
 PORT = int(os.environ.get("TEST_PORT", "18080"))
 
-PRODUCT_HOSTS = (
+TOP_HOSTS = (
+    "https://arcada.devoutshaman.com",
     "https://lightround.devoutshaman.com",
-    "https://lessfret.devoutshaman.com",
-    "https://antiporn.devoutshaman.com",
-    "https://phenomatch.devoutshaman.com",
-    "https://acashi.devoutshaman.com",
+    "https://humanehealth.devoutshaman.com",
+    "https://mattercircle.devoutshaman.com",
 )
-TILE_NAMES = ("Lightround", "Lessfret", "Antiporn", "Phenomatch", "Acashi")
+TILE_NAMES = ("Arcada", "Lightround", "Humanehealth", "Mattercircle")
+TILE_BLURBS = (
+    "Social club",
+    "Counterdecadence fund",
+    "Clinic network",
+    "Factory essentials",
+)
 
 
 class HostRoutingTests(unittest.TestCase):
@@ -58,26 +63,41 @@ class HostRoutingTests(unittest.TestCase):
         ):
             status, body = self.fetch(host)
             self.assertEqual(status, 200, host)
-            self.assertIn("devo - lateral health corp", body)
+            self.assertNotIn("devo - lateral health corp", body)
+            self.assertNotIn("fineprint", body)
             self.assertNotIn("parent holding of a lateral health corporation", body)
-            self.assertIn("Phenomatch", body)
-            self.assertIn("Antiporn", body)
-            self.assertIn("Lessfret", body)
-            self.assertIn("Lightround", body)
-            self.assertIn("Acashi", body)
-            self.assertIn('class="tile"', body)
-            self.assertIn('class="cluster"', body)
+            self.assertEqual(body.count('class="tile"'), 4, host)
+            self.assertIn('class="mark mark--pin"', body)
             self.assertNotIn("<p>Product</p>", body)
             self.assertNotIn("<p>Service</p>", body)
             self.assertNotIn("<p>Fund</p>", body)
-            for href in PRODUCT_HOSTS:
+            for href in TOP_HOSTS:
                 self.assertIn(f'href="{href}"', body, host)
+            for blurb in TILE_BLURBS:
+                self.assertIn(blurb, body, host)
+                self.assertLessEqual(len(blurb.split()), 3, blurb)
             positions = [body.index(name) for name in TILE_NAMES]
             self.assertEqual(positions, sorted(positions), host)
+            arcada = body.split("<h2>Arcada</h2>", 1)[0]
+            arcada_tag = arcada.rsplit("<a", 1)[-1]
+            self.assertIn('href="https://arcada.devoutshaman.com"', arcada_tag)
+            self.assertNotIn("data-local", arcada_tag)
+            self.assertIn("Holdings", body, host)
+            self.assertIn(">o</span> biology", body, host)
+            self.assertIn(">o</span> physics", body, host)
+            self.assertNotIn('class="tile">', body[body.index("biology"):body.index("physics")])
+            for buried in (
+                "Phenomatch",
+                "Antiporn",
+                "Lessfret",
+                "Acashi",
+                "Planet",
+                "unnaturalfertility",
+            ):
+                self.assertNotIn(buried, body, host)
+            self.assertNotIn("stage-6", body)
             self.assertNotIn("The fund", body)
             self.assertNotIn('href="/fund"', body)
-            self.assertNotIn('href="/lessfret"', body)
-            self.assertNotIn('href="/acashi"', body)
             self.assertNotIn("Install is not available yet", body)
             self.assertNotIn("Not launched.", body)
 
@@ -126,12 +146,33 @@ class HostRoutingTests(unittest.TestCase):
         self.assertIn("Affordable Care Act subsidized health insurance", body)
         self.assertIn("Not launched.", body)
 
+        status, body = self.fetch("localhost", "/humanehealth")
+        self.assertEqual(status, 200)
+        self.assertIn("Clinic network.", body)
+        self.assertIn("insurance", body)
+        self.assertIn("sell-health", body)
+        self.assertIn("unnaturalfertility", body)
+        self.assertNotIn("Phenomatch", body)
+        self.assertNotIn("Antiporn", body)
+        self.assertNotIn("Lessfret", body)
+        self.assertNotIn("Planet", body)
+        self.assertNotIn('class="tile"', body)
+
+        status, body = self.fetch("localhost", "/mattercircle")
+        self.assertEqual(status, 200)
+        self.assertIn("Factory essentials.", body)
+        self.assertNotIn("Phenomatch", body)
+        self.assertNotIn("unnaturalfertility", body)
+        self.assertNotIn("Planet", body)
+
     def test_lightround_and_lessfret_hosts(self) -> None:
         status, body = self.fetch("lightround.devoutshaman.com")
         self.assertEqual(status, 200)
         self.assertIn("Lightround", body)
         self.assertIn("counterdecadence fund", body)
         self.assertNotIn("The fund", body)
+        self.assertNotIn("fineprint", body)
+        self.assertNotIn("devo - lateral health corp", body)
         self.assertNotIn("parent holding of a lateral health corporation", body)
 
         status, body = self.fetch("lessfret.devoutshaman.com")
@@ -146,6 +187,38 @@ class HostRoutingTests(unittest.TestCase):
         self.assertIn("Affordable Care Act subsidized health insurance", body)
         self.assertIn("Not launched.", body)
         self.assertNotIn("parent holding of a lateral health corporation", body)
+
+    def test_humanehealth_and_mattercircle_hosts(self) -> None:
+        status, body = self.fetch("humanehealth.devoutshaman.com")
+        self.assertEqual(status, 200)
+        self.assertIn("Humanehealth", body)
+        self.assertIn("Clinic network.", body)
+        self.assertIn('href="https://acashi.devoutshaman.com"', body)
+        self.assertIn(">Acashi</a>", body)
+        self.assertIn("insurance", body)
+        self.assertIn("devoutshaman", body)
+        self.assertIn("sell-health", body)
+        self.assertIn("unnaturalfertility", body)
+        self.assertNotIn("Phenomatch", body)
+        self.assertNotIn("Antiporn", body)
+        self.assertNotIn("Lessfret", body)
+        self.assertNotIn("Planet", body)
+        self.assertNotIn('class="tile"', body)
+        self.assertNotIn("stage-6", body)
+        self.assertNotIn("fineprint", body)
+        nest_names = ("Acashi", "devoutshaman", "unnaturalfertility")
+        positions = [body.index(f">{name}<") for name in nest_names]
+        self.assertEqual(positions, sorted(positions))
+
+        status, body = self.fetch("mattercircle.devoutshaman.com")
+        self.assertEqual(status, 200)
+        self.assertIn("Mattercircle", body)
+        self.assertIn("Factory essentials.", body)
+        self.assertNotIn("Phenomatch", body)
+        self.assertNotIn("physics", body.lower())
+        self.assertNotIn("unnaturalfertility", body)
+        self.assertNotIn("Planet", body)
+        self.assertNotIn('class="tile"', body)
 
     def test_fund_host_redirects_to_lightround(self) -> None:
         status, body, location = self.fetch_full("fund.devoutshaman.com")
@@ -167,9 +240,11 @@ class HostRoutingTests(unittest.TestCase):
                 "lightround.devoutshaman.com",
                 "lessfret.devoutshaman.com",
                 "acashi.devoutshaman.com",
+                "humanehealth.devoutshaman.com",
+                "mattercircle.devoutshaman.com",
             )
         }
-        self.assertEqual(len(set(pages.values())), 6)
+        self.assertEqual(len(set(pages.values())), 8)
 
     def test_shared_assets(self) -> None:
         conn = HTTPConnection("127.0.0.1", PORT, timeout=5)
@@ -191,6 +266,7 @@ class HostRoutingTests(unittest.TestCase):
             self.assertEqual(res.status, 200)
             self.assertIn("javascript", res.getheader("Content-Type", ""))
             self.assertIn("data-local", body)
+            self.assertIn("devoutshaman.com", body)
         finally:
             conn.close()
 

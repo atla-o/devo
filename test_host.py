@@ -19,12 +19,10 @@ TOP_HOSTS = (
     "https://humanehealth.devoutshaman.com",
     "https://mattercircle.devoutshaman.com",
 )
-TILE_NAMES = ("Arcada", "Lightround", "Humanehealth", "Mattercircle")
+TILE_NAMES = ("Arcada", "Mattercircle", "Humanehealth", "Lightround")
 TILE_BLURBS = (
-    "Social club",
-    "Counterdecadence fund",
-    "Clinic network",
-    "Factory essentials",
+    "social club",
+    "material products",
 )
 
 
@@ -64,10 +62,10 @@ class HostRoutingTests(unittest.TestCase):
             status, body = self.fetch(host)
             self.assertEqual(status, 200, host)
             self.assertNotIn("devo - lateral health corp", body)
-            self.assertNotIn("fineprint", body)
+            self.assertIn('class="fineprint">devo</p>', body)
             self.assertNotIn("parent holding of a lateral health corporation", body)
             self.assertEqual(body.count('class="tile"'), 4, host)
-            self.assertIn('class="mark mark--pin"', body)
+            self.assertIn('class="mark mark--halo"', body)
             self.assertNotIn("<p>Product</p>", body)
             self.assertNotIn("<p>Service</p>", body)
             self.assertNotIn("<p>Fund</p>", body)
@@ -76,16 +74,29 @@ class HostRoutingTests(unittest.TestCase):
             for blurb in TILE_BLURBS:
                 self.assertIn(blurb, body, host)
                 self.assertLessEqual(len(blurb.split()), 3, blurb)
+            self.assertNotIn("Clinic network", body, host)
+            self.assertNotIn("Counterdecadence", body, host)
+            self.assertNotIn("Factory essentials", body, host)
+            humane = body.split("<h2>Humanehealth</h2>", 1)[1].split("</li>", 1)[0]
+            self.assertNotIn("tile-blurb", humane, host)
+            self.assertIn("halo--fractured", humane, host)
+            lightround = body.split("<h2>Lightround</h2>", 1)[1].split("</li>", 1)[0]
+            self.assertNotIn("tile-blurb", lightround, host)
+            self.assertNotIn("fund", lightround, host)
+            self.assertIn("halo--fractured", lightround, host)
+            for whole in ("Arcada", "Mattercircle"):
+                after = body.split(f"<h2>{whole}</h2>", 1)[1].split("</li>", 1)[0]
+                self.assertIn('class="halo halo--whole"', after, host)
+                self.assertNotIn("halo--fractured", after, host)
             positions = [body.index(name) for name in TILE_NAMES]
             self.assertEqual(positions, sorted(positions), host)
             arcada = body.split("<h2>Arcada</h2>", 1)[0]
             arcada_tag = arcada.rsplit("<a", 1)[-1]
             self.assertIn('href="https://arcada.devoutshaman.com"', arcada_tag)
             self.assertNotIn("data-local", arcada_tag)
-            self.assertIn("Holdings", body, host)
-            self.assertIn(">o</span> biology", body, host)
-            self.assertIn(">o</span> physics", body, host)
-            self.assertNotIn('class="tile">', body[body.index("biology"):body.index("physics")])
+            self.assertNotIn("Holdings", body, host)
+            self.assertNotIn("biology", body, host)
+            self.assertNotIn("physics", body, host)
             for buried in (
                 "Phenomatch",
                 "Antiporn",

@@ -21,7 +21,7 @@ TOP_HOSTS = (
 )
 TILE_NAMES = ("Arcada", "Mattercircle", "Humanehealth", "Lightround")
 TILE_BLURBS = (
-    "Social club",
+    "social club",
     "material products",
 )
 

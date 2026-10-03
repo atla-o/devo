@@ -120,28 +120,30 @@ a:hover {
 }
 
 .directory {
-  width: min(100%, 18rem);
+  width: min(100%, 20.6rem);
   margin: auto;
-  padding: 0;
+  padding: 0 1.7rem;
   list-style: none;
   display: grid;
   grid-template-columns: 1fr;
   justify-items: stretch;
   gap: 0.4rem;
+  box-sizing: border-box;
 }
 
-.directory li {
+.tile-row {
+  position: relative;
   width: 100%;
 }
 
 .tile {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   width: 100%;
-  min-height: 0;
-  padding: 0.72rem 2.2rem;
+  height: 4.7rem;
+  padding: 0.7rem 0.85rem;
   border: 1.5px solid var(--fg);
   text-decoration: none;
   text-align: center;
@@ -155,7 +157,7 @@ a:hover {
 .halo {
   position: absolute;
   top: 50%;
-  right: 0.7rem;
+  left: calc(100% + 0.35rem);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.15rem;
   font-weight: 400;
@@ -261,13 +263,14 @@ a:hover {
 
   .directory {
     gap: 0.5rem;
-    width: min(100%, 18rem);
+    width: min(100%, 20.6rem);
     margin-block: auto;
     margin-inline: auto;
   }
 
   .tile {
-    padding: 0.85rem 2.4rem;
+    height: 4.7rem;
+    padding: 0.7rem 0.85rem;
   }
 
   .fineprint {

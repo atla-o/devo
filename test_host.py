@@ -77,15 +77,15 @@ class HostRoutingTests(unittest.TestCase):
             self.assertNotIn("Clinic network", body, host)
             self.assertNotIn("Counterdecadence", body, host)
             self.assertNotIn("Factory essentials", body, host)
-            humane = body.split("<h2>Humanehealth</h2>", 1)[1].split("</a>", 1)[0]
+            humane = body.split("<h2>Humanehealth</h2>", 1)[1].split("</li>", 1)[0]
             self.assertNotIn("tile-blurb", humane, host)
             self.assertIn("halo--fractured", humane, host)
-            lightround = body.split("<h2>Lightround</h2>", 1)[1].split("</a>", 1)[0]
+            lightround = body.split("<h2>Lightround</h2>", 1)[1].split("</li>", 1)[0]
             self.assertNotIn("tile-blurb", lightround, host)
             self.assertNotIn("fund", lightround, host)
             self.assertIn("halo--fractured", lightround, host)
             for whole in ("Arcada", "Mattercircle"):
-                after = body.split(f"<h2>{whole}</h2>", 1)[1].split("</a>", 1)[0]
+                after = body.split(f"<h2>{whole}</h2>", 1)[1].split("</li>", 1)[0]
                 self.assertIn('class="halo"', after, host)
                 self.assertNotIn("halo--fractured", after, host)
             positions = [body.index(name) for name in TILE_NAMES]

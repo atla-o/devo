@@ -13,6 +13,14 @@ Parent: Devo (lateral health). Publisher: atla-o. GCP app data: project `devo-ho
 
 Investor tops: Arcada, Lightround, Humanehealth, Mattercircle. Holding lander: atla-o/devo → devoutshaman.com.
 
+## Agent split
+
+This lander agent handles **code**. Devo handles human UI and reiterates it. Do not restyle UI he will fix. Do not change Cloudflare or add DNS. Arcada, Humanehealth, and Mattercircle already resolve on the existing `devoutshaman.com` zone.
+
+## Live UI preview
+
+Whenever UI is not yet what Devo should look at, the reply **must** include a full clickable preview: the Cloud Agent preview / tunnel / forwarded-port URL before it is on the public host, and `https://devoutshaman.com` once that is the thing to look at. Screenshots are extra, not a substitute. Publish only through GitHub → `main` → the existing devoutshaman.com host. No throwaway host.
+
 ## Investor surface
 
 Holdings has two avenues. They are not lander tiles:

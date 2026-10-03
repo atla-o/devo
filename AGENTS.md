@@ -15,21 +15,27 @@ Investor tops: Arcada, Lightround, Humanehealth, Mattercircle. Holding lander: a
 
 ## Investor surface
 
+Holdings has two avenues. They are not lander tiles:
+
+- biology o
+- physics o
+
+Planet is dissolved. Do not add it.
+
 The holding lander shows exactly four tops, in this order:
 
 1. **Arcada** — social club. Tile href `https://arcada.devoutshaman.com` (own app in [arcada](https://github.com/atla-o/arcada)). Soft-wired from this lander. Do not serve Arcada from `devo-web` and do not merge that repo here.
 2. **Lightround** — counterdecadence fund. [lightround](https://github.com/atla-o/lightround).
 3. **Humanehealth** — clinic network. [humanehealth](https://github.com/atla-o/humanehealth).
-4. **Mattercircle** — matter/physics peer: factory and essentials. [mattercircle](https://github.com/atla-o/mattercircle). This is not a fertility rename.
+4. **Mattercircle** — factory essentials. [mattercircle](https://github.com/atla-o/mattercircle).
 
-Nested under the Humanehealth clinic network (copy and structure only — not lander tops):
+Nested under Humanehealth (copy and structure only — not peer tiles, not lander tops):
 
-- Acashi
-- Phenomatch and Antiporn (fertility arms)
-- Lessfret
-- devoutshaman (consumer sell-health)
+- Acashi (insurance)
+- devoutshaman (sell-health)
+- unnaturalfertility
 
-Do not create Unnaturalfertility as a peer hub or lander top.
+unnaturalfertility stays in that nest. It is not its own lander top.
 
 Soft-wire only. Do not merge product repos into this umbrella. No stage labels on the investor surface.
 
@@ -43,7 +49,7 @@ Humanehealth and Mattercircle pages on this service are soft-wires until those h
 
 ## Half cloud / half local
 
-Phenomatch and Antiporn (fertility arms under Humanehealth) use the **same** process: half cloud, half local.
+Phenomatch and Antiporn use the **same** process: half cloud, half local. They are not investor tops and they are not in the Humanehealth nest.
 
 - **Cloud (Cursor cloud agent):** web app, backend, GCP, GitHub, docs.
 - **Local Mac (Cursor on the machine, or Cursor My Machines):** overlay, audio, camera, native client, installer, simulator.
@@ -59,9 +65,14 @@ Tops:
 - [humanehealth](https://github.com/atla-o/humanehealth)
 - [mattercircle](https://github.com/atla-o/mattercircle)
 
-Under Humanehealth:
+Under Humanehealth (not lander tops):
 
-- [acashi](https://github.com/atla-o/acashi)
+- [acashi](https://github.com/atla-o/acashi) — insurance
+- devoutshaman — sell-health
+- unnaturalfertility
+
+Not on the investor lander:
+
 - [phenomatch](https://github.com/atla-o/phenomatch)
 - [antiporn](https://github.com/atla-o/antiporn) (public) / [anti-porn](https://github.com/atla-o/anti-porn) (private Swift)
 - [lessfret](https://github.com/atla-o/lessfret)
@@ -76,10 +87,11 @@ Holding pages for devoutshaman.com live in this repo. Merge to `main` deploys
 Cloud Run `devo-web` (`us-west1`, `devo-holding`) and updates the holding pages
 on devoutshaman.com (apex, www).
 
-The lander tiles are Arcada, Lightround, Humanehealth, and Mattercircle. Hosts
-still on this service include the Humanehealth and Mattercircle soft-wires,
-Lightround, the clinic-network stubs (Acashi, Phenomatch, Antiporn, Lessfret),
-and possibly fund until remapped. Arcada’s public host is its own service.
+The lander tiles are Arcada, Lightround, Humanehealth, and Mattercircle.
+Biology o and physics o are avenues under Holdings, not tiles. Planet is not on
+this surface. Hosts still on this service include the Humanehealth and
+Mattercircle soft-wires, Lightround, Acashi, and older stubs that are not
+lander tops, plus fund until remapped. Arcada’s public host is its own service.
 
 Product apps with their own Cloud Run services are **separate repos** and do
 not deploy from here.

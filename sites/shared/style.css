@@ -100,10 +100,35 @@ a:hover {
     0 0 46px 14px rgba(244, 214, 164, 0.38);
 }
 
+.holdings {
+  margin: 0.75rem 0 0;
+  text-align: center;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: #000;
+}
+
+.holdings-name {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.avenue {
+  display: inline-block;
+  margin: 0.15rem 0.5rem 0;
+}
+
+.avenue-o {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
 .directory {
   width: 100%;
   max-width: 20rem;
-  margin: 1.15rem auto 0;
+  margin: 0.85rem auto 0;
   padding: 0;
   list-style: none;
   display: grid;

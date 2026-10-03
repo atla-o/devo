@@ -8,17 +8,17 @@ Humanehealth, and Mattercircle.
 - [Arcada](https://github.com/atla-o/arcada) — social club. Tile links to `https://arcada.devoutshaman.com` (Arcada’s own app).
 - [Lightround](https://github.com/atla-o/lightround) — counterdecadence fund.
 - [Humanehealth](https://github.com/atla-o/humanehealth) — clinic network.
-- [Mattercircle](https://github.com/atla-o/mattercircle) — matter and physics. Factory essentials.
+- [Mattercircle](https://github.com/atla-o/mattercircle) — factory essentials.
 
-### Inside the Humanehealth clinic network
+Holdings avenues, not lander tiles: biology o, physics o. Planet is dissolved.
 
-These are not lander tops:
+### Inside Humanehealth
 
-- [Acashi](https://github.com/atla-o/acashi) — Affordable Care Act subsidized health insurance.
-- [Phenomatch](https://github.com/atla-o/phenomatch) — fertility arm. Matches people by phenotype.
-- [Antiporn](https://github.com/atla-o/antiporn) — fertility arm. Computer restriction.
-- [Lessfret](https://github.com/atla-o/lessfret) — coaching and care coordination. Not therapy.
-- devoutshaman — consumer sell-health.
+These are not peer tiles:
+
+- [Acashi](https://github.com/atla-o/acashi) — insurance.
+- devoutshaman — sell-health.
+- unnaturalfertility.
 
 App data lives on Google Cloud project `devo-holding`.
 

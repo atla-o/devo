@@ -82,7 +82,18 @@ class HostRoutingTests(unittest.TestCase):
             arcada_tag = arcada.rsplit("<a", 1)[-1]
             self.assertIn('href="https://arcada.devoutshaman.com"', arcada_tag)
             self.assertNotIn("data-local", arcada_tag)
-            for buried in ("Phenomatch", "Antiporn", "Lessfret", "Acashi", "Unnaturalfertility"):
+            self.assertIn("Holdings", body, host)
+            self.assertIn(">o</span> biology", body, host)
+            self.assertIn(">o</span> physics", body, host)
+            self.assertNotIn('class="tile">', body[body.index("biology"):body.index("physics")])
+            for buried in (
+                "Phenomatch",
+                "Antiporn",
+                "Lessfret",
+                "Acashi",
+                "Planet",
+                "unnaturalfertility",
+            ):
                 self.assertNotIn(buried, body, host)
             self.assertNotIn("stage-6", body)
             self.assertNotIn("The fund", body)
@@ -138,16 +149,21 @@ class HostRoutingTests(unittest.TestCase):
         status, body = self.fetch("localhost", "/humanehealth")
         self.assertEqual(status, 200)
         self.assertIn("Clinic network.", body)
-        self.assertIn("fertility arm", body)
-        self.assertIn("consumer sell-health", body)
+        self.assertIn("insurance", body)
+        self.assertIn("sell-health", body)
+        self.assertIn("unnaturalfertility", body)
+        self.assertNotIn("Phenomatch", body)
+        self.assertNotIn("Antiporn", body)
+        self.assertNotIn("Lessfret", body)
+        self.assertNotIn("Planet", body)
         self.assertNotIn('class="tile"', body)
-        self.assertNotIn("Unnaturalfertility", body)
 
         status, body = self.fetch("localhost", "/mattercircle")
         self.assertEqual(status, 200)
         self.assertIn("Factory essentials.", body)
         self.assertNotIn("Phenomatch", body)
-        self.assertNotIn("Unnaturalfertility", body)
+        self.assertNotIn("unnaturalfertility", body)
+        self.assertNotIn("Planet", body)
 
     def test_lightround_and_lessfret_hosts(self) -> None:
         status, body = self.fetch("lightround.devoutshaman.com")
@@ -178,23 +194,30 @@ class HostRoutingTests(unittest.TestCase):
         self.assertIn("Humanehealth", body)
         self.assertIn("Clinic network.", body)
         self.assertIn('href="https://acashi.devoutshaman.com"', body)
-        self.assertIn('href="https://phenomatch.devoutshaman.com"', body)
-        self.assertIn('href="https://antiporn.devoutshaman.com"', body)
-        self.assertIn('href="https://lessfret.devoutshaman.com"', body)
-        self.assertIn("consumer sell-health", body)
+        self.assertIn(">Acashi</a>", body)
+        self.assertIn("insurance", body)
+        self.assertIn("devoutshaman", body)
+        self.assertIn("sell-health", body)
+        self.assertIn("unnaturalfertility", body)
+        self.assertNotIn("Phenomatch", body)
+        self.assertNotIn("Antiporn", body)
+        self.assertNotIn("Lessfret", body)
+        self.assertNotIn("Planet", body)
         self.assertNotIn('class="tile"', body)
-        self.assertNotIn("Unnaturalfertility", body)
         self.assertNotIn("stage-6", body)
         self.assertNotIn("fineprint", body)
+        nest_names = ("Acashi", "devoutshaman", "unnaturalfertility")
+        positions = [body.index(f">{name}<") for name in nest_names]
+        self.assertEqual(positions, sorted(positions))
 
         status, body = self.fetch("mattercircle.devoutshaman.com")
         self.assertEqual(status, 200)
         self.assertIn("Mattercircle", body)
-        self.assertIn("Matter and physics.", body)
         self.assertIn("Factory essentials.", body)
         self.assertNotIn("Phenomatch", body)
-        self.assertNotIn("fertility", body.lower())
-        self.assertNotIn("Unnaturalfertility", body)
+        self.assertNotIn("physics", body.lower())
+        self.assertNotIn("unnaturalfertility", body)
+        self.assertNotIn("Planet", body)
         self.assertNotIn('class="tile"', body)
 
     def test_fund_host_redirects_to_lightround(self) -> None:

@@ -70,6 +70,8 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn('class="theme-rich"', body)
             self.assertIn('class="topbar"', body)
             self.assertIn('class="topnav"', body)
+            self.assertEqual(body.count('class="topitem"'), 4, host)
+            self.assertEqual(body.count('class="dropdown"'), 4, host)
             self.assertIn("/shared/panels/arcada.svg", body)
             self.assertIn("/shared/panels/mattercircle.svg", body)
             self.assertIn("/shared/panels/humanehealth.svg", body)

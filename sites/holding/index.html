@@ -10,14 +10,23 @@
     />
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css?v=4" />
+    <link rel="stylesheet" href="/shared/style.css?v=5" />
+    <script>
+      try {
+        if (localStorage.getItem("devo-theme") === "rich") {
+          document.documentElement.setAttribute("data-theme", "rich");
+        }
+      } catch (err) {}
+    </script>
   </head>
   <body>
-    <main class="page page--home">
+    <main class="page page--home theme-simple">
       <h1 class="mark mark--halo" aria-label="Devo">
-        <svg viewBox="0 0 32 32" aria-hidden="true">
-          <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/>
-        </svg>
+        <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </button>
       </h1>
       <ul class="directory">
         <li class="tile-row">
@@ -89,6 +98,38 @@
       </ul>
       <p class="fineprint">devo</p>
     </main>
+    <div class="theme-rich">
+      <header class="topbar">
+        <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+        </button>
+        <nav class="topnav" aria-label="Devo">
+          <a href="https://arcada.devoutshaman.com">Arcada</a>
+          <a href="https://mattercircle.devoutshaman.com" data-local="/mattercircle">Mattercircle</a>
+          <a href="https://humanehealth.devoutshaman.com" data-local="/humanehealth">Humanehealth</a>
+          <a href="https://lightround.devoutshaman.com" data-local="/lightround">Lightround</a>
+        </nav>
+      </header>
+      <a class="panel" href="https://arcada.devoutshaman.com">
+        <img src="/shared/panels/arcada.svg" alt="" />
+        <span class="panel-copy"><strong>Arcada</strong><em>social club</em></span>
+      </a>
+      <a class="panel" href="https://mattercircle.devoutshaman.com" data-local="/mattercircle">
+        <img src="/shared/panels/mattercircle.svg" alt="" />
+        <span class="panel-copy"><strong>Mattercircle</strong><em>material products</em></span>
+      </a>
+      <a class="panel" href="https://humanehealth.devoutshaman.com" data-local="/humanehealth">
+        <img src="/shared/panels/humanehealth.svg" alt="" />
+        <span class="panel-copy"><strong>Humanehealth</strong></span>
+      </a>
+      <a class="panel" href="https://lightround.devoutshaman.com" data-local="/lightround">
+        <img src="/shared/panels/lightround.svg" alt="" />
+        <span class="panel-copy"><strong>Lightround</strong></span>
+      </a>
+    </div>
     <script src="/shared/preview.js"></script>
+    <script src="/shared/theme.js"></script>
   </body>
 </html>

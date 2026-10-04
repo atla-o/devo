@@ -406,21 +406,18 @@ html[data-theme="rich"] .theme-rich {
   display: flex;
   justify-content: center;
   padding: 1.6rem 1.25rem 1.85rem;
-  background: rgba(22, 22, 23, 0.8);
+  background: #161617;
   color: #fff;
-  backdrop-filter: saturate(180%) blur(20px);
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .topitem:hover > .dropdown,
-  .topitem:focus-within > .dropdown {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
+.topitem:hover > .dropdown,
+.topitem:focus-within > .dropdown {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .drop {
@@ -467,6 +464,12 @@ html[data-theme="rich"] .theme-rich {
   font-size: 0.78rem;
   font-weight: 400;
   opacity: 0.8;
+}
+
+@media (max-width: 720px) {
+  .topnav {
+    font-size: 10px;
+  }
 }
 
 .panel {

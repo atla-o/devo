@@ -404,8 +404,8 @@ html[data-theme="rich"] .theme-rich {
   top: 100%;
   z-index: 2;
   display: flex;
-  justify-content: flex-start;
-  padding: 2.15rem 4.2rem 2.7rem;
+  justify-content: center;
+  padding: 1.65rem 1.5rem 1.45rem;
   background: #161617;
   color: #fff;
   visibility: hidden;
@@ -420,44 +420,109 @@ html[data-theme="rich"] .theme-rich {
   pointer-events: auto;
 }
 
-.drop-cols {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  gap: 2.4rem 5.2rem;
-  width: min(100%, 64rem);
+.offerings {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2.4rem;
+  width: 100%;
 }
 
-.drop-kicker {
-  margin: 0 0 0.75rem;
-  font-size: 0.72rem;
+.offering {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  width: 6.2rem;
+}
+
+.offering-art {
+  display: block;
+  background: #f5f5f7;
+}
+
+.offering:nth-child(1) .offering-art {
+  width: 5.4rem;
+  height: 3.25rem;
+  border-radius: 0.4rem;
+}
+
+.offering:nth-child(2) .offering-art {
+  width: 2.15rem;
+  height: 4.35rem;
+  border-radius: 0.38rem;
+}
+
+.offering:nth-child(3) .offering-art {
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 50%;
+}
+
+.offering:nth-child(4) .offering-art {
+  width: 3.5rem;
+  height: 4.5rem;
+  border-radius: 0.55rem;
+}
+
+.offering:nth-child(5) .offering-art {
+  width: 5.6rem;
+  height: 2.5rem;
+  border-radius: 0.35rem;
+}
+
+.offering-name {
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.56);
-}
-
-.drop-line {
-  display: block;
-  padding: 0.28rem 0;
-  font-size: 1.32rem;
-  font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
+  text-align: center;
   color: #fff;
 }
 
 @media (max-width: 720px) {
   .dropdown {
-    padding: 1.35rem 1.15rem 1.6rem;
+    padding: 1.25rem 0.8rem 1.15rem;
   }
 
-  .drop-cols {
-    grid-template-columns: 1fr;
-    gap: 1.15rem;
+  .offerings {
+    justify-content: center;
+    gap: 0.45rem;
   }
 
-  .drop-line {
-    font-size: 1.15rem;
+  .offering {
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .offering:nth-child(1) .offering-art {
+    width: 3.05rem;
+    height: 1.85rem;
+  }
+
+  .offering:nth-child(2) .offering-art {
+    width: 1.2rem;
+    height: 2.45rem;
+  }
+
+  .offering:nth-child(3) .offering-art {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
+  .offering:nth-child(4) .offering-art {
+    width: 1.95rem;
+    height: 2.5rem;
+  }
+
+  .offering:nth-child(5) .offering-art {
+    width: 3.15rem;
+    height: 1.4rem;
+  }
+
+  .offering-name {
+    font-size: 11px;
   }
 
   .topnav {

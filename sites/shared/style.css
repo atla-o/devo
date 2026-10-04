@@ -404,8 +404,8 @@ html[data-theme="rich"] .theme-rich {
   top: 100%;
   z-index: 2;
   display: flex;
-  justify-content: center;
-  padding: 1.6rem 1.25rem 1.85rem;
+  justify-content: flex-start;
+  padding: 2.15rem 4.2rem 2.7rem;
   background: #161617;
   color: #fff;
   visibility: hidden;
@@ -420,53 +420,46 @@ html[data-theme="rich"] .theme-rich {
   pointer-events: auto;
 }
 
-.drop {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.55rem;
-  width: min(100%, 18rem);
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
+.drop-cols {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 2.4rem 5.2rem;
+  width: min(100%, 64rem);
 }
 
-.dropdown a {
-  height: auto;
-  padding: 0;
-  opacity: 1;
-  color: #fff;
-  white-space: normal;
-}
-
-.drop img {
-  width: 100%;
-  height: 9.5rem;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.drop-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-}
-
-.drop-copy strong {
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.drop-copy em {
-  font-style: normal;
-  font-size: 0.78rem;
+.drop-kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.72rem;
   font-weight: 400;
-  opacity: 0.8;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.drop-line {
+  display: block;
+  padding: 0.28rem 0;
+  font-size: 1.32rem;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #fff;
 }
 
 @media (max-width: 720px) {
+  .dropdown {
+    padding: 1.35rem 1.15rem 1.6rem;
+  }
+
+  .drop-cols {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .drop-line {
+    font-size: 1.15rem;
+  }
+
   .topnav {
     font-size: 10px;
   }

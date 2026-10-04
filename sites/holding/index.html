@@ -10,14 +10,23 @@
     />
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css?v=4" />
+    <link rel="stylesheet" href="/shared/style.css?v=11" />
+    <script>
+      try {
+        if (localStorage.getItem("devo-theme") === "rich") {
+          document.documentElement.setAttribute("data-theme", "rich");
+        }
+      } catch (err) {}
+    </script>
   </head>
   <body>
-    <main class="page page--home">
+    <main class="page page--home theme-simple">
       <h1 class="mark mark--halo" aria-label="Devo">
-        <svg viewBox="0 0 32 32" aria-hidden="true">
-          <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/>
-        </svg>
+        <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </button>
       </h1>
       <ul class="directory">
         <li class="tile-row">
@@ -89,6 +98,111 @@
       </ul>
       <p class="fineprint">devo</p>
     </main>
+    <div class="theme-rich">
+      <header class="topbar">
+        <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+        </button>
+        <nav class="topnav" aria-label="Devo">
+          <div class="topitem">
+            <a href="https://arcada.devoutshaman.com">Arcada</a>
+            <div class="dropdown">
+              <div class="drop-cols">
+                <div class="drop-col">
+                  <p class="drop-kicker">Explore</p>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/political">political club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/education">education club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/media">media club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a>
+                </div>
+                <div class="drop-col">
+                  <p class="drop-kicker">Shop</p>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/membership">northern social club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/events#online-intro">online intro</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="topitem">
+            <a href="https://mattercircle.devoutshaman.com" data-local="/mattercircle">Mattercircle</a>
+            <div class="dropdown">
+              <div class="drop-cols">
+                <div class="drop-col">
+                  <p class="drop-kicker">Explore</p>
+                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/toiletries">Toiletries</a>
+                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/wearables">Wearables</a>
+                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/utility">Utility</a>
+                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/furniture">Furniture</a>
+                </div>
+                <div class="drop-col">
+                  <p class="drop-kicker">Shop</p>
+                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/checkout">checkout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="topitem">
+            <a href="https://humanehealth.devoutshaman.com" data-local="/humanehealth">Humanehealth</a>
+            <div class="dropdown">
+              <div class="drop-cols">
+                <div class="drop-col">
+                  <p class="drop-kicker">Explore</p>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/wellness">Schedule wellness</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/diagnostic">Invasive diagnostic</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">Unnaturalfertility</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/cosmetic">Cosmetic restoration</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/stimulants">Concentrated stimulants</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a>
+                </div>
+                <div class="drop-col">
+                  <p class="drop-kicker">Shop</p>
+                  <a class="drop-line" href="https://acashi.devoutshaman.com">acashi</a>
+                  <a class="drop-line" href="https://devoutshaman.com">devoutshaman</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="topitem">
+            <a href="https://lightround.devoutshaman.com" data-local="/lightround">Lightround</a>
+            <div class="dropdown">
+              <div class="drop-cols">
+                <div class="drop-col">
+                  <p class="drop-kicker">Explore</p>
+                  <a class="drop-line" href="https://lightround.devoutshaman.com/">Mandate</a>
+                  <a class="drop-line" href="https://lightround.devoutshaman.com/portfolio">Allocations</a>
+                  <a class="drop-line" href="https://lightround.devoutshaman.com/thesis">Screens</a>
+                </div>
+                <div class="drop-col">
+                  <p class="drop-kicker">Shop</p>
+                  <a class="drop-line" href="https://lightround.devoutshaman.com/contact">LP desk</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <a class="panel" href="https://arcada.devoutshaman.com">
+        <img src="/shared/panels/arcada.svg" alt="" />
+        <span class="panel-copy"><strong>Arcada</strong><em>social club</em></span>
+      </a>
+      <a class="panel" href="https://mattercircle.devoutshaman.com" data-local="/mattercircle">
+        <img src="/shared/panels/mattercircle.svg" alt="" />
+        <span class="panel-copy"><strong>Mattercircle</strong><em>material products</em></span>
+      </a>
+      <a class="panel" href="https://humanehealth.devoutshaman.com" data-local="/humanehealth">
+        <img src="/shared/panels/humanehealth.svg" alt="" />
+        <span class="panel-copy"><strong>Humanehealth</strong></span>
+      </a>
+      <a class="panel" href="https://lightround.devoutshaman.com" data-local="/lightround">
+        <img src="/shared/panels/lightround.svg" alt="" />
+        <span class="panel-copy"><strong>Lightround</strong></span>
+      </a>
+    </div>
     <script src="/shared/preview.js"></script>
+    <script src="/shared/theme.js"></script>
   </body>
 </html>

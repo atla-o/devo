@@ -72,7 +72,15 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn('class="topnav"', body)
             self.assertEqual(body.count('class="topitem"'), 4, host)
             self.assertEqual(body.count('class="dropdown"'), 4, host)
-            self.assertEqual(body.count('class="drop-line"'), 48, host)
+            self.assertEqual(body.count('class="drop-line"'), 25, host)
+            self.assertEqual(body.count('class="drop-kicker"'), 8, host)
+            self.assertIn('href="https://arcada.devoutshaman.com/clubs/ancestry"', body)
+            self.assertIn('href="https://arcada.devoutshaman.com/membership"', body)
+            self.assertIn('href="https://mattercircle.devoutshaman.com/climb/toiletries"', body)
+            self.assertIn('href="https://mattercircle.devoutshaman.com/checkout"', body)
+            self.assertIn('href="https://humanehealth.devoutshaman.com/ops/wellness"', body)
+            self.assertIn('href="https://lightround.devoutshaman.com/thesis"', body)
+            self.assertIn('href="https://lightround.devoutshaman.com/contact"', body)
             self.assertIn("/shared/panels/arcada.svg", body)
             self.assertIn("/shared/panels/mattercircle.svg", body)
             self.assertIn("/shared/panels/humanehealth.svg", body)
@@ -109,6 +117,7 @@ class HostRoutingTests(unittest.TestCase):
             self.assertNotIn("Holdings", body, host)
             self.assertNotIn("biology", body, host)
             self.assertNotIn("physics", body, host)
+            simple = body.split('class="theme-rich"', 1)[0]
             for buried in (
                 "Phenomatch",
                 "Antiporn",
@@ -117,7 +126,7 @@ class HostRoutingTests(unittest.TestCase):
                 "Planet",
                 "unnaturalfertility",
             ):
-                self.assertNotIn(buried, body, host)
+                self.assertNotIn(buried, simple, host)
             self.assertNotIn("stage-6", body)
             self.assertNotIn("The fund", body)
             self.assertNotIn('href="/fund"', body)

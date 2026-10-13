@@ -8,9 +8,9 @@
       name="description"
       content="Devo — Arcada, Mattercircle, Humanehealth, Lightround."
     />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#F4F0E8" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css?v=11" />
+    <link rel="stylesheet" href="/shared/style.css?v=13" />
     <script>
       try {
         if (localStorage.getItem("devo-theme") === "rich") {
@@ -24,183 +24,204 @@
       <h1 class="mark mark--halo" aria-label="Devo">
         <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme">
           <svg viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M16 27.2A11.2 11.2 0 0 0 26.4 18.2" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
           </svg>
         </button>
       </h1>
-      <ul class="directory">
-        <li class="tile-row">
-          <a class="tile" href="https://arcada.devoutshaman.com">
-            <span class="tile-copy">
-              <h2>Arcada</h2>
-              <p class="tile-blurb">social club</p>
-            </span>
-            <svg class="halo halo--whole" viewBox="0 0 32 32" aria-hidden="true">
-              <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.8"/>
-            </svg>
-          </a>
-        </li>
-        <li class="tile-row">
-          <a
-            class="tile"
-            href="https://mattercircle.devoutshaman.com"
-            data-local="/mattercircle"
-          >
-            <span class="tile-copy">
-              <h2>Mattercircle</h2>
-              <p class="tile-blurb">material products</p>
-            </span>
-            <svg class="halo halo--whole" viewBox="0 0 32 32" aria-hidden="true">
-              <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.8"/>
-            </svg>
-          </a>
-        </li>
-        <li class="tile-row">
-          <a
-            class="tile"
-            href="https://humanehealth.devoutshaman.com"
-            data-local="/humanehealth"
-          >
-            <span class="tile-copy">
-              <h2>Humanehealth</h2>
-            </span>
-            <svg class="halo halo--fractured" viewBox="0 0 32 32" aria-hidden="true">
-              <g fill="none" stroke="currentColor" stroke-linecap="butt">
-                <path stroke-width="2.4" d="M9.2 8.4A9.2 9.2 0 0 1 20.6 6.8"/>
-                <path stroke-width="2.4" d="M24.8 12.6A9.2 9.2 0 0 1 23.2 23.4"/>
-                <path stroke-width="2.4" d="M16.8 27.2A9.2 9.2 0 0 1 7.4 16.2"/>
-                <path stroke-width="1.3" d="M20.6 6.8 23.2 10.4 20.2 12.2"/>
-                <path stroke-width="1.3" d="M23.2 23.4 18.6 25.2 16.8 27.2"/>
-              </g>
-            </svg>
-          </a>
-        </li>
-        <li class="tile-row">
-          <a
-            class="tile"
-            href="https://lightround.devoutshaman.com"
-            data-local="/lightround"
-          >
-            <span class="tile-copy">
-              <h2>Lightround</h2>
-            </span>
-            <svg class="halo halo--fractured" viewBox="0 0 32 32" aria-hidden="true">
-              <g fill="none" stroke="currentColor" stroke-linecap="butt">
-                <path stroke-width="2.4" d="M9.2 8.4A9.2 9.2 0 0 1 20.6 6.8"/>
-                <path stroke-width="2.4" d="M24.8 12.6A9.2 9.2 0 0 1 23.2 23.4"/>
-                <path stroke-width="2.4" d="M16.8 27.2A9.2 9.2 0 0 1 7.4 16.2"/>
-                <path stroke-width="1.3" d="M20.6 6.8 23.2 10.4 20.2 12.2"/>
-                <path stroke-width="1.3" d="M23.2 23.4 18.6 25.2 16.8 27.2"/>
-              </g>
-            </svg>
-          </a>
-        </li>
-      </ul>
+      <div class="sheet">
+        <section class="branch">
+          <h2><a href="https://arcada.devoutshaman.com">Arcada</a></h2>
+          <ul>
+            <li><a href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a></li>
+            <li><a href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a></li>
+            <li><a href="https://arcada.devoutshaman.com/clubs/political">political club</a></li>
+            <li><a href="https://arcada.devoutshaman.com/clubs/education">education club</a></li>
+            <li><a href="https://arcada.devoutshaman.com/clubs/media">media club</a></li>
+            <li><a href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a></li>
+          </ul>
+        </section>
+        <section class="branch">
+          <h2><a href="https://mattercircle.devoutshaman.com" data-local="/mattercircle">Mattercircle</a></h2>
+          <ul>
+            <li><a href="https://mattercircle.devoutshaman.com/climb/toiletries">toiletries</a></li>
+            <li><a href="https://mattercircle.devoutshaman.com/climb/wearables">wearables</a></li>
+            <li><a href="https://mattercircle.devoutshaman.com/climb/utility">utility</a></li>
+            <li><a href="https://mattercircle.devoutshaman.com/climb/furniture">furniture</a></li>
+          </ul>
+        </section>
+        <section class="branch">
+          <h2><a href="https://humanehealth.devoutshaman.com" data-local="/humanehealth">Humanehealth</a></h2>
+          <ul>
+            <li><a href="https://humanehealth.devoutshaman.com/ops/wellness">schedule wellness</a></li>
+            <li><a href="https://humanehealth.devoutshaman.com/ops/diagnostic">invasive diagnostic</a></li>
+            <li><a href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">unnaturalfertility</a></li>
+            <li><a href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a></li>
+            <li><a href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a></li>
+            <li><a href="https://acashi.devoutshaman.com">acashi</a></li>
+            <li><a href="https://devoutshaman.com">devoutshaman</a></li>
+            <li><a href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a></li>
+          </ul>
+        </section>
+        <section class="branch">
+          <h2><a href="https://lightround.devoutshaman.com" data-local="/lightround">Lightround</a></h2>
+          <ul>
+            <li><a href="https://lightround.devoutshaman.com/">mandate</a></li>
+            <li><a href="https://lightround.devoutshaman.com/portfolio">allocations</a></li>
+            <li><a href="https://lightround.devoutshaman.com/thesis">screens</a></li>
+            <li><a href="https://lightround.devoutshaman.com/contact">lp desk</a></li>
+          </ul>
+        </section>
+      </div>
       <p class="fineprint">devo</p>
     </main>
     <div class="theme-rich">
       <header class="topbar">
         <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme">
           <svg viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M16 27.2A11.2 11.2 0 0 0 26.4 18.2" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
           </svg>
         </button>
         <nav class="topnav" aria-label="Devo">
-          <div class="topitem">
-            <a href="https://arcada.devoutshaman.com">Arcada</a>
-            <div class="dropdown">
-              <div class="drop-cols">
-                <div class="drop-col">
-                  <p class="drop-kicker">Explore</p>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/political">political club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/education">education club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/media">media club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a>
-                </div>
-                <div class="drop-col">
-                  <p class="drop-kicker">Shop</p>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/membership">northern social club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/events#online-intro">online intro</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="topitem">
-            <a href="https://mattercircle.devoutshaman.com" data-local="/mattercircle">Mattercircle</a>
-            <div class="dropdown">
-              <div class="drop-cols">
-                <div class="drop-col">
-                  <p class="drop-kicker">Explore</p>
-                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/toiletries">Toiletries</a>
-                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/wearables">Wearables</a>
-                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/utility">Utility</a>
-                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/furniture">Furniture</a>
-                </div>
-                <div class="drop-col">
-                  <p class="drop-kicker">Shop</p>
-                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/checkout">checkout</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="topitem">
-            <a href="https://humanehealth.devoutshaman.com" data-local="/humanehealth">Humanehealth</a>
-            <div class="dropdown">
-              <div class="drop-cols">
-                <div class="drop-col">
-                  <p class="drop-kicker">Explore</p>
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/wellness">Schedule wellness</a>
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/diagnostic">Invasive diagnostic</a>
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">Unnaturalfertility</a>
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/cosmetic">Cosmetic restoration</a>
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/stimulants">Concentrated stimulants</a>
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a>
-                </div>
-                <div class="drop-col">
-                  <p class="drop-kicker">Shop</p>
-                  <a class="drop-line" href="https://acashi.devoutshaman.com">acashi</a>
-                  <a class="drop-line" href="https://devoutshaman.com">devoutshaman</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="topitem">
-            <a href="https://lightround.devoutshaman.com" data-local="/lightround">Lightround</a>
-            <div class="dropdown">
-              <div class="drop-cols">
-                <div class="drop-col">
-                  <p class="drop-kicker">Explore</p>
-                  <a class="drop-line" href="https://lightround.devoutshaman.com/">Mandate</a>
-                  <a class="drop-line" href="https://lightround.devoutshaman.com/portfolio">Allocations</a>
-                  <a class="drop-line" href="https://lightround.devoutshaman.com/thesis">Screens</a>
-                </div>
-                <div class="drop-col">
-                  <p class="drop-kicker">Shop</p>
-                  <a class="drop-line" href="https://lightround.devoutshaman.com/contact">LP desk</a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a href="#panel-arcada" data-branch="arcada">Arcada</a>
+          <a href="#panel-mattercircle" data-branch="mattercircle">Mattercircle</a>
+          <a href="#panel-humanehealth" data-branch="humanehealth">Humanehealth</a>
+          <a href="#panel-lightround" data-branch="lightround">Lightround</a>
         </nav>
       </header>
-      <a class="panel" href="https://arcada.devoutshaman.com">
-        <img src="/shared/panels/arcada.svg" alt="" />
-        <span class="panel-copy"><strong>Arcada</strong><em>social club</em></span>
-      </a>
-      <a class="panel" href="https://mattercircle.devoutshaman.com" data-local="/mattercircle">
-        <img src="/shared/panels/mattercircle.svg" alt="" />
-        <span class="panel-copy"><strong>Mattercircle</strong><em>material products</em></span>
-      </a>
-      <a class="panel" href="https://humanehealth.devoutshaman.com" data-local="/humanehealth">
-        <img src="/shared/panels/humanehealth.svg" alt="" />
-        <span class="panel-copy"><strong>Humanehealth</strong></span>
-      </a>
-      <a class="panel" href="https://lightround.devoutshaman.com" data-local="/lightround">
-        <img src="/shared/panels/lightround.svg" alt="" />
-        <span class="panel-copy"><strong>Lightround</strong></span>
-      </a>
+      <div class="home-panels">
+        <a class="panel" id="panel-arcada" data-branch="arcada" href="#arcada">
+          <span class="panel-face">
+            <svg class="geo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="currentColor"/></svg>
+            <span class="panel-copy">
+              <span class="panel-title">Arcada</span>
+              <span class="panel-desc">social club</span>
+              <span class="panel-scale">6 clubs</span>
+            </span>
+          </span>
+        </a>
+        <a class="panel" id="panel-mattercircle" data-branch="mattercircle" href="#mattercircle">
+          <span class="panel-face">
+            <svg class="geo" viewBox="0 0 100 100" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="2.4">
+                <circle cx="50" cy="50" r="16"/>
+                <circle cx="50" cy="50" r="28"/>
+                <circle cx="50" cy="50" r="40"/>
+              </g>
+            </svg>
+            <span class="panel-copy">
+              <span class="panel-title">Mattercircle</span>
+              <span class="panel-desc">material products</span>
+              <span class="panel-scale">4 lines</span>
+            </span>
+          </span>
+        </a>
+        <a class="panel" id="panel-humanehealth" data-branch="humanehealth" href="#humanehealth">
+          <span class="panel-face">
+            <svg class="geo" viewBox="0 0 32 32" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-linecap="butt">
+                <path stroke-width="2.2" d="M9.2 8.4A9.2 9.2 0 0 1 20.6 6.8"/>
+                <path stroke-width="2.2" d="M24.8 12.6A9.2 9.2 0 0 1 23.2 23.4"/>
+                <path stroke-width="2.2" d="M16.8 27.2A9.2 9.2 0 0 1 7.4 16.2"/>
+                <path stroke-width="1.2" d="M20.6 6.8 23.2 10.4 20.2 12.2"/>
+                <path stroke-width="1.2" d="M23.2 23.4 18.6 25.2 16.8 27.2"/>
+              </g>
+            </svg>
+            <span class="panel-copy">
+              <span class="panel-title">Humanehealth</span>
+              <span class="panel-desc">clinical</span>
+              <span class="panel-scale">8 practices</span>
+            </span>
+          </span>
+        </a>
+        <a class="panel" id="panel-lightround" data-branch="lightround" href="#lightround">
+          <span class="panel-face">
+            <svg class="geo" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="2.6"/>
+              <rect x="16" y="46.5" width="68" height="7" fill="#E4C56A"/>
+            </svg>
+            <span class="panel-copy">
+              <span class="panel-title">Lightround</span>
+              <span class="panel-desc">allocator</span>
+              <span class="panel-scale">mandate · allocations · screens · desk</span>
+            </span>
+          </span>
+        </a>
+      </div>
+      <section class="branch-view" data-branch="arcada">
+        <div class="branch-head">
+          <svg class="geo geo--small" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="currentColor"/></svg>
+          <h2>Arcada</h2>
+          <p>social club</p>
+        </div>
+        <div class="blocks">
+          <a href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a>
+          <a href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a>
+          <a href="https://arcada.devoutshaman.com/clubs/political">political club</a>
+          <a href="https://arcada.devoutshaman.com/clubs/education">education club</a>
+          <a href="https://arcada.devoutshaman.com/clubs/media">media club</a>
+          <a href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a>
+        </div>
+      </section>
+      <section class="branch-view" data-branch="mattercircle">
+        <div class="branch-head">
+          <svg class="geo geo--small" viewBox="0 0 100 100" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2.4">
+              <circle cx="50" cy="50" r="16"/><circle cx="50" cy="50" r="28"/><circle cx="50" cy="50" r="40"/>
+            </g>
+          </svg>
+          <h2>Mattercircle</h2>
+          <p>material products</p>
+        </div>
+        <div class="blocks">
+          <a href="https://mattercircle.devoutshaman.com/climb/toiletries">toiletries</a>
+          <a href="https://mattercircle.devoutshaman.com/climb/wearables">wearables</a>
+          <a href="https://mattercircle.devoutshaman.com/climb/utility">utility</a>
+          <a href="https://mattercircle.devoutshaman.com/climb/furniture">furniture</a>
+        </div>
+      </section>
+      <section class="branch-view" data-branch="humanehealth">
+        <div class="branch-head">
+          <svg class="geo geo--small" viewBox="0 0 32 32" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-linecap="butt">
+              <path stroke-width="2.2" d="M9.2 8.4A9.2 9.2 0 0 1 20.6 6.8"/>
+              <path stroke-width="2.2" d="M24.8 12.6A9.2 9.2 0 0 1 23.2 23.4"/>
+              <path stroke-width="2.2" d="M16.8 27.2A9.2 9.2 0 0 1 7.4 16.2"/>
+              <path stroke-width="1.2" d="M20.6 6.8 23.2 10.4 20.2 12.2"/>
+              <path stroke-width="1.2" d="M23.2 23.4 18.6 25.2 16.8 27.2"/>
+            </g>
+          </svg>
+          <h2>Humanehealth</h2>
+          <p>clinical</p>
+        </div>
+        <div class="blocks">
+          <a href="https://humanehealth.devoutshaman.com/ops/wellness">schedule wellness</a>
+          <a href="https://humanehealth.devoutshaman.com/ops/diagnostic">invasive diagnostic</a>
+          <a href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">unnaturalfertility</a>
+          <a href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a>
+          <a href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a>
+          <a href="https://acashi.devoutshaman.com">acashi</a>
+          <a href="https://devoutshaman.com">devoutshaman</a>
+          <a href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a>
+        </div>
+      </section>
+      <section class="branch-view" data-branch="lightround">
+        <div class="branch-head">
+          <svg class="geo geo--small" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="2.6"/>
+            <rect x="16" y="46.5" width="68" height="7" fill="#E4C56A"/>
+          </svg>
+          <h2>Lightround</h2>
+          <p>allocator</p>
+        </div>
+        <div class="blocks">
+          <a href="https://lightround.devoutshaman.com/">mandate</a>
+          <a href="https://lightround.devoutshaman.com/portfolio">allocations</a>
+          <a href="https://lightround.devoutshaman.com/thesis">screens</a>
+          <a href="https://lightround.devoutshaman.com/contact">lp desk</a>
+        </div>
+      </section>
     </div>
     <script src="/shared/preview.js"></script>
     <script src="/shared/theme.js"></script>

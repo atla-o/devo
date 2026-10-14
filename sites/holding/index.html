@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#F4F0E8" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css?v=40" />
+    <link rel="stylesheet" href="/shared/style.css?v=42" />
     <script>
       try {
         if (localStorage.getItem("devo-theme") === "rich") {
@@ -209,38 +209,57 @@
         </div>
       <div class="home-panels">
         <div class="offer">
-        <section class="panel" id="panel-arcada" data-branch="arcada">
-          <div class="panel-face">
-            <svg class="geo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="currentColor"/></svg>
-            <div class="panel-copy">
-              <h2 class="panel-title">Arcada</h2>
-              <p class="panel-desc">social club</p>
-              <div class="panel-actions">
-                <a class="btn btn--fill" href="https://arcada.devoutshaman.com">Join</a>
+          <section class="panel" id="panel-arcada" data-branch="arcada">
+            <div class="mosaic mosaic--arcada">
+            <div class="cell cell--political">
+              <a class="shot" href="https://arcada.devoutshaman.com/clubs/political">
+                <img src="/shared/offerings/political.jpg" alt="" />
+                <span>political club</span>
+              </a>
+              <div class="house house--on-photo">
+                <h2 class="panel-title">Arcada</h2>
+                <p class="panel-desc">social club</p>
+                <div class="panel-actions">
+                  <a class="btn btn--fill" href="https://arcada.devoutshaman.com">Join</a>
+                </div>
+                <p class="panel-scale">6 clubs</p>
               </div>
-              <p class="panel-scale">6 clubs</p>
             </div>
-          </div>
-        </section>
-        <div class="ads">
-          <a class="ad" href="https://arcada.devoutshaman.com/clubs/ancestry"><span>ancestry club</span><small>Join</small></a>
-          <a class="ad" href="https://arcada.devoutshaman.com/clubs/spiritual"><span>spiritual club</span><small>Join</small></a>
-          <a class="ad" href="https://arcada.devoutshaman.com/clubs/political"><span>political club</span><small>Join</small></a>
-          <a class="ad" href="https://arcada.devoutshaman.com/clubs/education"><span>education club</span><small>Join</small></a>
-          <a class="ad" href="https://arcada.devoutshaman.com/clubs/media"><span>media club</span><small>Join</small></a>
-        </div>
+            <a class="shot cell--media" href="https://arcada.devoutshaman.com/clubs/media">
+              <img src="/shared/offerings/media.jpg" alt="" />
+              <span>media club</span>
+            </a>
+            <a class="shot cell--education" href="https://arcada.devoutshaman.com/clubs/education">
+              <img src="/shared/offerings/education.jpg" alt="" />
+              <span>education club</span>
+            </a>
+            <a class="shot cell--spiritual" href="https://arcada.devoutshaman.com/clubs/spiritual">
+              <img src="/shared/offerings/spiritual.jpg" alt="" />
+              <span>spiritual club</span>
+            </a>
+            <a class="shot cell--ancestry" href="https://arcada.devoutshaman.com/clubs/ancestry">
+              <img src="/shared/offerings/ancestry.jpg" alt="" />
+              <span>ancestry club</span>
+            </a>
+            </div>
+          </section>
         </div>
         <div class="offer">
-        <section class="panel" id="panel-mattercircle" data-branch="mattercircle">
-          <div class="panel-face">
-            <svg class="geo" viewBox="0 0 100 100" aria-hidden="true">
-              <g fill="none" stroke="currentColor" stroke-width="2.4">
-                <circle cx="50" cy="50" r="16"/>
-                <circle cx="50" cy="50" r="28"/>
-                <circle cx="50" cy="50" r="40"/>
-              </g>
-            </svg>
-            <div class="panel-copy">
+          <section class="panel" id="panel-mattercircle" data-branch="mattercircle">
+            <div class="mosaic mosaic--matter">
+            <a class="shot cell--furniture" href="https://mattercircle.devoutshaman.com/climb/furniture">
+              <img src="/shared/offerings/furniture.jpg" alt="" />
+              <span>furniture</span>
+            </a>
+            <a class="shot cell--wearables" href="https://mattercircle.devoutshaman.com/climb/wearables">
+              <img src="/shared/offerings/wearables.jpg" alt="" />
+              <span>wearables</span>
+            </a>
+            <a class="shot cell--utility" href="https://mattercircle.devoutshaman.com/climb/utility">
+              <img src="/shared/offerings/utility.jpg" alt="" />
+              <span>utility</span>
+            </a>
+            <div class="cell cell--house">
               <h2 class="panel-title">Mattercircle</h2>
               <p class="panel-desc">material products</p>
               <div class="panel-actions">
@@ -248,28 +267,33 @@
               </div>
               <p class="panel-scale">4 lines</p>
             </div>
-          </div>
-        </section>
-        <div class="ads">
-          <a class="ad" href="https://mattercircle.devoutshaman.com/climb/toiletries"><span>toiletries</span><small>Join</small></a>
-          <a class="ad" href="https://mattercircle.devoutshaman.com/climb/wearables"><span>wearables</span><small>Join</small></a>
-          <a class="ad" href="https://mattercircle.devoutshaman.com/climb/utility"><span>utility</span><small>Join</small></a>
-          <a class="ad" href="https://mattercircle.devoutshaman.com/climb/furniture"><span>furniture</span><small>Join</small></a>
-        </div>
+            <a class="shot cell--toiletries" href="https://mattercircle.devoutshaman.com/climb/toiletries">
+              <img src="/shared/offerings/toiletries.jpg" alt="" />
+              <span>toiletries</span>
+            </a>
+            </div>
+          </section>
         </div>
         <div class="offer">
-        <section class="panel" id="panel-humanehealth" data-branch="humanehealth">
-          <div class="panel-face">
-            <svg class="geo" viewBox="0 0 32 32" aria-hidden="true">
-              <g fill="none" stroke="currentColor" stroke-linecap="butt">
-                <path stroke-width="2.2" d="M9.2 8.4A9.2 9.2 0 0 1 20.6 6.8"/>
-                <path stroke-width="2.2" d="M24.8 12.6A9.2 9.2 0 0 1 23.2 23.4"/>
-                <path stroke-width="2.2" d="M16.8 27.2A9.2 9.2 0 0 1 7.4 16.2"/>
-                <path stroke-width="1.2" d="M20.6 6.8 23.2 10.4 20.2 12.2"/>
-                <path stroke-width="1.2" d="M23.2 23.4 18.6 25.2 16.8 27.2"/>
-              </g>
-            </svg>
-            <div class="panel-copy">
+          <section class="panel" id="panel-humanehealth" data-branch="humanehealth">
+            <div class="mosaic mosaic--health">
+            <a class="shot cell--wellness" href="https://humanehealth.devoutshaman.com/ops/wellness">
+              <img src="/shared/offerings/wellness.jpg" alt="" />
+              <span>schedule wellness</span>
+            </a>
+            <a class="shot cell--diagnostic" href="https://humanehealth.devoutshaman.com/ops/diagnostic">
+              <img src="/shared/offerings/diagnostic.jpg" alt="" />
+              <span>invasive diagnostic</span>
+            </a>
+            <a class="shot cell--stimulants" href="https://humanehealth.devoutshaman.com/ops/stimulants">
+              <img src="/shared/offerings/stimulants.jpg" alt="" />
+              <span>concentrated stimulants</span>
+            </a>
+            <a class="shot cell--fertility" href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">
+              <img src="/shared/offerings/fertility.jpg" alt="" />
+              <span>unnaturalfertility</span>
+            </a>
+            <div class="cell cell--house">
               <h2 class="panel-title">Humanehealth</h2>
               <p class="panel-desc">clinical</p>
               <div class="panel-actions">
@@ -277,24 +301,29 @@
               </div>
               <p class="panel-scale">8 practices</p>
             </div>
-          </div>
-        </section>
-        <div class="ads">
-          <a class="ad" href="https://humanehealth.devoutshaman.com/ops/wellness"><span>schedule wellness</span><small>Join</small></a>
-          <a class="ad" href="https://humanehealth.devoutshaman.com/ops/diagnostic"><span>invasive diagnostic</span><small>Join</small></a>
-          <a class="ad" href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility"><span>unnaturalfertility</span><small>Join</small></a>
-          <a class="ad" href="https://humanehealth.devoutshaman.com/ops/cosmetic"><span>cosmetic restoration</span><small>Join</small></a>
-          <a class="ad" href="https://humanehealth.devoutshaman.com/ops/stimulants"><span>concentrated stimulants</span><small>Join</small></a>
-        </div>
+            <a class="shot cell--cosmetic" href="https://humanehealth.devoutshaman.com/ops/cosmetic">
+              <img src="/shared/offerings/cosmetic.jpg" alt="" />
+              <span>cosmetic restoration</span>
+            </a>
+            </div>
+          </section>
         </div>
         <div class="offer">
-        <section class="panel" id="panel-lightround" data-branch="lightround">
-          <div class="panel-face">
-            <svg class="geo" viewBox="0 0 100 100" aria-hidden="true">
-              <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="2.6"/>
-              <rect x="16" y="46.5" width="68" height="7" fill="#E4C56A"/>
-            </svg>
-            <div class="panel-copy">
+          <section class="panel" id="panel-lightround" data-branch="lightround">
+            <div class="mosaic mosaic--light">
+            <a class="shot cell--mandate" href="https://lightround.devoutshaman.com/">
+              <img src="/shared/offerings/mandate.jpg" alt="" />
+              <span>mandate</span>
+            </a>
+            <a class="shot cell--screens" href="https://lightround.devoutshaman.com/thesis">
+              <img src="/shared/offerings/screens.jpg" alt="" />
+              <span>screens</span>
+            </a>
+            <a class="shot cell--allocations" href="https://lightround.devoutshaman.com/portfolio">
+              <img src="/shared/offerings/allocations.jpg" alt="" />
+              <span>allocations</span>
+            </a>
+            <div class="cell cell--house">
               <h2 class="panel-title">Lightround</h2>
               <p class="panel-desc">allocator</p>
               <div class="panel-actions">
@@ -302,14 +331,12 @@
               </div>
               <p class="panel-scale">mandate · allocations · screens · desk</p>
             </div>
-          </div>
-        </section>
-        <div class="ads">
-          <a class="ad" href="https://lightround.devoutshaman.com/"><span>mandate</span><small>Join</small></a>
-          <a class="ad" href="https://lightround.devoutshaman.com/portfolio"><span>allocations</span><small>Join</small></a>
-          <a class="ad" href="https://lightround.devoutshaman.com/thesis"><span>screens</span><small>Join</small></a>
-          <a class="ad" href="https://lightround.devoutshaman.com/contact"><span>lp desk</span><small>Join</small></a>
-        </div>
+            <a class="shot cell--desk" href="https://lightround.devoutshaman.com/contact">
+              <img src="/shared/offerings/desk.jpg" alt="" />
+              <span>lp desk</span>
+            </a>
+            </div>
+          </section>
         </div>
       </div>
       <div class="corp" hidden>

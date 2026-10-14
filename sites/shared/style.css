@@ -131,7 +131,7 @@ a:hover {
 
 .theme-switch:hover .o-depth,
 .theme-switch:focus-visible .o-depth {
-  transform: translateZ(28px);
+  transform: translateZ(120px);
 }
 
 .theme-switch:hover svg,
@@ -145,7 +145,7 @@ html[data-theme="rich"] .theme-switch svg {
 
 html[data-theme="rich"] .theme-switch:hover .o-depth,
 html[data-theme="rich"] .theme-switch:focus-visible .o-depth {
-  transform: translateZ(28px);
+  transform: translateZ(120px);
 }
 
 html[data-theme="rich"] .theme-switch:hover svg,

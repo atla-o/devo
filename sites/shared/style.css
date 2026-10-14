@@ -140,7 +140,7 @@ html[data-theme="rich"] .theme-switch svg {
 
 html[data-theme="rich"] .theme-switch:hover svg,
 html[data-theme="rich"] .theme-switch:focus-visible svg {
-  transform: rotateX(225deg);
+  transform: rotateX(135deg);
 }
 
 .theme-switch.is-flipping-down svg,
@@ -161,7 +161,7 @@ html[data-theme="rich"] .theme-switch:focus-visible svg {
 }
 
 @keyframes o-spin-up {
-  to { transform: rotateX(360deg); }
+  to { transform: rotateX(0deg); }
 }
 
 .holdings {

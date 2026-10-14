@@ -112,12 +112,14 @@ a:hover {
   color: inherit;
   cursor: pointer;
   line-height: 0;
-  perspective: 80px;
-  perspective-origin: 50% 50%;
 }
 
 .o-depth {
   display: block;
+  width: fit-content;
+  margin-inline: auto;
+  perspective: 80px;
+  perspective-origin: center;
   transform: translateZ(0);
   transform-style: preserve-3d;
   transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.2, 1);
@@ -388,9 +390,15 @@ html[data-theme="rich"] .theme-rich {
 }
 
 .topbar .theme-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 52px;
   height: 52px;
   flex: 0 0 52px;
+}
+
+.topbar .o-depth {
   perspective: 48px;
 }
 

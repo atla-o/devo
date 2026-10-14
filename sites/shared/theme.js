@@ -104,7 +104,7 @@
       flipping = false;
     }
     button.addEventListener("animationend", finish, { once: true });
-    setTimeout(finish, 900);
+    setTimeout(finish, 750);
   });
 
   window.addEventListener("hashchange", route);

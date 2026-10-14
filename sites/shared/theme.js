@@ -30,13 +30,13 @@
 
   function spy() {
     if (document.body.getAttribute("data-branch")) return;
-    var line = window.innerHeight * 0.35;
-    var name = branches[0];
+    var line = window.innerHeight * 0.42;
+    var hits = [];
     document.querySelectorAll(".panel").forEach(function (panel) {
       var box = panel.getBoundingClientRect();
-      if (box.top <= line && box.bottom > line) name = panel.getAttribute("data-branch");
+      if (box.top <= line && box.bottom > line) hits.push(panel);
     });
-    markActive(name);
+    markActive(hits.length === 1 ? hits[0].getAttribute("data-branch") : "");
   }
 
   function park(panel) {

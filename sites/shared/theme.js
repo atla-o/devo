@@ -84,10 +84,27 @@
     document.documentElement.setAttribute("data-theme", "rich");
   }
 
+  var flipping = false;
+
   document.addEventListener("click", function (event) {
     var button = event.target.closest(".theme-switch");
-    if (!button) return;
-    apply(theme() === "rich" ? "simple" : "rich");
+    if (!button || flipping) return;
+    var next = theme() === "rich" ? "simple" : "rich";
+    flipping = true;
+    var cls = next === "rich" ? "is-flipping-down" : "is-flipping-up";
+    button.classList.remove("is-flipping-down", "is-flipping-up");
+    void button.offsetWidth;
+    button.classList.add(cls);
+    var done = false;
+    function finish() {
+      if (done) return;
+      done = true;
+      apply(next);
+      button.classList.remove(cls);
+      flipping = false;
+    }
+    button.addEventListener("animationend", finish, { once: true });
+    setTimeout(finish, 900);
   });
 
   window.addEventListener("hashchange", route);

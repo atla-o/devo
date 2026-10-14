@@ -101,9 +101,6 @@ a:hover {
   display: block;
   width: 1.7rem;
   height: 1.7rem;
-  transform-origin: 50% 50%;
-  transform: rotate(0.25turn);
-  transition: transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
 .theme-switch {
@@ -115,20 +112,51 @@ a:hover {
   color: inherit;
   cursor: pointer;
   line-height: 0;
+  perspective: 180px;
+  perspective-origin: 50% 50%;
+}
+
+.theme-switch svg {
+  transform-origin: 50% 50%;
+  transform: translateZ(0) rotateX(0deg);
+  transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
 .theme-switch:hover svg,
 .theme-switch:focus-visible svg {
-  transform: rotate(calc(0.25turn + 22deg));
+  transform: translateZ(28px) rotateX(45deg) scale(1.18);
 }
 
 html[data-theme="rich"] .theme-switch svg {
-  transform: rotate(-0.25turn);
+  transform: translateZ(0) rotateX(180deg);
 }
 
 html[data-theme="rich"] .theme-switch:hover svg,
 html[data-theme="rich"] .theme-switch:focus-visible svg {
-  transform: rotate(calc(-0.25turn - 22deg));
+  transform: translateZ(28px) rotateX(135deg) scale(1.18);
+}
+
+.theme-switch.is-flipping-down svg,
+.theme-switch.is-flipping-up svg {
+  transition: none;
+}
+
+.theme-switch.is-flipping-down svg {
+  animation: o-flip-down 0.72s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
+.theme-switch.is-flipping-up svg {
+  animation: o-flip-up 0.72s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
+@keyframes o-flip-down {
+  50% { transform: translateZ(56px) rotateX(90deg) scale(1.75); }
+  100% { transform: translateZ(0) rotateX(180deg) scale(1); }
+}
+
+@keyframes o-flip-up {
+  50% { transform: translateZ(56px) rotateX(90deg) scale(1.75); }
+  100% { transform: translateZ(0) rotateX(0deg) scale(1); }
 }
 
 .holdings {

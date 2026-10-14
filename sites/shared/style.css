@@ -102,6 +102,7 @@ a:hover {
   width: 1.7rem;
   height: 1.7rem;
   transform-origin: 50% 50%;
+  transform: rotate(0.25turn);
   transition: transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
@@ -118,16 +119,16 @@ a:hover {
 
 .theme-switch:hover svg,
 .theme-switch:focus-visible svg {
-  transform: rotate(22deg);
+  transform: rotate(calc(0.25turn + 22deg));
 }
 
 html[data-theme="rich"] .theme-switch svg {
-  transform: rotate(180deg);
+  transform: rotate(-0.25turn);
 }
 
 html[data-theme="rich"] .theme-switch:hover svg,
 html[data-theme="rich"] .theme-switch:focus-visible svg {
-  transform: rotate(202deg);
+  transform: rotate(calc(-0.25turn - 22deg));
 }
 
 .holdings {
@@ -364,6 +365,12 @@ html[data-theme="rich"] .theme-rich {
   height: 18px;
 }
 
+.topbar:has(.topitem:hover),
+.topbar:has(.topitem:focus-within) {
+  background: #1c1815;
+  border-bottom-color: transparent;
+}
+
 .topnav {
   display: flex;
   flex: 1;
@@ -375,7 +382,17 @@ html[data-theme="rich"] .theme-rich {
   letter-spacing: -0.01em;
 }
 
-.topnav a {
+.topitem {
+  position: static;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 52px;
+}
+
+.topitem > a {
   display: flex;
   align-items: center;
   height: 52px;
@@ -387,20 +404,73 @@ html[data-theme="rich"] .theme-rich {
   white-space: nowrap;
 }
 
-.topnav a[data-branch="arcada"] { --accent: #e7b49a; }
-.topnav a[data-branch="mattercircle"] { --accent: #c9d4c4; }
-.topnav a[data-branch="humanehealth"] { --accent: #d7a9a4; }
-.topnav a[data-branch="lightround"] { --accent: #e4c56a; }
+.topitem > a[data-branch="arcada"] { --accent: #e7b49a; }
+.topitem > a[data-branch="mattercircle"] { --accent: #c9d4c4; }
+.topitem > a[data-branch="humanehealth"] { --accent: #d7a9a4; }
+.topitem > a[data-branch="lightround"] { --accent: #e4c56a; }
 
-.topnav a[aria-current="true"] {
+.topitem > a[aria-current="true"] {
   opacity: 1;
   font-weight: 650;
   box-shadow: inset 0 -2px 0 var(--accent, #f7f4ef);
 }
 
-.topnav a:hover,
-.topnav a:focus-visible {
+.topitem > a:hover,
+.topitem > a:focus-visible,
+.topitem:hover > a,
+.topitem:focus-within > a {
   opacity: 1;
+  font-weight: 650;
+  text-decoration: none;
+  box-shadow: inset 0 -2px 0 var(--accent, #f7f4ef);
+}
+
+.topbar:has(.topitem:hover) .topitem:not(:hover) > a,
+.topbar:has(.topitem:focus-within) .topitem:not(:focus-within) > a {
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 2;
+  margin: 0;
+  padding: 1.7rem 7vw 2.1rem;
+  list-style: none;
+  background: #1c1815;
+  color: #f7f4ef;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s cubic-bezier(0.22, 0.8, 0.3, 1);
+}
+
+.topitem:hover > .dropdown,
+.topitem:focus-within > .dropdown {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dropdown a {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  padding: 0.28rem 0;
+  color: #f7f4ef;
+  font-size: 1.28rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.dropdown a:hover,
+.dropdown a:focus-visible {
+  opacity: 0.62;
   text-decoration: none;
 }
 
@@ -589,6 +659,14 @@ body[data-branch="lightround"] .branch-view[data-branch="lightround"] {
 @media (max-width: 720px) {
   .topnav {
     font-size: 11px;
+  }
+
+  .dropdown {
+    padding: 1.15rem 1.15rem 1.4rem;
+  }
+
+  .dropdown a {
+    font-size: 1.05rem;
   }
 
   .panel-scale {

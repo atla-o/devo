@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#F4F0E8" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css?v=13" />
+    <link rel="stylesheet" href="/shared/style.css?v=15" />
     <script>
       try {
         if (localStorage.getItem("devo-theme") === "rich") {
@@ -25,7 +25,7 @@
         <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme">
           <svg viewBox="0 0 32 32" aria-hidden="true">
             <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M16 27.2A11.2 11.2 0 0 0 26.4 18.2" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M19.8 5.7A11 11 0 0 1 19.8 26.3" fill="none" stroke="currentColor" stroke-width="4.4" stroke-linecap="round"/>
           </svg>
         </button>
       </h1>
@@ -79,15 +79,53 @@
       <header class="topbar">
         <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme">
           <svg viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.7"/>
-            <path d="M16 27.2A11.2 11.2 0 0 0 26.4 18.2" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M19.8 5.7A11 11 0 0 1 19.8 26.3" fill="none" stroke="currentColor" stroke-width="4.4" stroke-linecap="round"/>
           </svg>
         </button>
         <nav class="topnav" aria-label="Devo">
-          <a href="#panel-arcada" data-branch="arcada">Arcada</a>
-          <a href="#panel-mattercircle" data-branch="mattercircle">Mattercircle</a>
-          <a href="#panel-humanehealth" data-branch="humanehealth">Humanehealth</a>
-          <a href="#panel-lightround" data-branch="lightround">Lightround</a>
+          <div class="topitem">
+            <a href="#panel-arcada" data-branch="arcada">Arcada</a>
+            <ul class="dropdown">
+              <li><a href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a></li>
+              <li><a href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a></li>
+              <li><a href="https://arcada.devoutshaman.com/clubs/political">political club</a></li>
+              <li><a href="https://arcada.devoutshaman.com/clubs/education">education club</a></li>
+              <li><a href="https://arcada.devoutshaman.com/clubs/media">media club</a></li>
+              <li><a href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a></li>
+            </ul>
+          </div>
+          <div class="topitem">
+            <a href="#panel-mattercircle" data-branch="mattercircle">Mattercircle</a>
+            <ul class="dropdown">
+              <li><a href="https://mattercircle.devoutshaman.com/climb/toiletries">toiletries</a></li>
+              <li><a href="https://mattercircle.devoutshaman.com/climb/wearables">wearables</a></li>
+              <li><a href="https://mattercircle.devoutshaman.com/climb/utility">utility</a></li>
+              <li><a href="https://mattercircle.devoutshaman.com/climb/furniture">furniture</a></li>
+            </ul>
+          </div>
+          <div class="topitem">
+            <a href="#panel-humanehealth" data-branch="humanehealth">Humanehealth</a>
+            <ul class="dropdown">
+              <li><a href="https://humanehealth.devoutshaman.com/ops/wellness">schedule wellness</a></li>
+              <li><a href="https://humanehealth.devoutshaman.com/ops/diagnostic">invasive diagnostic</a></li>
+              <li><a href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">unnaturalfertility</a></li>
+              <li><a href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a></li>
+              <li><a href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a></li>
+              <li><a href="https://acashi.devoutshaman.com">acashi</a></li>
+              <li><a href="https://devoutshaman.com">devoutshaman</a></li>
+              <li><a href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a></li>
+            </ul>
+          </div>
+          <div class="topitem">
+            <a href="#panel-lightround" data-branch="lightround">Lightround</a>
+            <ul class="dropdown">
+              <li><a href="https://lightround.devoutshaman.com/">mandate</a></li>
+              <li><a href="https://lightround.devoutshaman.com/portfolio">allocations</a></li>
+              <li><a href="https://lightround.devoutshaman.com/thesis">screens</a></li>
+              <li><a href="https://lightround.devoutshaman.com/contact">lp desk</a></li>
+            </ul>
+          </div>
         </nav>
       </header>
       <div class="home-panels">

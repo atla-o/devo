@@ -19,7 +19,7 @@
   }
 
   function markActive(name) {
-    document.querySelectorAll(".topnav a").forEach(function (link) {
+    document.querySelectorAll(".topitem > a").forEach(function (link) {
       if (name && link.getAttribute("data-branch") === name) {
         link.setAttribute("aria-current", "true");
       } else {

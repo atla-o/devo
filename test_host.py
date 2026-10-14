@@ -70,6 +70,34 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn('class="theme-rich"', body)
             self.assertIn('class="topbar"', body)
             self.assertIn('class="topnav"', body)
+            self.assertEqual(body.count('class="dropdown"'), 4, host)
+            rich = body.split('class="theme-rich"', 1)[1]
+            menus = rich.split('class="dropdown"')[1:]
+            map_lines = (
+                (
+                    "ancestry club",
+                    "spiritual club",
+                    "political club",
+                    "education club",
+                    "media club",
+                    "recreation club",
+                ),
+                ("toiletries", "wearables", "utility", "furniture"),
+                (
+                    "schedule wellness",
+                    "invasive diagnostic",
+                    "unnaturalfertility",
+                    "cosmetic restoration",
+                    "concentrated stimulants",
+                    "acashi",
+                    "devoutshaman",
+                    "develop cures",
+                ),
+                ("mandate", "allocations", "screens", "lp desk"),
+            )
+            for menu, labels in zip(menus, map_lines):
+                spots = [menu.index(f">{label}<") for label in labels]
+                self.assertEqual(spots, sorted(spots), host)
             self.assertEqual(body.count('class="panel"'), 4, host)
             self.assertEqual(body.count('class="branch-view"'), 4, host)
             self.assertIn("6 clubs", body)

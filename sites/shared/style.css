@@ -235,9 +235,44 @@ html[data-theme="rich"] .theme-switch:focus-visible svg {
   font-weight: 400;
 }
 
-.page--home .fineprint {
+.branch .blurb {
+  margin: 0.12rem 0 0;
+  font-size: clamp(0.66rem, 1.4vh, 0.78rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.page--home .support {
+  margin: auto 0 0;
   color: #1a1a1a;
-  opacity: 0.7;
+}
+
+.support {
+  flex: 0 0 auto;
+  padding-top: 0.45rem;
+  font-size: 0.62rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.support a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.support p {
+  margin: 0.1rem 0 0;
+  font-weight: 400;
+  opacity: 0.72;
+}
+
+html[data-theme="rich"] .support {
+  margin: 0;
+  padding: 0.2rem 0.8rem 0.35rem;
+  background: #000;
+  color: #f5f5f7;
 }
 
 .product-name {
@@ -509,8 +544,8 @@ html[data-theme="rich"] .theme-rich {
 }
 
 .mosaic--arcada .cell--political { grid-column: 1; grid-row: 1 / 4; }
-.mosaic--arcada .cell--education { grid-column: 2; grid-row: 1; }
-.mosaic--arcada .cell--media { grid-column: 3; grid-row: 1 / 3; }
+.mosaic--arcada .cell--intellectual { grid-column: 2; grid-row: 1; }
+.mosaic--arcada .cell--leisure { grid-column: 3; grid-row: 1 / 3; }
 .mosaic--arcada .cell--spiritual { grid-column: 2; grid-row: 2 / 4; }
 .mosaic--arcada .cell--ancestry { grid-column: 3; grid-row: 3; }
 
@@ -1101,8 +1136,8 @@ html:has(body.menu-open) {
   }
 
   .mosaic--arcada .cell--political { grid-column: 1; grid-row: 1 / 3; }
-  .mosaic--arcada .cell--media { grid-column: 2; grid-row: 1; }
-  .mosaic--arcada .cell--education { grid-column: 2; grid-row: 2; }
+  .mosaic--arcada .cell--leisure { grid-column: 2; grid-row: 1; }
+  .mosaic--arcada .cell--intellectual { grid-column: 2; grid-row: 2; }
   .mosaic--arcada .cell--spiritual { grid-column: 1; grid-row: 3; }
   .mosaic--arcada .cell--ancestry { grid-column: 2; grid-row: 3; }
 

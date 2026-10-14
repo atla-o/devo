@@ -6,11 +6,11 @@
     <title>Devo</title>
     <meta
       name="description"
-      content="Devo — Arcada, Mattercircle, Humanehealth, Lightround."
+      content="Devo — Humanehealth, utopiasocial, Mattercircle."
     />
     <meta name="theme-color" content="#F4F0E8" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css?v=59" />
+    <link rel="stylesheet" href="/shared/style.css?v=60" />
     <script>
       try {
         if (localStorage.getItem("devo-theme") === "rich") {
@@ -30,27 +30,7 @@
           </span>
         </button>
       </h1>
-      <div class="sheet">
-        <section class="branch">
-          <h2><a href="https://arcada.devoutshaman.com">Arcada</a></h2>
-          <ul>
-            <li><a href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a></li>
-            <li><a href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a></li>
-            <li><a href="https://arcada.devoutshaman.com/clubs/political">political club</a></li>
-            <li><a href="https://arcada.devoutshaman.com/clubs/education">education club</a></li>
-            <li><a href="https://arcada.devoutshaman.com/clubs/media">media club</a></li>
-            <li><a href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a></li>
-          </ul>
-        </section>
-        <section class="branch">
-          <h2><a href="https://mattercircle.devoutshaman.com">Mattercircle</a></h2>
-          <ul>
-            <li><a href="https://mattercircle.devoutshaman.com/climb/toiletries">toiletries</a></li>
-            <li><a href="https://mattercircle.devoutshaman.com/climb/wearables">wearables</a></li>
-            <li><a href="https://mattercircle.devoutshaman.com/climb/utility">utility</a></li>
-            <li><a href="https://mattercircle.devoutshaman.com/climb/furniture">furniture</a></li>
-          </ul>
-        </section>
+      <div class="sheet" aria-label="Devo">
         <section class="branch">
           <h2><a href="https://humanehealth.devoutshaman.com">Humanehealth</a></h2>
           <ul>
@@ -60,21 +40,37 @@
             <li><a href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a></li>
             <li><a href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a></li>
             <li><a href="https://acashi.devoutshaman.com">acashi</a></li>
-            <li><a href="https://devoutshaman.com">devoutshaman</a></li>
+            <li><a href="https://humanehealth.devoutshaman.com">Humanehealth store</a></li>
             <li><a href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a></li>
           </ul>
         </section>
         <section class="branch">
-          <h2><a href="https://lightround.devoutshaman.com">Lightround</a></h2>
+          <h2><a href="https://arcada.devoutshaman.com">utopiasocial</a></h2>
+          <p class="blurb">utopia social club</p>
           <ul>
-            <li><a href="https://lightround.devoutshaman.com/">mandate</a></li>
-            <li><a href="https://lightround.devoutshaman.com/portfolio">allocations</a></li>
-            <li><a href="https://lightround.devoutshaman.com/thesis">screens</a></li>
-            <li><a href="https://lightround.devoutshaman.com/contact">lp desk</a></li>
+            <li><a href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a></li>
+            <li><a href="https://arcada.devoutshaman.com/clubs/intellectual">intellectual club</a></li>
+            <li><a href="https://arcada.devoutshaman.com/clubs/leisure">leisure club</a></li>
+            <li><a href="https://arcada.devoutshaman.com/clubs/political">political club</a></li>
+            <li><a href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a></li>
+          </ul>
+        </section>
+        <section class="branch">
+          <h2><a href="https://mattercircle.devoutshaman.com">Mattercircle</a></h2>
+          <p class="blurb">non-petroleum factory</p>
+          <p class="blurb">prefab housing</p>
+          <ul>
+            <li><a href="https://mattercircle.devoutshaman.com/climb/toiletries">toiletries</a></li>
+            <li><a href="https://mattercircle.devoutshaman.com/climb/wearables">wearables</a></li>
+            <li><a href="https://mattercircle.devoutshaman.com/climb/utility">utility</a></li>
+            <li><a href="https://mattercircle.devoutshaman.com/climb/furniture">furniture</a></li>
           </ul>
         </section>
       </div>
-      <p class="fineprint">devo</p>
+      <footer class="support">
+        <a href="https://donate.stripe.com/7sY00ifPd8Xdb278i24Ni00">Support Devo</a>
+        <p>A gift to Atla LLC. Not tax deductible, not an investment.</p>
+      </footer>
     </main>
     <div class="theme-rich">
       <header class="topbar">
@@ -86,14 +82,14 @@
           </span>
         </button>
         <nav class="topnav" aria-label="Devo">
+          <div class="topitem" data-cat="health">
+            <a href="https://humanehealth.devoutshaman.com">Humanehealth</a>
+          </div>
           <div class="topitem" data-cat="utopia">
             <a href="https://arcada.devoutshaman.com">utopiasocial</a>
           </div>
           <div class="topitem" data-cat="matter">
             <a href="https://mattercircle.devoutshaman.com">Mattercircle</a>
-          </div>
-          <div class="topitem" data-cat="health">
-            <a href="https://humanehealth.devoutshaman.com">Humanehealth</a>
           </div>
         </nav>
         <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Menu">
@@ -101,23 +97,41 @@
         </button>
         <div class="dropdown">
           <div class="drop-frame">
+            <div class="drop-sheet" data-cat="health">
+              <div class="drop-side">
+                <p class="drop-kicker">Products</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com">Humanehealth store</a>
+                </div>
+              </div>
+              <div class="drop-side">
+                <p class="drop-kicker">Services</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/wellness">schedule wellness</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/diagnostic">invasive diagnostic</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">unnaturalfertility</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a>
+                  <a class="drop-line" href="https://acashi.devoutshaman.com">acashi</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a>
+                </div>
+              </div>
+            </div>
             <div class="drop-sheet" data-cat="utopia">
               <div class="drop-side">
                 <p class="drop-kicker">Products</p>
                 <div class="drop-row">
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/membership">northern social club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com">utopia social club</a>
                 </div>
               </div>
               <div class="drop-side">
                 <p class="drop-kicker">Services</p>
                 <div class="drop-row">
                   <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/intellectual">intellectual club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/leisure">leisure club</a>
                   <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/political">political club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/education">education club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/media">media club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a>
-                  <a class="drop-line" href="https://arcada.devoutshaman.com/events#online-intro">online intro</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a>
                 </div>
               </div>
             </div>
@@ -138,49 +152,55 @@
                 </div>
               </div>
             </div>
-            <div class="drop-sheet" data-cat="health">
-              <div class="drop-side">
-                <p class="drop-kicker">Products</p>
-                <div class="drop-row">
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a>
-                  <a class="drop-line" href="https://devoutshaman.com">devoutshaman</a>
-                </div>
-              </div>
-              <div class="drop-side">
-                <p class="drop-kicker">Services</p>
-                <div class="drop-row">
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/wellness">schedule wellness</a>
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/diagnostic">invasive diagnostic</a>
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">unnaturalfertility</a>
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a>
-                  <a class="drop-line" href="https://acashi.devoutshaman.com">acashi</a>
-                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </header>
       <div class="menu-sheet">
+        <a href="https://humanehealth.devoutshaman.com">Humanehealth</a>
         <a href="https://arcada.devoutshaman.com">utopiasocial</a>
         <a href="https://mattercircle.devoutshaman.com">Mattercircle</a>
-        <a href="https://humanehealth.devoutshaman.com">Humanehealth</a>
       </div>
       <div class="home-panels">
         <div class="offer">
-          <section class="panel" id="panel-arcada" data-branch="arcada">
+          <section class="panel" id="panel-humanehealth" data-branch="humanehealth">
+            <div class="mosaic mosaic--health">
+            <a class="shot cell--wellness" href="https://humanehealth.devoutshaman.com/ops/wellness">
+              <img src="/shared/offerings/wellness.jpg" alt="" />
+              <span>schedule wellness</span>
+            </a>
+            <a class="shot cell--diagnostic" href="https://humanehealth.devoutshaman.com/ops/diagnostic">
+              <img src="/shared/offerings/diagnostic.jpg" alt="" />
+              <span>invasive diagnostic</span>
+            </a>
+            <a class="shot cell--stimulants" href="https://humanehealth.devoutshaman.com/ops/stimulants">
+              <img src="/shared/offerings/stimulants.jpg" alt="" />
+              <span>concentrated stimulants</span>
+            </a>
+            <a class="shot cell--fertility" href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">
+              <img src="/shared/offerings/fertility.jpg" alt="" />
+              <span>unnaturalfertility</span>
+            </a>
+            <a class="shot cell--cosmetic" href="https://humanehealth.devoutshaman.com/ops/cosmetic">
+              <img src="/shared/offerings/cosmetic.jpg" alt="" />
+              <span>cosmetic restoration</span>
+            </a>
+            </div>
+          </section>
+        </div>
+        <div class="offer">
+          <section class="panel" id="panel-utopia" data-branch="utopia">
             <div class="mosaic mosaic--arcada">
             <a class="shot cell--political" href="https://arcada.devoutshaman.com/clubs/political">
               <img src="/shared/offerings/political.jpg" alt="" />
               <span>political club</span>
             </a>
-            <a class="shot cell--media" href="https://arcada.devoutshaman.com/clubs/media">
+            <a class="shot cell--leisure" href="https://arcada.devoutshaman.com/clubs/leisure">
               <img src="/shared/offerings/media.jpg" alt="" />
-              <span>media club</span>
+              <span>leisure club</span>
             </a>
-            <a class="shot cell--education" href="https://arcada.devoutshaman.com/clubs/education">
+            <a class="shot cell--intellectual" href="https://arcada.devoutshaman.com/clubs/intellectual">
               <img src="/shared/offerings/education.jpg" alt="" />
-              <span>education club</span>
+              <span>intellectual club</span>
             </a>
             <a class="shot cell--spiritual" href="https://arcada.devoutshaman.com/clubs/spiritual">
               <img src="/shared/offerings/spiritual.jpg" alt="" />
@@ -215,183 +235,12 @@
             </div>
           </section>
         </div>
-        <div class="offer">
-          <section class="panel" id="panel-humanehealth" data-branch="humanehealth">
-            <div class="mosaic mosaic--health">
-            <a class="shot cell--wellness" href="https://humanehealth.devoutshaman.com/ops/wellness">
-              <img src="/shared/offerings/wellness.jpg" alt="" />
-              <span>schedule wellness</span>
-            </a>
-            <a class="shot cell--diagnostic" href="https://humanehealth.devoutshaman.com/ops/diagnostic">
-              <img src="/shared/offerings/diagnostic.jpg" alt="" />
-              <span>invasive diagnostic</span>
-            </a>
-            <a class="shot cell--stimulants" href="https://humanehealth.devoutshaman.com/ops/stimulants">
-              <img src="/shared/offerings/stimulants.jpg" alt="" />
-              <span>concentrated stimulants</span>
-            </a>
-            <a class="shot cell--fertility" href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">
-              <img src="/shared/offerings/fertility.jpg" alt="" />
-              <span>unnaturalfertility</span>
-            </a>
-            <a class="shot cell--cosmetic" href="https://humanehealth.devoutshaman.com/ops/cosmetic">
-              <img src="/shared/offerings/cosmetic.jpg" alt="" />
-              <span>cosmetic restoration</span>
-            </a>
-            </div>
-          </section>
-        </div>
-        <div class="offer">
-          <section class="panel" id="panel-lightround" data-branch="lightround">
-            <div class="mosaic mosaic--light">
-            <a class="shot cell--mandate" href="https://lightround.devoutshaman.com/">
-              <img src="/shared/offerings/mandate.jpg" alt="" />
-              <span>mandate</span>
-            </a>
-            <a class="shot cell--screens" href="https://lightround.devoutshaman.com/thesis">
-              <img src="/shared/offerings/screens.jpg" alt="" />
-              <span>screens</span>
-            </a>
-            <a class="shot cell--allocations" href="https://lightround.devoutshaman.com/portfolio">
-              <img src="/shared/offerings/allocations.jpg" alt="" />
-              <span>allocations</span>
-            </a>
-            <a class="shot cell--desk" href="https://lightround.devoutshaman.com/contact">
-              <img src="/shared/offerings/desk.jpg" alt="" />
-              <span>lp desk</span>
-            </a>
-            </div>
-          </section>
-        </div>
       </div>
-      <div class="corp" hidden>
-        <section class="compare" aria-label="Compare">
-          <h2>Compare</h2>
-          <div class="compare-row">
-            <a href="#panel-arcada">
-              <svg class="geo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="currentColor"/></svg>
-              <strong>Arcada</strong>
-              <span>social club</span>
-              <span>6 clubs</span>
-            </a>
-            <a href="#panel-mattercircle">
-              <svg class="geo" viewBox="0 0 100 100" aria-hidden="true">
-                <g fill="none" stroke="currentColor" stroke-width="2.4">
-                  <circle cx="50" cy="50" r="16"/><circle cx="50" cy="50" r="28"/><circle cx="50" cy="50" r="40"/>
-                </g>
-              </svg>
-              <strong>Mattercircle</strong>
-              <span>material products</span>
-              <span>4 lines</span>
-            </a>
-            <a href="#panel-humanehealth">
-              <svg class="geo" viewBox="0 0 32 32" aria-hidden="true">
-                <g fill="none" stroke="currentColor" stroke-linecap="butt">
-                  <path stroke-width="2.2" d="M9.2 8.4A9.2 9.2 0 0 1 20.6 6.8"/>
-                  <path stroke-width="2.2" d="M24.8 12.6A9.2 9.2 0 0 1 23.2 23.4"/>
-                  <path stroke-width="2.2" d="M16.8 27.2A9.2 9.2 0 0 1 7.4 16.2"/>
-                </g>
-              </svg>
-              <strong>Humanehealth</strong>
-              <span>clinical</span>
-              <span>8 practices</span>
-            </a>
-            <a href="#panel-lightround">
-              <svg class="geo" viewBox="0 0 100 100" aria-hidden="true">
-                <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="2.6"/>
-                <rect x="16" y="46.5" width="68" height="7" fill="#E4C56A"/>
-              </svg>
-              <strong>Lightround</strong>
-              <span>allocator</span>
-              <span>mandate · allocations · screens · desk</span>
-            </a>
-          </div>
-        </section>
-        <section class="catalog" aria-label="Catalog">
-          <div class="catalog-group">
-            <h2>Arcada</h2>
-            <div class="catalog-grid">
-              <a href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a>
-              <a href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a>
-              <a href="https://arcada.devoutshaman.com/clubs/political">political club</a>
-              <a href="https://arcada.devoutshaman.com/clubs/education">education club</a>
-              <a href="https://arcada.devoutshaman.com/clubs/media">media club</a>
-              <a href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a>
-            </div>
-          </div>
-          <div class="catalog-group">
-            <h2>Mattercircle</h2>
-            <div class="catalog-grid">
-              <a href="https://mattercircle.devoutshaman.com/climb/toiletries">toiletries</a>
-              <a href="https://mattercircle.devoutshaman.com/climb/wearables">wearables</a>
-              <a href="https://mattercircle.devoutshaman.com/climb/utility">utility</a>
-              <a href="https://mattercircle.devoutshaman.com/climb/furniture">furniture</a>
-            </div>
-          </div>
-          <div class="catalog-group">
-            <h2>Humanehealth</h2>
-            <div class="catalog-grid">
-              <a href="https://humanehealth.devoutshaman.com/ops/wellness">schedule wellness</a>
-              <a href="https://humanehealth.devoutshaman.com/ops/diagnostic">invasive diagnostic</a>
-              <a href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">unnaturalfertility</a>
-              <a href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a>
-              <a href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a>
-              <a href="https://acashi.devoutshaman.com">acashi</a>
-              <a href="https://devoutshaman.com">devoutshaman</a>
-              <a href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a>
-            </div>
-          </div>
-          <div class="catalog-group">
-            <h2>Lightround</h2>
-            <div class="catalog-grid">
-              <a href="https://lightround.devoutshaman.com/">mandate</a>
-              <a href="https://lightround.devoutshaman.com/portfolio">allocations</a>
-              <a href="https://lightround.devoutshaman.com/thesis">screens</a>
-              <a href="https://lightround.devoutshaman.com/contact">lp desk</a>
-            </div>
-          </div>
-        </section>
-        <footer class="corp-foot">
-          <div class="corp-cols">
-            <div>
-              <h2>Arcada</h2>
-              <a href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a>
-              <a href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a>
-              <a href="https://arcada.devoutshaman.com/clubs/political">political club</a>
-              <a href="https://arcada.devoutshaman.com/clubs/education">education club</a>
-              <a href="https://arcada.devoutshaman.com/clubs/media">media club</a>
-              <a href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a>
-            </div>
-            <div>
-              <h2>Mattercircle</h2>
-              <a href="https://mattercircle.devoutshaman.com/climb/toiletries">toiletries</a>
-              <a href="https://mattercircle.devoutshaman.com/climb/wearables">wearables</a>
-              <a href="https://mattercircle.devoutshaman.com/climb/utility">utility</a>
-              <a href="https://mattercircle.devoutshaman.com/climb/furniture">furniture</a>
-            </div>
-            <div>
-              <h2>Humanehealth</h2>
-              <a href="https://humanehealth.devoutshaman.com/ops/wellness">schedule wellness</a>
-              <a href="https://humanehealth.devoutshaman.com/ops/diagnostic">invasive diagnostic</a>
-              <a href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">unnaturalfertility</a>
-              <a href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a>
-              <a href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a>
-              <a href="https://acashi.devoutshaman.com">acashi</a>
-              <a href="https://devoutshaman.com">devoutshaman</a>
-              <a href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a>
-            </div>
-            <div>
-              <h2>Lightround</h2>
-              <a href="https://lightround.devoutshaman.com/">mandate</a>
-              <a href="https://lightround.devoutshaman.com/portfolio">allocations</a>
-              <a href="https://lightround.devoutshaman.com/thesis">screens</a>
-              <a href="https://lightround.devoutshaman.com/contact">lp desk</a>
-            </div>
-          </div>
-          <p class="corp-end">devo</p>
-        </footer>
-      </div>
+      <footer class="support">
+        <a href="https://donate.stripe.com/7sY00ifPd8Xdb278i24Ni00">Support Devo</a>
+        <p>A gift to Atla LLC. Not tax deductible, not an investment.</p>
+      </footer>
     <script src="/shared/preview.js"></script>
-    <script src="/shared/theme.js?v=32"></script>
+    <script src="/shared/theme.js?v=33"></script>
   </body>
 </html>

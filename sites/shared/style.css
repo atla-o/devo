@@ -112,7 +112,7 @@ a:hover {
   color: inherit;
   cursor: pointer;
   line-height: 0;
-  perspective: 280px;
+  perspective: 80px;
   perspective-origin: 50% 50%;
 }
 
@@ -391,6 +391,7 @@ html[data-theme="rich"] .theme-rich {
   width: 52px;
   height: 52px;
   flex: 0 0 52px;
+  perspective: 48px;
 }
 
 .topbar .theme-switch svg {

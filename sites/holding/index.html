@@ -10,7 +10,7 @@
     />
     <meta name="theme-color" content="#F4F0E8" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css?v=58" />
+    <link rel="stylesheet" href="/shared/style.css?v=59" />
     <script>
       try {
         if (localStorage.getItem("devo-theme") === "rich") {
@@ -86,143 +86,86 @@
           </span>
         </button>
         <nav class="topnav" aria-label="Devo">
-          <div class="topitem">
-            <a href="https://arcada.devoutshaman.com">Arcada</a>
-            <div class="dropdown">
-              <div class="drop-cols">
-                <div class="drop-side drop-side--products">
-                  <p class="drop-kicker">Products</p>
-                  <div class="drop-row">
-                    <a class="drop-line" href="https://arcada.devoutshaman.com/membership">northern social club</a>
-                  </div>
-                </div>
-                <div class="drop-side drop-side--services">
-                  <p class="drop-kicker">Services</p>
-                  <div class="drop-row">
-                    <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a>
-                    <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a>
-                    <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/political">political club</a>
-                    <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/education">education club</a>
-                    <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/media">media club</a>
-                    <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a>
-                    <a class="drop-line" href="https://arcada.devoutshaman.com/events#online-intro">online intro</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="topitem" data-cat="utopia">
+            <a href="https://arcada.devoutshaman.com">utopiasocial</a>
           </div>
-          <div class="topitem">
+          <div class="topitem" data-cat="matter">
             <a href="https://mattercircle.devoutshaman.com">Mattercircle</a>
-            <div class="dropdown">
-              <div class="drop-cols">
-                <div class="drop-side drop-side--products">
-                  <p class="drop-kicker">Products</p>
-                  <div class="drop-row">
-                    <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/toiletries">toiletries</a>
-                    <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/wearables">wearables</a>
-                    <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/utility">utility</a>
-                    <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/furniture">furniture</a>
-                  </div>
-                </div>
-                <div class="drop-side drop-side--services">
-                  <p class="drop-kicker">Services</p>
-                  <div class="drop-row">
-                    <a class="drop-line" href="https://mattercircle.devoutshaman.com/checkout">checkout</a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-          <div class="topitem">
+          <div class="topitem" data-cat="health">
             <a href="https://humanehealth.devoutshaman.com">Humanehealth</a>
-            <div class="dropdown">
-              <div class="drop-cols">
-                <div class="drop-side drop-side--products">
-                  <p class="drop-kicker">Products</p>
-                  <div class="drop-row">
-                    <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a>
-                    <a class="drop-line" href="https://devoutshaman.com">devoutshaman</a>
-                  </div>
-                </div>
-                <div class="drop-side drop-side--services">
-                  <p class="drop-kicker">Services</p>
-                  <div class="drop-row">
-                    <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/wellness">schedule wellness</a>
-                    <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/diagnostic">invasive diagnostic</a>
-                    <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">unnaturalfertility</a>
-                    <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a>
-                    <a class="drop-line" href="https://acashi.devoutshaman.com">acashi</a>
-                    <a class="drop-line" href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="topitem">
-            <a href="https://lightround.devoutshaman.com">Lightround</a>
-            <div class="dropdown">
-              <div class="drop-cols">
-                <div class="drop-side drop-side--products">
-                  <p class="drop-kicker">Products</p>
-                  <div class="drop-row">
-                    <a class="drop-line" href="https://lightround.devoutshaman.com/">mandate</a>
-                    <a class="drop-line" href="https://lightround.devoutshaman.com/portfolio">allocations</a>
-                    <a class="drop-line" href="https://lightround.devoutshaman.com/thesis">screens</a>
-                  </div>
-                </div>
-                <div class="drop-side drop-side--services">
-                  <p class="drop-kicker">Services</p>
-                  <div class="drop-row">
-                    <a class="drop-line" href="https://lightround.devoutshaman.com/contact">lp desk</a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </nav>
         <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Menu">
           <span class="menu-word">Menu</span>
         </button>
+        <div class="dropdown">
+          <div class="drop-frame">
+            <div class="drop-sheet" data-cat="utopia">
+              <div class="drop-side">
+                <p class="drop-kicker">Products</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/membership">northern social club</a>
+                </div>
+              </div>
+              <div class="drop-side">
+                <p class="drop-kicker">Services</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/political">political club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/education">education club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/media">media club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a>
+                  <a class="drop-line" href="https://arcada.devoutshaman.com/events#online-intro">online intro</a>
+                </div>
+              </div>
+            </div>
+            <div class="drop-sheet" data-cat="matter">
+              <div class="drop-side">
+                <p class="drop-kicker">Products</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/toiletries">toiletries</a>
+                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/wearables">wearables</a>
+                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/utility">utility</a>
+                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/climb/furniture">furniture</a>
+                </div>
+              </div>
+              <div class="drop-side">
+                <p class="drop-kicker">Services</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="https://mattercircle.devoutshaman.com/checkout">checkout</a>
+                </div>
+              </div>
+            </div>
+            <div class="drop-sheet" data-cat="health">
+              <div class="drop-side">
+                <p class="drop-kicker">Products</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a>
+                  <a class="drop-line" href="https://devoutshaman.com">devoutshaman</a>
+                </div>
+              </div>
+              <div class="drop-side">
+                <p class="drop-kicker">Services</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/wellness">schedule wellness</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/diagnostic">invasive diagnostic</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">unnaturalfertility</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a>
+                  <a class="drop-line" href="https://acashi.devoutshaman.com">acashi</a>
+                  <a class="drop-line" href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </header>
       <div class="menu-sheet">
-          <a class="menu-house" href="https://arcada.devoutshaman.com">Arcada</a>
-          <p class="menu-kicker">Products</p>
-          <a href="https://arcada.devoutshaman.com/membership">northern social club</a>
-          <p class="menu-kicker">Services</p>
-          <a href="https://arcada.devoutshaman.com/clubs/ancestry">ancestry club</a>
-          <a href="https://arcada.devoutshaman.com/clubs/spiritual">spiritual club</a>
-          <a href="https://arcada.devoutshaman.com/clubs/political">political club</a>
-          <a href="https://arcada.devoutshaman.com/clubs/education">education club</a>
-          <a href="https://arcada.devoutshaman.com/clubs/media">media club</a>
-          <a href="https://arcada.devoutshaman.com/clubs/recreation">recreation club</a>
-          <a href="https://arcada.devoutshaman.com/events#online-intro">online intro</a>
-          <a class="menu-house" href="https://mattercircle.devoutshaman.com">Mattercircle</a>
-          <p class="menu-kicker">Products</p>
-          <a href="https://mattercircle.devoutshaman.com/climb/toiletries">toiletries</a>
-          <a href="https://mattercircle.devoutshaman.com/climb/wearables">wearables</a>
-          <a href="https://mattercircle.devoutshaman.com/climb/utility">utility</a>
-          <a href="https://mattercircle.devoutshaman.com/climb/furniture">furniture</a>
-          <p class="menu-kicker">Services</p>
-          <a href="https://mattercircle.devoutshaman.com/checkout">checkout</a>
-          <a class="menu-house" href="https://humanehealth.devoutshaman.com">Humanehealth</a>
-          <p class="menu-kicker">Products</p>
-          <a href="https://humanehealth.devoutshaman.com/ops/stimulants">concentrated stimulants</a>
-          <a href="https://devoutshaman.com">devoutshaman</a>
-          <p class="menu-kicker">Services</p>
-          <a href="https://humanehealth.devoutshaman.com/ops/wellness">schedule wellness</a>
-          <a href="https://humanehealth.devoutshaman.com/ops/diagnostic">invasive diagnostic</a>
-          <a href="https://humanehealth.devoutshaman.com/ops/unnaturalfertility">unnaturalfertility</a>
-          <a href="https://humanehealth.devoutshaman.com/ops/cosmetic">cosmetic restoration</a>
-          <a href="https://acashi.devoutshaman.com">acashi</a>
-          <a href="https://humanehealth.devoutshaman.com/develop-cures">develop cures</a>
-          <a class="menu-house" href="https://lightround.devoutshaman.com">Lightround</a>
-          <p class="menu-kicker">Products</p>
-          <a href="https://lightround.devoutshaman.com/">mandate</a>
-          <a href="https://lightround.devoutshaman.com/portfolio">allocations</a>
-          <a href="https://lightround.devoutshaman.com/thesis">screens</a>
-          <p class="menu-kicker">Services</p>
-          <a href="https://lightround.devoutshaman.com/contact">lp desk</a>
-        </div>
+        <a href="https://arcada.devoutshaman.com">utopiasocial</a>
+        <a href="https://mattercircle.devoutshaman.com">Mattercircle</a>
+        <a href="https://humanehealth.devoutshaman.com">Humanehealth</a>
+      </div>
       <div class="home-panels">
         <div class="offer">
           <section class="panel" id="panel-arcada" data-branch="arcada">
@@ -449,6 +392,6 @@
         </footer>
       </div>
     <script src="/shared/preview.js"></script>
-    <script src="/shared/theme.js?v=31"></script>
+    <script src="/shared/theme.js?v=32"></script>
   </body>
 </html>

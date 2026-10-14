@@ -20,6 +20,60 @@
   var menuBtn = document.querySelector(".menu-toggle");
   var menuSheet = document.querySelector(".menu-sheet");
 
+  function measureDrop() {
+    var lines = document.querySelectorAll(".dropdown a.drop-line");
+    if (!lines.length) return;
+    var sample = window.getComputedStyle(lines[0]);
+    var probe = document.createElement("span");
+    probe.style.position = "absolute";
+    probe.style.left = "-9999px";
+    probe.style.top = "0";
+    probe.style.visibility = "hidden";
+    probe.style.whiteSpace = "nowrap";
+    probe.style.font = sample.font;
+    probe.style.letterSpacing = sample.letterSpacing;
+    document.body.appendChild(probe);
+    var max = 0;
+    lines.forEach(function (el) {
+      probe.textContent = (el.textContent || "").trim();
+      var width = probe.getBoundingClientRect().width;
+      if (width > max) max = width;
+    });
+    probe.remove();
+    if (max > 0) {
+      document.documentElement.style.setProperty("--drop-col", Math.ceil(max) + "px");
+    }
+  }
+
+  function openCat(cat) {
+    if (!bar || !cat) return;
+    bar.setAttribute("data-open", cat);
+  }
+
+  function closeCat() {
+    if (!bar) return;
+    bar.removeAttribute("data-open");
+  }
+
+  document.querySelectorAll(".topitem[data-cat]").forEach(function (item) {
+    var cat = item.getAttribute("data-cat");
+    item.addEventListener("mouseenter", function () {
+      openCat(cat);
+    });
+    item.addEventListener("focusin", function () {
+      openCat(cat);
+    });
+  });
+  if (bar) {
+    bar.addEventListener("mouseleave", closeCat);
+    bar.addEventListener("focusout", function (event) {
+      if (!bar.contains(event.relatedTarget)) closeCat();
+    });
+  }
+
+  measureDrop();
+  window.addEventListener("resize", measureDrop);
+
   function setMenu(open) {
     if (!menuBtn || !menuSheet) return;
     menuBtn.setAttribute("aria-expanded", open ? "true" : "false");

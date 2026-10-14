@@ -70,19 +70,30 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn('class="theme-rich"', body)
             self.assertIn('class="topbar"', body)
             self.assertIn('class="topnav"', body)
-            self.assertEqual(body.count('class="dropdown"'), 4, host)
+            self.assertEqual(body.count('class="dropdown"'), 1, host)
+            self.assertEqual(body.count('class="drop-sheet"'), 3, host)
             rich = body.split('class="theme-rich"', 1)[1]
-            menus = rich.split('class="dropdown"')[1:]
+            bar = rich.split('class="home-panels"', 1)[0]
+            self.assertNotIn("data-local", bar, host)
+            self.assertIn('href="https://arcada.devoutshaman.com">utopiasocial</a>', bar)
+            self.assertIn('href="https://mattercircle.devoutshaman.com">Mattercircle</a>', bar)
+            self.assertIn('href="https://humanehealth.devoutshaman.com">Humanehealth</a>', bar)
+            self.assertIn(">Menu<", bar)
+            self.assertNotIn(">Arcada<", bar, host)
+            self.assertNotIn(">Lightround<", bar, host)
+            sheets = rich.split('class="drop-sheet"')[1:4]
             map_lines = (
                 (
+                    "northern social club",
                     "ancestry club",
                     "spiritual club",
                     "political club",
                     "education club",
                     "media club",
                     "recreation club",
+                    "online intro",
                 ),
-                ("toiletries", "wearables", "utility", "furniture"),
+                ("toiletries", "wearables", "utility", "furniture", "checkout"),
                 (
                     "concentrated stimulants",
                     "devoutshaman",
@@ -93,9 +104,9 @@ class HostRoutingTests(unittest.TestCase):
                     "acashi",
                     "develop cures",
                 ),
-                ("mandate", "allocations", "screens", "lp desk"),
             )
-            for menu, labels in zip(menus, map_lines):
+            for menu, labels in zip(sheets, map_lines):
+                self.assertLess(menu.index(">Products<"), menu.index(">Services<"), host)
                 spots = [menu.index(f">{label}<") for label in labels]
                 self.assertEqual(spots, sorted(spots), host)
             self.assertEqual(body.count('class="panel"'), 4, host)

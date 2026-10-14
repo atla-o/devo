@@ -92,7 +92,7 @@ a:hover {
   border: 0;
   background: transparent;
   box-shadow: none;
-  color: #000;
+  color: #fff;
   line-height: 0;
 }
 
@@ -498,9 +498,8 @@ html[data-theme="rich"] .theme-rich {
 
 .mosaic--matter .cell--furniture { grid-column: 1; grid-row: 1 / 4; }
 .mosaic--matter .cell--wearables { grid-column: 2 / 4; grid-row: 1; }
-.mosaic--matter .cell--house { grid-column: 2; grid-row: 2 / 4; }
-.mosaic--matter .cell--toiletries { grid-column: 3; grid-row: 2; }
-.mosaic--matter .cell--utility { grid-column: 3; grid-row: 3; }
+.mosaic--matter .cell--toiletries { grid-column: 2 / 4; grid-row: 2; }
+.mosaic--matter .cell--utility { grid-column: 2 / 4; grid-row: 3; }
 
 .mosaic--health {
   grid-template-columns: 1fr 0.85fr 1.15fr 0.7fr;
@@ -511,8 +510,7 @@ html[data-theme="rich"] .theme-rich {
 .mosaic--health .cell--diagnostic { grid-column: 3; grid-row: 1 / 4; }
 .mosaic--health .cell--stimulants { grid-column: 4; grid-row: 1 / 4; }
 .mosaic--health .cell--fertility { grid-column: 1; grid-row: 2 / 4; }
-.mosaic--health .cell--house { grid-column: 2; grid-row: 2; }
-.mosaic--health .cell--cosmetic { grid-column: 2 / 3; grid-row: 3; }
+.mosaic--health .cell--cosmetic { grid-column: 2; grid-row: 2 / 4; }
 
 .mosaic--light {
   grid-template-columns: 1.25fr 0.95fr 0.62fr;
@@ -521,9 +519,8 @@ html[data-theme="rich"] .theme-rich {
 
 .mosaic--light .cell--mandate { grid-column: 1 / 3; grid-row: 1; }
 .mosaic--light .cell--screens { grid-column: 3; grid-row: 1 / 4; }
-.mosaic--light .cell--allocations { grid-column: 1; grid-row: 2; }
-.mosaic--light .cell--house { grid-column: 2; grid-row: 2 / 4; }
-.mosaic--light .cell--desk { grid-column: 1; grid-row: 3; }
+.mosaic--light .cell--allocations { grid-column: 1 / 3; grid-row: 2; }
+.mosaic--light .cell--desk { grid-column: 1 / 3; grid-row: 3; }
 
 .shot {
   position: relative;
@@ -579,88 +576,6 @@ html[data-theme="rich"] .theme-rich {
 
 .shot img {
   transition: transform 0.45s ease;
-}
-
-.cell--political {
-  position: relative;
-  min-width: 0;
-  min-height: 0;
-}
-
-.cell--political > .shot {
-  position: absolute;
-  inset: 0;
-}
-
-.cell--house {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-width: 0;
-  min-height: 0;
-  padding: 1rem 1rem 1.05rem;
-  text-align: left;
-}
-
-.mosaic--matter .cell--house {
-  justify-content: center;
-  background: #141414;
-  color: #f5f5f7;
-}
-
-.mosaic--health .cell--house {
-  justify-content: flex-start;
-  background: #f3efe6;
-  color: #1d1d1f;
-}
-
-.mosaic--light .cell--house {
-  background: #0c0c0c;
-  color: #f5f5f7;
-  box-shadow: inset 0 3px 0 #c6a15a;
-}
-
-.house--on-photo {
-  position: absolute;
-  z-index: 2;
-  top: 1rem;
-  left: 1rem;
-  max-width: 16rem;
-  color: #f5f5f7;
-  text-align: left;
-}
-
-.mosaic .panel-title {
-  font-size: clamp(1.7rem, 2.6vw, 3rem);
-}
-
-.house--on-photo .panel-title {
-  font-size: clamp(2.4rem, 4vw, 4.2rem);
-}
-
-.panel .house .btn--fill,
-.panel .cell--house .btn--fill {
-  min-width: 0;
-  height: auto;
-  margin-top: 0.35rem;
-  padding: 0;
-  background: transparent;
-  color: inherit;
-  border-radius: 0;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.cell--house .panel-actions,
-.house--on-photo .panel-actions {
-  justify-content: flex-start;
-}
-
-.cell--house .panel-scale,
-.house--on-photo .panel-scale {
-  margin-top: 0.65rem;
 }
 
 .topbar:has(.topitem:hover),
@@ -913,12 +828,6 @@ body[data-branch] .corp {
 .panel[data-branch="lightround"] .btn--fill {
   background: #f5f5f7;
   color: #1d1d1f;
-}
-
-.panel .house .btn--fill,
-.panel .cell--house .btn--fill {
-  background: transparent;
-  color: inherit;
 }
 
 .panel[data-branch="mattercircle"] .btn--ghost,
@@ -1228,14 +1137,13 @@ html:has(body.menu-open) {
 
   .mosaic--matter {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 0.75fr 0.7fr 0.72fr;
+    grid-template-rows: 1.15fr 0.9fr 0.95fr;
   }
 
   .mosaic--matter .cell--furniture { grid-column: 1; grid-row: 1 / 3; }
   .mosaic--matter .cell--wearables { grid-column: 2; grid-row: 1; }
   .mosaic--matter .cell--utility { grid-column: 2; grid-row: 2; }
   .mosaic--matter .cell--toiletries { grid-column: 1 / 3; grid-row: 3; }
-  .mosaic--matter .cell--house { grid-column: 1 / 3; grid-row: 4; }
 
   .mosaic--health {
     grid-template-columns: 1.15fr 0.85fr;
@@ -1245,8 +1153,7 @@ html:has(body.menu-open) {
   .mosaic--health .cell--wellness { grid-column: 1 / 3; grid-row: 1; }
   .mosaic--health .cell--diagnostic { grid-column: 1; grid-row: 2; }
   .mosaic--health .cell--stimulants { grid-column: 2; grid-row: 2 / 4; }
-  .mosaic--health .cell--fertility { grid-column: 1; grid-row: 3; }
-  .mosaic--health .cell--house { grid-column: 1; grid-row: 4; }
+  .mosaic--health .cell--fertility { grid-column: 1; grid-row: 3 / 5; }
   .mosaic--health .cell--cosmetic { grid-column: 2; grid-row: 4; }
 
   .mosaic--light {
@@ -1255,20 +1162,9 @@ html:has(body.menu-open) {
   }
 
   .mosaic--light .cell--mandate { grid-column: 1 / 3; grid-row: 1; }
-  .mosaic--light .cell--allocations { grid-column: 1; grid-row: 2; }
+  .mosaic--light .cell--allocations { grid-column: 1; grid-row: 2 / 4; }
   .mosaic--light .cell--desk { grid-column: 2; grid-row: 2; }
-  .mosaic--light .cell--house { grid-column: 1; grid-row: 3; }
   .mosaic--light .cell--screens { grid-column: 2; grid-row: 3; }
-
-  .house--on-photo {
-    top: 0.7rem;
-    left: 0.7rem;
-  }
-
-  .house--on-photo .panel-title,
-  .cell--house .panel-title {
-    font-size: 1.55rem;
-  }
 
   .shot span {
     font-size: 0.78rem;

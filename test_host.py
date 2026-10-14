@@ -64,28 +64,51 @@ class HostRoutingTests(unittest.TestCase):
             self.assertNotIn("devo - lateral health corp", body)
             self.assertIn('class="fineprint">devo</p>', body)
             self.assertNotIn("parent holding of a lateral health corporation", body)
-            self.assertEqual(body.count('class="tile"'), 4, host)
+            self.assertNotIn('class="tile"', body)
             self.assertIn('class="mark mark--halo"', body)
             self.assertIn('class="theme-switch"', body)
             self.assertIn('class="theme-rich"', body)
             self.assertIn('class="topbar"', body)
             self.assertIn('class="topnav"', body)
-            self.assertEqual(body.count('class="topitem"'), 4, host)
             self.assertEqual(body.count('class="dropdown"'), 4, host)
-            self.assertEqual(body.count('class="drop-line"'), 25, host)
-            self.assertEqual(body.count('class="drop-kicker"'), 8, host)
+            rich = body.split('class="theme-rich"', 1)[1]
+            menus = rich.split('class="dropdown"')[1:]
+            map_lines = (
+                (
+                    "ancestry club",
+                    "spiritual club",
+                    "political club",
+                    "education club",
+                    "media club",
+                    "recreation club",
+                ),
+                ("toiletries", "wearables", "utility", "furniture"),
+                (
+                    "concentrated stimulants",
+                    "devoutshaman",
+                    "schedule wellness",
+                    "invasive diagnostic",
+                    "unnaturalfertility",
+                    "cosmetic restoration",
+                    "acashi",
+                    "develop cures",
+                ),
+                ("mandate", "allocations", "screens", "lp desk"),
+            )
+            for menu, labels in zip(menus, map_lines):
+                spots = [menu.index(f">{label}<") for label in labels]
+                self.assertEqual(spots, sorted(spots), host)
+            self.assertEqual(body.count('class="panel"'), 4, host)
+            self.assertNotIn('class="branch-view"', body, host)
+            self.assertIn("6 clubs", body)
+            self.assertIn("4 lines", body)
+            self.assertIn("8 practices", body)
+            self.assertIn("mandate · allocations · screens · desk", body)
             self.assertIn('href="https://arcada.devoutshaman.com/clubs/ancestry"', body)
-            self.assertIn('href="https://arcada.devoutshaman.com/membership"', body)
             self.assertIn('href="https://mattercircle.devoutshaman.com/climb/toiletries"', body)
-            self.assertIn('href="https://mattercircle.devoutshaman.com/checkout"', body)
             self.assertIn('href="https://humanehealth.devoutshaman.com/ops/wellness"', body)
             self.assertIn('href="https://lightround.devoutshaman.com/thesis"', body)
             self.assertIn('href="https://lightround.devoutshaman.com/contact"', body)
-            self.assertIn("/shared/panels/arcada.svg", body)
-            self.assertIn("/shared/panels/mattercircle.svg", body)
-            self.assertIn("/shared/panels/humanehealth.svg", body)
-            self.assertIn("/shared/panels/lightround.svg", body)
-            self.assertEqual(body.count('class="panel"'), 4, host)
             self.assertNotIn("<p>Product</p>", body)
             self.assertNotIn("<p>Service</p>", body)
             self.assertNotIn("<p>Fund</p>", body)
@@ -97,34 +120,32 @@ class HostRoutingTests(unittest.TestCase):
             self.assertNotIn("Clinic network", body, host)
             self.assertNotIn("Counterdecadence", body, host)
             self.assertNotIn("Factory essentials", body, host)
-            humane = body.split("<h2>Humanehealth</h2>", 1)[1].split("</li>", 1)[0]
-            self.assertNotIn("tile-blurb", humane, host)
-            self.assertIn("halo--fractured", humane, host)
-            lightround = body.split("<h2>Lightround</h2>", 1)[1].split("</li>", 1)[0]
-            self.assertNotIn("tile-blurb", lightround, host)
-            self.assertNotIn("fund", lightround, host)
-            self.assertIn("halo--fractured", lightround, host)
-            for whole in ("Arcada", "Mattercircle"):
-                after = body.split(f"<h2>{whole}</h2>", 1)[1].split("</li>", 1)[0]
-                self.assertIn('class="halo halo--whole"', after, host)
-                self.assertNotIn("halo--fractured", after, host)
+            simple = body.split('class="theme-rich"', 1)[0]
+            for label in (
+                "ancestry club",
+                "toiletries",
+                "schedule wellness",
+                "unnaturalfertility",
+                "acashi",
+                "develop cures",
+                "mandate",
+                "lp desk",
+            ):
+                self.assertIn(label, simple, host)
             positions = [body.index(name) for name in TILE_NAMES]
             self.assertEqual(positions, sorted(positions), host)
-            arcada = body.split("<h2>Arcada</h2>", 1)[0]
-            arcada_tag = arcada.rsplit("<a", 1)[-1]
-            self.assertIn('href="https://arcada.devoutshaman.com"', arcada_tag)
-            self.assertNotIn("data-local", arcada_tag)
+            arcada = simple.split("<h2>", 1)[1]
+            self.assertIn('href="https://arcada.devoutshaman.com"', arcada.split("</h2>", 1)[0])
+            self.assertNotIn("data-local", arcada.split("</h2>", 1)[0])
             self.assertNotIn("Holdings", body, host)
             self.assertNotIn("biology", body, host)
             self.assertNotIn("physics", body, host)
-            simple = body.split('class="theme-rich"', 1)[0]
             for buried in (
                 "Phenomatch",
                 "Antiporn",
                 "Lessfret",
                 "Acashi",
                 "Planet",
-                "unnaturalfertility",
             ):
                 self.assertNotIn(buried, simple, host)
             self.assertNotIn("stage-6", body)

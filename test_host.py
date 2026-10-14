@@ -13,16 +13,10 @@ import server
 
 PORT = int(os.environ.get("TEST_PORT", "18080"))
 
-TOP_HOSTS = (
-    "https://arcada.devoutshaman.com",
-    "https://lightround.devoutshaman.com",
-    "https://humanehealth.devoutshaman.com",
-    "https://mattercircle.devoutshaman.com",
-)
-TILE_NAMES = ("Arcada", "Mattercircle", "Humanehealth", "Lightround")
+TILE_NAMES = ("Humanehealth", "utopiasocial", "Mattercircle")
 TILE_BLURBS = (
-    "social club",
-    "material products",
+    "utopia social club",
+    "non-petroleum factory",
 )
 
 
@@ -62,7 +56,17 @@ class HostRoutingTests(unittest.TestCase):
             status, body = self.fetch(host)
             self.assertEqual(status, 200, host)
             self.assertNotIn("devo - lateral health corp", body)
-            self.assertIn('class="fineprint">devo</p>', body)
+            self.assertNotIn('class="fineprint">devo</p>', body)
+            self.assertIn(">Support Devo</a>", body)
+            self.assertIn(
+                "https://donate.stripe.com/7sY00ifPd8Xdb278i24Ni00",
+                body,
+            )
+            self.assertIn(
+                "A gift to Atla LLC. Not tax deductible, not an investment.",
+                body,
+            )
+            self.assertEqual(body.count('class="support"'), 2, host)
             self.assertNotIn("parent holding of a lateral health corporation", body)
             self.assertNotIn('class="tile"', body)
             self.assertIn('class="mark mark--halo"', body)
@@ -70,22 +74,22 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn('class="theme-rich"', body)
             self.assertIn('class="topbar"', body)
             self.assertIn('class="topnav"', body)
-            self.assertEqual(body.count('class="dropdown"'), 4, host)
+            self.assertEqual(body.count('class="dropdown"'), 1, host)
+            self.assertEqual(body.count('class="drop-sheet"'), 3, host)
             rich = body.split('class="theme-rich"', 1)[1]
-            menus = rich.split('class="dropdown"')[1:]
+            bar = rich.split('class="home-panels"', 1)[0]
+            self.assertNotIn("data-local", bar, host)
+            self.assertIn('href="https://utopiasocial.devoutshaman.com">utopiasocial</a>', bar)
+            self.assertIn('href="https://mattercircle.devoutshaman.com">Mattercircle</a>', bar)
+            self.assertIn('href="https://humanehealth.devoutshaman.com">Humanehealth</a>', bar)
+            self.assertIn(">Menu<", bar)
+            self.assertNotIn(">Arcada<", bar, host)
+            self.assertNotIn(">Lightround<", bar, host)
+            sheets = rich.split('class="drop-sheet"')[1:4]
             map_lines = (
                 (
-                    "ancestry club",
-                    "spiritual club",
-                    "political club",
-                    "education club",
-                    "media club",
-                    "recreation club",
-                ),
-                ("toiletries", "wearables", "utility", "furniture"),
-                (
                     "concentrated stimulants",
-                    "devoutshaman",
+                    "Humanehealth store",
                     "schedule wellness",
                     "invasive diagnostic",
                     "unnaturalfertility",
@@ -93,26 +97,48 @@ class HostRoutingTests(unittest.TestCase):
                     "acashi",
                     "develop cures",
                 ),
-                ("mandate", "allocations", "screens", "lp desk"),
+                (
+                    "utopia social club",
+                    "ancestry club",
+                    "intellectual club",
+                    "leisure club",
+                    "political club",
+                    "spiritual club",
+                ),
+                ("toiletries", "wearables", "utility", "furniture", "checkout"),
             )
-            for menu, labels in zip(menus, map_lines):
+            for menu, labels in zip(sheets, map_lines):
+                self.assertLess(menu.index(">Products<"), menu.index(">Services<"), host)
                 spots = [menu.index(f">{label}<") for label in labels]
                 self.assertEqual(spots, sorted(spots), host)
-            self.assertEqual(body.count('class="panel"'), 4, host)
+            self.assertEqual(body.count('class="panel"'), 3, host)
             self.assertNotIn('class="branch-view"', body, host)
-            self.assertIn("6 clubs", body)
-            self.assertIn("4 lines", body)
-            self.assertIn("8 practices", body)
-            self.assertIn("mandate · allocations · screens · desk", body)
-            self.assertIn('href="https://arcada.devoutshaman.com/clubs/ancestry"', body)
+            self.assertIn("prefab housing", body)
+            self.assertIn('href="https://utopiasocial.devoutshaman.com/clubs/ancestry"', body)
+            self.assertIn('href="https://utopiasocial.devoutshaman.com/clubs/intellectual"', body)
+            self.assertIn('href="https://utopiasocial.devoutshaman.com/clubs/leisure"', body)
             self.assertIn('href="https://mattercircle.devoutshaman.com/climb/toiletries"', body)
             self.assertIn('href="https://humanehealth.devoutshaman.com/ops/wellness"', body)
-            self.assertIn('href="https://lightround.devoutshaman.com/thesis"', body)
-            self.assertIn('href="https://lightround.devoutshaman.com/contact"', body)
+            self.assertNotIn("lightround.devoutshaman.com", body, host)
+            self.assertNotIn("Lightround", body, host)
+            self.assertNotIn("Terraform", body, host)
+            self.assertNotIn("Arcada", body, host)
+            self.assertNotIn(">devoutshaman<", body, host)
+            self.assertNotIn("education club", body, host)
+            self.assertNotIn("media club", body, host)
+            self.assertNotIn("recreation club", body, host)
+            self.assertNotIn("northern social club", body, host)
+            self.assertNotIn("online intro", body, host)
+            self.assertNotIn("Atlantis", body, host)
+            self.assertNotIn("shippable", body, host)
             self.assertNotIn("<p>Product</p>", body)
             self.assertNotIn("<p>Service</p>", body)
             self.assertNotIn("<p>Fund</p>", body)
-            for href in TOP_HOSTS:
+            for href in (
+                "https://utopiasocial.devoutshaman.com",
+                "https://humanehealth.devoutshaman.com",
+                "https://mattercircle.devoutshaman.com",
+            ):
                 self.assertIn(f'href="{href}"', body, host)
             for blurb in TILE_BLURBS:
                 self.assertIn(blurb, body, host)
@@ -123,20 +149,22 @@ class HostRoutingTests(unittest.TestCase):
             simple = body.split('class="theme-rich"', 1)[0]
             for label in (
                 "ancestry club",
+                "intellectual club",
+                "leisure club",
                 "toiletries",
                 "schedule wellness",
                 "unnaturalfertility",
                 "acashi",
+                "Humanehealth store",
                 "develop cures",
-                "mandate",
-                "lp desk",
+                "prefab housing",
             ):
                 self.assertIn(label, simple, host)
             positions = [body.index(name) for name in TILE_NAMES]
             self.assertEqual(positions, sorted(positions), host)
-            arcada = simple.split("<h2>", 1)[1]
-            self.assertIn('href="https://arcada.devoutshaman.com"', arcada.split("</h2>", 1)[0])
-            self.assertNotIn("data-local", arcada.split("</h2>", 1)[0])
+            first = simple.split("<h2>", 1)[1]
+            self.assertIn('href="https://humanehealth.devoutshaman.com"', first.split("</h2>", 1)[0])
+            self.assertNotIn("data-local", first.split("</h2>", 1)[0])
             self.assertNotIn("Holdings", body, host)
             self.assertNotIn("biology", body, host)
             self.assertNotIn("physics", body, host)

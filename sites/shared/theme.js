@@ -69,6 +69,26 @@
   }
 
   var bar = document.querySelector(".topbar");
+  var menuBtn = document.querySelector(".menu-toggle");
+  var menuSheet = document.querySelector(".menu-sheet");
+
+  function setMenu(open) {
+    if (!menuBtn || !menuSheet) return;
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    menuSheet.classList.toggle("is-open", open);
+    document.body.classList.toggle("menu-open", open);
+  }
+
+  if (menuBtn) {
+    menuBtn.addEventListener("click", function () {
+      setMenu(menuBtn.getAttribute("aria-expanded") !== "true");
+    });
+  }
+  if (menuSheet) {
+    menuSheet.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setMenu(false);
+    });
+  }
   window.addEventListener(
     "scroll",
     function () {

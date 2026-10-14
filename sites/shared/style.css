@@ -196,9 +196,11 @@ html[data-theme="rich"] .theme-switch:focus-visible svg {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
   min-height: 0;
   gap: 1.1vh;
+  text-align: center;
 }
 
 .branch h2 {

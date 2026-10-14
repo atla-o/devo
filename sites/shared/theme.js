@@ -28,23 +28,6 @@
     });
   }
 
-  function spy() {
-    if (document.body.getAttribute("data-branch")) return;
-    var line = window.innerHeight * 0.42;
-    var hits = [];
-    document.querySelectorAll(".panel").forEach(function (panel) {
-      var box = panel.getBoundingClientRect();
-      if (box.top <= line && box.bottom > line) hits.push(panel);
-    });
-    markActive(hits.length === 1 ? hits[0].getAttribute("data-branch") : "");
-  }
-
-  function park(panel) {
-    var barH = bar ? bar.offsetHeight : 0;
-    var top = panel.getBoundingClientRect().top + window.scrollY - barH;
-    window.scrollTo(0, Math.max(0, top));
-  }
-
   function route() {
     var hash = (location.hash || "").replace("#", "");
     if (branches.indexOf(hash) !== -1) {
@@ -54,18 +37,7 @@
       return;
     }
     document.body.removeAttribute("data-branch");
-    if (hash.indexOf("panel-") === 0) {
-      var panel = document.getElementById(hash);
-      markActive(hash.replace("panel-", ""));
-      if (panel) {
-        park(panel);
-        requestAnimationFrame(function () {
-          park(panel);
-        });
-      }
-      return;
-    }
-    spy();
+    markActive("");
   }
 
   var bar = document.querySelector(".topbar");
@@ -95,7 +67,6 @@
       if (!bar) return;
       if (window.scrollY > 8) bar.classList.add("is-scrolled");
       else bar.classList.remove("is-scrolled");
-      spy();
     },
     { passive: true }
   );

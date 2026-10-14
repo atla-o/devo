@@ -703,10 +703,6 @@ html[data-theme="rich"] .theme-rich {
   white-space: nowrap;
 }
 
-.topitem > a[aria-current="true"] {
-  opacity: 1;
-}
-
 .topitem > a:hover,
 .topitem > a:focus-visible,
 .topitem:hover > a,

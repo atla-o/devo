@@ -692,11 +692,6 @@ html[data-theme="rich"] .theme-rich {
   display: block;
 }
 
-body[data-branch] .home-panels,
-body[data-branch] .corp {
-  display: none;
-}
-
 .panel {
   position: relative;
   display: flex;
@@ -856,94 +851,6 @@ body[data-branch] .corp {
   opacity: 0.55;
 }
 
-.branch-view {
-  display: none;
-  min-height: calc(100svh - 40px);
-  padding: 14vh 8vw 16vh;
-  background: #f5f5f7;
-  color: #1d1d1f;
-}
-
-body[data-branch="arcada"] .branch-view[data-branch="arcada"],
-body[data-branch="mattercircle"] .branch-view[data-branch="mattercircle"],
-body[data-branch="humanehealth"] .branch-view[data-branch="humanehealth"],
-body[data-branch="lightround"] .branch-view[data-branch="lightround"] {
-  display: block;
-}
-
-.branch-head {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  max-width: 18em;
-  margin: 0 auto 8vh;
-  text-align: center;
-}
-
-.branch-head .geo,
-.geo--small {
-  position: static;
-  width: 3.4rem;
-  height: 3.4rem;
-  margin-bottom: 0.6rem;
-  transform: none;
-}
-
-.branch-head h2 {
-  margin: 0;
-  font-size: clamp(3rem, 8vw, 6.4rem);
-  font-weight: 600;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
-}
-
-.branch-head p {
-  margin: 0.2rem 0 0;
-  color: #6e6e73;
-  font-size: clamp(1.15rem, 2vw, 1.5rem);
-  letter-spacing: -0.015em;
-}
-
-.blocks {
-  display: grid;
-  grid-template-columns: 1fr;
-  max-width: 64rem;
-  margin-inline: auto;
-  border-top: 1px solid rgba(29, 29, 31, 0.14);
-}
-
-.blocks a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  min-height: 0;
-  padding: 1.45rem 0.15rem;
-  background: transparent;
-  border-bottom: 1px solid rgba(29, 29, 31, 0.14);
-  color: #1d1d1f;
-  font-size: clamp(1.45rem, 2.6vw, 2.15rem);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  text-decoration: none;
-}
-
-.blocks a::after {
-  content: "›";
-  flex: none;
-  color: #6e6e73;
-  font-size: 1.35em;
-  font-weight: 300;
-  line-height: 1;
-}
-
-.blocks a:hover,
-.blocks a:focus-visible {
-  opacity: 0.45;
-  text-decoration: none;
-}
-
 .corp {
   background: #f5f5f7;
   color: #1d1d1f;
@@ -1080,14 +987,7 @@ body[data-branch="lightround"] .branch-view[data-branch="lightround"] {
   font-size: 0.75rem;
 }
 
-@media (min-width: 960px) {
-  .blocks {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 4.5rem;
-  }
-}
-
-html[data-theme="rich"]:not(:has(body[data-branch])) {
+html[data-theme="rich"] {
   scroll-snap-type: y proximity;
 }
 

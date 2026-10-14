@@ -14,11 +14,6 @@
     try {
       localStorage.setItem(key, next);
     } catch (err) {}
-    if (next === "rich") route();
-  }
-
-  function route() {
-    document.body.removeAttribute("data-branch");
   }
 
   var bar = document.querySelector(".topbar");
@@ -79,7 +74,5 @@
     setTimeout(finish, 750);
   });
 
-  window.addEventListener("hashchange", route);
   apply(theme());
-  route();
 })();

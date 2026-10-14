@@ -135,12 +135,12 @@ a:hover {
 }
 
 html[data-theme="rich"] .theme-switch svg {
-  transform: rotateX(-180deg);
+  transform: rotateX(0deg);
 }
 
 html[data-theme="rich"] .theme-switch:hover svg,
 html[data-theme="rich"] .theme-switch:focus-visible svg {
-  transform: rotateX(-135deg);
+  transform: rotateX(-45deg);
 }
 
 .theme-switch.is-flipping-down svg,
@@ -161,7 +161,7 @@ html[data-theme="rich"] .theme-switch:focus-visible svg {
 }
 
 @keyframes o-spin-up {
-  to { transform: rotateX(0deg); }
+  to { transform: rotateX(-180deg); }
 }
 
 .holdings {

@@ -637,8 +637,8 @@ html[data-theme="rich"] .theme-rich {
   right: 0;
   top: 100%;
   z-index: 2;
-  display: grid;
-  grid-template-columns: calc(var(--bar-pad-left) + var(--bar)) repeat(4, minmax(0, 1fr)) var(--bar-pad-right);
+  display: flex;
+  justify-content: center;
   align-items: start;
   margin: 0;
   padding: 0.4rem 0 0.48rem;
@@ -650,11 +650,6 @@ html[data-theme="rich"] .theme-rich {
   border-bottom: 1px solid rgba(245, 245, 247, 0.14);
   transition: opacity 0.28s cubic-bezier(0.22, 0.8, 0.3, 1);
 }
-
-.topitem:nth-child(1) .drop-cols { grid-column: 2; }
-.topitem:nth-child(2) .drop-cols { grid-column: 3; }
-.topitem:nth-child(3) .drop-cols { grid-column: 4; }
-.topitem:nth-child(4) .drop-cols { grid-column: 5; }
 
 .topitem:hover > .dropdown,
 .topitem:focus-within > .dropdown {

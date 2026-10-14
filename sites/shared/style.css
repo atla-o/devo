@@ -390,7 +390,8 @@ html[data-theme="rich"] .theme-rich {
   border-bottom: 1px solid transparent;
 }
 
-.topbar.is-scrolled {
+.topbar.is-scrolled,
+.topbar.is-scrolled .dropdown {
   background: rgba(0, 0, 0, 0.94);
   border-bottom-color: rgba(245, 245, 247, 0.16);
 }
@@ -585,7 +586,6 @@ html[data-theme="rich"] .theme-rich {
 
 .topbar:has(.topitem:hover),
 .topbar:has(.topitem:focus-within) {
-  background: #000;
   border-bottom-color: transparent;
 }
 
@@ -642,7 +642,8 @@ html[data-theme="rich"] .theme-rich {
   align-items: start;
   margin: 0;
   padding: 0.7rem 0 1.35rem;
-  background: #000;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: saturate(160%) blur(18px);
   color: #f5f5f7;
   visibility: hidden;
   opacity: 0;
@@ -662,52 +663,52 @@ html[data-theme="rich"] .theme-rich {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 3.2rem;
-  width: min(52rem, calc(100vw - 2.4rem));
+  gap: 2.4rem;
+  width: min(36rem, calc(100vw - 2.4rem));
 }
 
 .drop-side {
   display: flex;
+  flex: 1 1 0;
   flex-direction: column;
   align-items: stretch;
-  width: 22rem;
   min-width: 0;
 }
 
 .drop-kicker {
-  margin: 0 0 0.4rem;
-  padding: 0 0 0.28rem;
+  margin: 0 0 0.35rem;
+  padding: 0 0 0.22rem;
   border-bottom: 1px solid rgba(245, 245, 247, 0.2);
-  font-size: 0.62rem;
+  font-size: 0.56rem;
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  text-align: left;
+  text-align: center;
   color: rgba(245, 245, 247, 0.45);
 }
 
 .drop-row {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  justify-content: flex-start;
-  gap: 0.12rem 1.6rem;
-  max-height: 6.6rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.08rem;
 }
 
 .dropdown a.drop-line {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
-  width: max-content;
-  max-width: 13rem;
+  width: 100%;
+  max-width: none;
   height: auto;
   margin: 0;
-  padding: 0.12rem 0;
+  padding: 0.08rem 0;
+  justify-content: center;
+  text-align: center;
   color: rgba(245, 245, 247, 0.94);
-  font-size: 0.86rem;
+  font-size: 0.74rem;
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.012em;

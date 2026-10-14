@@ -1,6 +1,5 @@
 (function () {
   var key = "devo-theme";
-  var branches = ["arcada", "mattercircle", "humanehealth", "lightround"];
 
   function theme() {
     return document.documentElement.getAttribute("data-theme") === "rich" ? "rich" : "simple";
@@ -18,26 +17,8 @@
     if (next === "rich") route();
   }
 
-  function markActive(name) {
-    document.querySelectorAll(".topitem > a").forEach(function (link) {
-      if (name && link.getAttribute("data-branch") === name) {
-        link.setAttribute("aria-current", "true");
-      } else {
-        link.removeAttribute("aria-current");
-      }
-    });
-  }
-
   function route() {
-    var hash = (location.hash || "").replace("#", "");
-    if (branches.indexOf(hash) !== -1) {
-      document.body.setAttribute("data-branch", hash);
-      window.scrollTo(0, 0);
-      markActive(hash);
-      return;
-    }
     document.body.removeAttribute("data-branch");
-    markActive("");
   }
 
   var bar = document.querySelector(".topbar");

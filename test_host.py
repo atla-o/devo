@@ -99,7 +99,7 @@ class HostRoutingTests(unittest.TestCase):
                 spots = [menu.index(f">{label}<") for label in labels]
                 self.assertEqual(spots, sorted(spots), host)
             self.assertEqual(body.count('class="panel"'), 4, host)
-            self.assertEqual(body.count('class="branch-view"'), 4, host)
+            self.assertNotIn('class="branch-view"', body, host)
             self.assertIn("6 clubs", body)
             self.assertIn("4 lines", body)
             self.assertIn("8 practices", body)

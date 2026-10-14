@@ -112,7 +112,7 @@ a:hover {
   color: inherit;
   cursor: pointer;
   line-height: 0;
-  perspective: 280px;
+  perspective: 140px;
   perspective-origin: 50% 50%;
 }
 
@@ -125,22 +125,22 @@ a:hover {
 
 .theme-switch svg {
   transform-origin: 50% 50%;
-  transform: rotateX(0deg);
+  transform: translateY(0) rotateX(0deg);
   transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
 .theme-switch:hover svg,
 .theme-switch:focus-visible svg {
-  transform: rotateX(45deg);
+  transform: translateY(8px) rotateX(45deg);
 }
 
 html[data-theme="rich"] .theme-switch svg {
-  transform: rotateX(180deg);
+  transform: translateY(0) rotateX(-180deg);
 }
 
 html[data-theme="rich"] .theme-switch:hover svg,
 html[data-theme="rich"] .theme-switch:focus-visible svg {
-  transform: rotateX(135deg);
+  transform: translateY(-8px) rotateX(-135deg);
 }
 
 .theme-switch.is-flipping-down svg,
@@ -157,11 +157,13 @@ html[data-theme="rich"] .theme-switch:focus-visible svg {
 }
 
 @keyframes o-spin-down {
-  to { transform: rotateX(180deg); }
+  50% { transform: translateY(12px) rotateX(90deg); }
+  100% { transform: translateY(0) rotateX(180deg); }
 }
 
 @keyframes o-spin-up {
-  to { transform: rotateX(0deg); }
+  50% { transform: translateY(-12px) rotateX(-90deg); }
+  100% { transform: translateY(0) rotateX(0deg); }
 }
 
 .holdings {

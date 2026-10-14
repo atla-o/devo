@@ -400,15 +400,6 @@ html[data-theme="rich"] .theme-rich {
   flex: 0 0 52px;
 }
 
-.topbar .o-depth {
-  perspective: 48px;
-}
-
-.topbar .theme-switch svg {
-  width: 18px;
-  height: 18px;
-}
-
 .topbar:has(.topitem:hover),
 .topbar:has(.topitem:focus-within) {
   background: #1c1815;

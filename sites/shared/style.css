@@ -112,50 +112,80 @@ a:hover {
   color: inherit;
   cursor: pointer;
   line-height: 0;
-  perspective: 500px;
+  perspective: 280px;
   perspective-origin: 50% 50%;
+}
+
+.o-depth {
+  display: block;
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
 .theme-switch svg {
   transform-origin: 50% 50%;
-  transform: none;
+  transform: rotateX(0deg);
   transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
-/* Hover holds the pose at a quarter of the half-turn. Scale is even, so the ring stays round. */
+.theme-switch:hover .o-depth,
+.theme-switch:focus-visible .o-depth {
+  transform: translateZ(28px);
+}
+
 .theme-switch:hover svg,
 .theme-switch:focus-visible svg {
-  transform: translateY(10px) scale(1.14);
+  transform: rotateX(45deg);
+}
+
+html[data-theme="rich"] .theme-switch svg {
+  transform: rotateX(180deg);
+}
+
+html[data-theme="rich"] .theme-switch:hover .o-depth,
+html[data-theme="rich"] .theme-switch:focus-visible .o-depth {
+  transform: translateZ(28px);
 }
 
 html[data-theme="rich"] .theme-switch:hover svg,
 html[data-theme="rich"] .theme-switch:focus-visible svg {
-  transform: translateY(-10px) scale(1.14);
+  transform: rotateX(135deg);
 }
 
+.theme-switch.is-flipping-down .o-depth,
 .theme-switch.is-flipping-down svg,
+.theme-switch.is-flipping-up .o-depth,
 .theme-switch.is-flipping-up svg {
   transition: none;
 }
 
+.theme-switch.is-flipping-down .o-depth,
+.theme-switch.is-flipping-up .o-depth {
+  animation: o-depth 0.72s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
 .theme-switch.is-flipping-down svg {
-  animation: o-flip-down 0.72s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+  animation: o-spin-down 0.72s cubic-bezier(0.2, 0.75, 0.2, 1) both;
 }
 
 .theme-switch.is-flipping-up svg {
-  animation: o-flip-up 0.72s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+  animation: o-spin-up 0.72s cubic-bezier(0.2, 0.75, 0.2, 1) both;
 }
 
-@keyframes o-flip-down {
-  25% { transform: translateY(10px) scale(1.14); }
-  50% { transform: translateY(0) scale(1.45); }
-  100% { transform: none; }
+@keyframes o-depth {
+  50% { transform: translateZ(64px); }
+  100% { transform: translateZ(0); }
 }
 
-@keyframes o-flip-up {
-  25% { transform: translateY(-10px) scale(1.14); }
-  50% { transform: translateY(0) scale(1.45); }
-  100% { transform: none; }
+@keyframes o-spin-down {
+  50% { transform: rotateX(90deg); }
+  100% { transform: rotateX(180deg); }
+}
+
+@keyframes o-spin-up {
+  50% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0deg); }
 }
 
 .holdings {

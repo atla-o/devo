@@ -79,7 +79,7 @@ class HostRoutingTests(unittest.TestCase):
             rich = body.split('class="theme-rich"', 1)[1]
             bar = rich.split('class="home-panels"', 1)[0]
             self.assertNotIn("data-local", bar, host)
-            self.assertIn('href="https://arcada.devoutshaman.com">utopiasocial</a>', bar)
+            self.assertIn('href="https://utopiasocial.devoutshaman.com">utopiasocial</a>', bar)
             self.assertIn('href="https://mattercircle.devoutshaman.com">Mattercircle</a>', bar)
             self.assertIn('href="https://humanehealth.devoutshaman.com">Humanehealth</a>', bar)
             self.assertIn(">Menu<", bar)
@@ -114,9 +114,9 @@ class HostRoutingTests(unittest.TestCase):
             self.assertEqual(body.count('class="panel"'), 3, host)
             self.assertNotIn('class="branch-view"', body, host)
             self.assertIn("prefab housing", body)
-            self.assertIn('href="https://arcada.devoutshaman.com/clubs/ancestry"', body)
-            self.assertIn('href="https://arcada.devoutshaman.com/clubs/intellectual"', body)
-            self.assertIn('href="https://arcada.devoutshaman.com/clubs/leisure"', body)
+            self.assertIn('href="https://utopiasocial.devoutshaman.com/clubs/ancestry"', body)
+            self.assertIn('href="https://utopiasocial.devoutshaman.com/clubs/intellectual"', body)
+            self.assertIn('href="https://utopiasocial.devoutshaman.com/clubs/leisure"', body)
             self.assertIn('href="https://mattercircle.devoutshaman.com/climb/toiletries"', body)
             self.assertIn('href="https://humanehealth.devoutshaman.com/ops/wellness"', body)
             self.assertNotIn("lightround.devoutshaman.com", body, host)
@@ -135,7 +135,7 @@ class HostRoutingTests(unittest.TestCase):
             self.assertNotIn("<p>Service</p>", body)
             self.assertNotIn("<p>Fund</p>", body)
             for href in (
-                "https://arcada.devoutshaman.com",
+                "https://utopiasocial.devoutshaman.com",
                 "https://humanehealth.devoutshaman.com",
                 "https://mattercircle.devoutshaman.com",
             ):

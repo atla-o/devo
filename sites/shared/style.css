@@ -454,6 +454,99 @@ html[data-theme="rich"] .theme-rich {
   margin-top: 0;
 }
 
+.menu-kicker {
+  margin: 0.85rem 0 0.1rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #6e6e73;
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+  height: calc(100svh - 52px);
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+.ads {
+  display: flex;
+  flex: 0 0 38%;
+  min-height: 0;
+}
+
+.ad {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 0;
+  min-width: 0;
+  padding: 0.75rem 0.7rem 0.85rem;
+  overflow: hidden;
+  background: #000;
+  color: #f5f5f7;
+  text-decoration: none;
+}
+
+.ad:nth-child(even) {
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
+.panel[data-branch="mattercircle"] + .ads .ad:nth-child(odd),
+.panel[data-branch="lightround"] + .ads .ad:nth-child(odd) {
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
+.panel[data-branch="mattercircle"] + .ads .ad:nth-child(even),
+.panel[data-branch="lightround"] + .ads .ad:nth-child(even) {
+  background: #000;
+  color: #f5f5f7;
+}
+
+.ad::before {
+  content: "";
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  width: min(42%, 4.2rem);
+  aspect-ratio: 1;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.ad span {
+  position: relative;
+  font-size: clamp(0.95rem, 1.25vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.ad small {
+  position: relative;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.62;
+}
+
+.ad:hover,
+.ad:focus-visible {
+  text-decoration: none;
+}
+
+.ad:hover span {
+  opacity: 0.7;
+}
+
 .topbar:has(.topitem:hover),
 .topbar:has(.topitem:focus-within) {
   background: #000;
@@ -522,9 +615,10 @@ html[data-theme="rich"] .theme-rich {
   right: 0;
   top: 100%;
   z-index: 2;
+  display: flex;
+  justify-content: flex-start;
   margin: 0;
-  padding: 1.4rem 7vw 1.7rem;
-  list-style: none;
+  padding: 2.15rem 4.2rem 2.7rem;
   background: #000;
   color: #f5f5f7;
   visibility: hidden;
@@ -540,22 +634,40 @@ html[data-theme="rich"] .theme-rich {
   pointer-events: auto;
 }
 
-.dropdown a {
+.drop-cols {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 2.4rem 5.5rem;
+  width: min(100%, 64rem);
+}
+
+.drop-kicker {
+  margin: 0 0 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: rgba(245, 245, 247, 0.56);
+}
+
+.dropdown a.drop-line {
   display: block;
   width: max-content;
   max-width: 100%;
+  height: auto;
   padding: 0.28rem 0;
   color: #f5f5f7;
-  font-size: 1.15rem;
-  font-weight: 500;
-  line-height: 1.2;
+  font-size: 1.32rem;
+  font-weight: 600;
+  line-height: 1.12;
   letter-spacing: -0.02em;
+  white-space: normal;
   text-decoration: none;
 }
 
-.dropdown a:hover,
-.dropdown a:focus-visible {
-  opacity: 0.62;
+.dropdown a.drop-line:hover,
+.dropdown a.drop-line:focus-visible {
+  opacity: 0.72;
   text-decoration: none;
 }
 
@@ -571,11 +683,11 @@ body[data-branch] .corp {
 .panel {
   position: relative;
   display: flex;
-  min-height: calc(100svh - 52px);
+  flex: 1 1 auto;
+  min-height: 0;
   overflow: hidden;
   color: inherit;
   scroll-margin-top: 52px;
-  scroll-snap-align: start;
 }
 
 .panel-face {
@@ -585,8 +697,8 @@ body[data-branch] .corp {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100svh - 52px);
-  padding: 8vh 1.5rem 7vh;
+  min-height: 0;
+  padding: 1rem 1.2rem 0.6rem;
 }
 
 .panel[data-branch="arcada"],
@@ -608,9 +720,9 @@ body[data-branch] .corp {
 }
 
 .panel .geo {
-  width: min(28vh, 14rem);
-  height: min(28vh, 14rem);
-  margin: 0 0 1.2rem;
+  width: min(18vh, 8rem);
+  height: min(18vh, 8rem);
+  margin: 0 0 0.4rem;
 }
 
 .panel-copy {
@@ -626,7 +738,7 @@ body[data-branch] .corp {
 
 .panel-title {
   margin: 0;
-  font-size: clamp(3rem, 7vw, 6.2rem);
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 0.95;
@@ -978,6 +1090,27 @@ html:has(body.menu-open) {
 
   .menu-sheet.is-open {
     display: block;
+  }
+
+  .ads {
+    display: grid;
+    flex: 0 0 46%;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+  }
+
+  .ads .ad:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .ad {
+    min-height: 0;
+    padding: 2.4rem 0.55rem 0.45rem;
+  }
+
+  .ad::before {
+    top: 0.4rem;
+    width: 1.7rem;
   }
 
   .compare-row {

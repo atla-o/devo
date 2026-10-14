@@ -515,18 +515,17 @@ html[data-theme="rich"] .theme-rich {
   display: block;
 }
 
-body[data-branch] .home-panels {
+body[data-branch] .home-panels,
+body[data-branch] .corp {
   display: none;
 }
 
 .panel {
-  container-type: size;
   position: relative;
   display: flex;
   min-height: calc(100svh - 52px);
   overflow: hidden;
   color: inherit;
-  text-decoration: none;
   scroll-margin-top: 52px;
   scroll-snap-align: start;
 }
@@ -536,10 +535,10 @@ body[data-branch] .home-panels {
   display: flex;
   flex: 1;
   flex-direction: column;
-  min-height: inherit;
   align-items: center;
-  justify-content: center;
-  padding: 1.5rem 1.25rem;
+  justify-content: space-between;
+  min-height: inherit;
+  padding: 8vh 1.5rem 7vh;
 }
 
 .panel[data-branch="arcada"],
@@ -554,22 +553,16 @@ body[data-branch] .home-panels {
   color: #f5f5f7;
 }
 
-.panel:focus-visible {
-  outline: 1px solid currentColor;
-  outline-offset: -8px;
-}
-
 .geo {
   position: static;
   width: min(7.25rem, 30vw);
   height: min(7.25rem, 30vw);
-  margin-bottom: 1.15rem;
-  transition: opacity 0.4s ease;
 }
 
-.panel:hover .geo,
-.panel:focus-visible .geo {
-  opacity: 0.62;
+.panel .geo {
+  width: min(36vh, 18rem);
+  height: min(36vh, 18rem);
+  margin: 0;
 }
 
 .panel-copy {
@@ -584,16 +577,77 @@ body[data-branch] .home-panels {
 }
 
 .panel-title {
-  font-size: clamp(2.15rem, 11cqw, 4.6rem);
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 6.2rem);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 0.95;
 }
 
 .panel-desc {
-  font-size: clamp(1rem, 2.4cqw, 1.35rem);
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
   font-weight: 400;
   letter-spacing: -0.015em;
+}
+
+.panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.25rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 9.6rem;
+  height: 2.55rem;
+  padding: 0 1.35rem;
+  border-radius: 4px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  text-decoration: none;
+  opacity: 0.82;
+}
+
+.btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.panel[data-branch="arcada"] .btn--fill,
+.panel[data-branch="humanehealth"] .btn--fill {
+  background: #1d1d1f;
+  color: #f5f5f7;
+}
+
+.panel[data-branch="arcada"] .btn--ghost,
+.panel[data-branch="humanehealth"] .btn--ghost {
+  background: transparent;
+  color: #1d1d1f;
+  box-shadow: inset 0 0 0 3px #1d1d1f;
+}
+
+.panel[data-branch="mattercircle"] .btn--fill,
+.panel[data-branch="lightround"] .btn--fill {
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
+.panel[data-branch="mattercircle"] .btn--ghost,
+.panel[data-branch="lightround"] .btn--ghost {
+  background: transparent;
+  color: #f5f5f7;
+  box-shadow: inset 0 0 0 3px #f5f5f7;
 }
 
 .panel[data-branch="arcada"] .panel-desc,
@@ -607,7 +661,7 @@ body[data-branch] .home-panels {
 }
 
 .panel-scale {
-  margin-top: 0.7rem;
+  margin: 0.9rem 0 0;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -703,34 +757,151 @@ body[data-branch="lightround"] .branch-view[data-branch="lightround"] {
   text-decoration: none;
 }
 
+.corp {
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
+.compare {
+  padding: 4.5rem 5vw 3.2rem;
+  background: #fff;
+  text-align: center;
+}
+
+.compare h2,
+.catalog-group h2,
+.corp-cols h2 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.compare h2 {
+  margin-bottom: 2rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.compare-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.compare-row a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.compare .geo {
+  width: 3.4rem;
+  height: 3.4rem;
+  margin-bottom: 0.65rem;
+}
+
+.compare strong {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.compare span {
+  color: #6e6e73;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.catalog {
+  padding: 3.2rem 5vw 1rem;
+}
+
+.catalog-group {
+  margin-bottom: 2.4rem;
+}
+
+.catalog-group h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.65rem;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+  gap: 0.7rem;
+}
+
+.catalog-grid a {
+  display: flex;
+  align-items: flex-end;
+  min-height: 8.2rem;
+  padding: 1rem 1.05rem;
+  background: #fff;
+  color: #1d1d1f;
+  font-size: 1.28rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  text-decoration: none;
+}
+
+.catalog-grid a:hover,
+.catalog-grid a:focus-visible {
+  background: #e8e8ed;
+  text-decoration: none;
+}
+
+.corp-foot {
+  padding: 2.2rem 5vw 2.8rem;
+  border-top: 1px solid rgba(29, 29, 31, 0.12);
+}
+
+.corp-cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.6rem 2rem;
+  max-width: 72rem;
+}
+
+.corp-cols h2 {
+  margin-bottom: 0.45rem;
+  font-size: 0.75rem;
+}
+
+.corp-cols a {
+  display: block;
+  padding: 0.16rem 0;
+  color: #6e6e73;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.corp-cols a:hover,
+.corp-cols a:focus-visible {
+  color: #1d1d1f;
+  text-decoration: underline;
+}
+
+.corp-end {
+  margin: 2rem 0 0;
+  color: #6e6e73;
+  font-size: 0.75rem;
+}
+
 @media (min-width: 960px) {
-  .home-panels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    height: calc(100svh - 52px);
-  }
-
-  .panel {
-    min-height: 0;
-    height: 100%;
-  }
-
-  .panel .geo {
-    width: min(22cqmin, 6.5rem);
-    height: min(22cqmin, 6.5rem);
-  }
-
   .blocks {
     grid-template-columns: 1fr 1fr;
     column-gap: 4.5rem;
   }
 }
 
-@media (max-width: 959px) {
-  html[data-theme="rich"]:not(:has(body[data-branch])) {
-    scroll-snap-type: y proximity;
-  }
+html[data-theme="rich"]:not(:has(body[data-branch])) {
+  scroll-snap-type: y proximity;
 }
 
 @media (max-width: 720px) {
@@ -745,5 +916,26 @@ body[data-branch="lightround"] .branch-view[data-branch="lightround"] {
 
   .dropdown a {
     font-size: 1.12rem;
+  }
+
+  .compare-row {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+    scroll-snap-type: x proximity;
+  }
+
+  .compare-row a {
+    flex: 0 0 68%;
+    scroll-snap-align: start;
+  }
+
+  .corp-cols {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn {
+    min-width: 8.4rem;
   }
 }

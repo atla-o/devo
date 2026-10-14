@@ -118,11 +118,9 @@ a:hover {
   display: block;
   width: fit-content;
   margin-inline: auto;
-  perspective: 80px;
-  perspective-origin: center;
-  transform: translateZ(0);
+  perspective: 160px;
+  perspective-origin: 50% 50%;
   transform-style: preserve-3d;
-  transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
 .theme-switch svg {
@@ -399,7 +397,7 @@ html[data-theme="rich"] .theme-rich {
 }
 
 .topbar .o-depth {
-  perspective: 48px;
+  perspective: 160px;
 }
 
 .topbar .theme-switch svg {

@@ -112,28 +112,25 @@ a:hover {
   color: inherit;
   cursor: pointer;
   line-height: 0;
-  perspective: 180px;
+  perspective: 500px;
   perspective-origin: 50% 50%;
 }
 
 .theme-switch svg {
   transform-origin: 50% 50%;
-  transform: translateZ(0) rotateX(0deg);
+  transform: none;
   transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
+/* Hover holds the pose at a quarter of the half-turn. Scale is even, so the ring stays round. */
 .theme-switch:hover svg,
 .theme-switch:focus-visible svg {
-  transform: translateZ(28px) rotateX(45deg) scale(1.18);
-}
-
-html[data-theme="rich"] .theme-switch svg {
-  transform: translateZ(0) rotateX(180deg);
+  transform: translateY(10px) scale(1.14);
 }
 
 html[data-theme="rich"] .theme-switch:hover svg,
 html[data-theme="rich"] .theme-switch:focus-visible svg {
-  transform: translateZ(28px) rotateX(135deg) scale(1.18);
+  transform: translateY(-10px) scale(1.14);
 }
 
 .theme-switch.is-flipping-down svg,
@@ -150,13 +147,15 @@ html[data-theme="rich"] .theme-switch:focus-visible svg {
 }
 
 @keyframes o-flip-down {
-  50% { transform: translateZ(56px) rotateX(90deg) scale(1.75); }
-  100% { transform: translateZ(0) rotateX(180deg) scale(1); }
+  25% { transform: translateY(10px) scale(1.14); }
+  50% { transform: translateY(0) scale(1.45); }
+  100% { transform: none; }
 }
 
 @keyframes o-flip-up {
-  50% { transform: translateZ(56px) rotateX(90deg) scale(1.75); }
-  100% { transform: translateZ(0) rotateX(0deg) scale(1); }
+  25% { transform: translateY(-10px) scale(1.14); }
+  50% { transform: translateY(0) scale(1.45); }
+  100% { transform: none; }
 }
 
 .holdings {

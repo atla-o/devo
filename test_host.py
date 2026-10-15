@@ -89,24 +89,23 @@ class HostRoutingTests(unittest.TestCase):
             sheets = rich.split('class="drop-sheet"')[1:4]
             map_lines = (
                 (
-                    "concentrated stimulants",
                     "Humanehealth store",
+                    "acashi",
                     "schedule wellness",
                     "invasive diagnostic",
                     "unnaturalfertility",
                     "cosmetic restoration",
-                    "acashi",
+                    "concentrated stimulants",
                     "develop cures",
                 ),
                 (
-                    "utopia social club",
                     "ancestry club",
                     "intellectual club",
                     "leisure club",
                     "political club",
                     "spiritual club",
                 ),
-                ("toiletries", "wearables", "utility", "furniture", "checkout"),
+                ("toiletries", "wearables", "utility", "furniture"),
             )
             for menu, labels in zip(sheets, map_lines):
                 self.assertLess(menu.index(">Products<"), menu.index(">Services<"), host)
@@ -293,7 +292,8 @@ class HostRoutingTests(unittest.TestCase):
         self.assertIn(">Book</button>", offer)
         status, store = self.fetch("humanehealth.devoutshaman.com", "/products")
         self.assertEqual(status, 200)
-        self.assertIn(">Buy</button>", store)
+        self.assertIn("Humanehealth store", store)
+        self.assertNotIn("<form", store)
 
         status, body = self.fetch("mattercircle.devoutshaman.com")
         self.assertEqual(status, 200)

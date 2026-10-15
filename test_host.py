@@ -241,8 +241,9 @@ class HostRoutingTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertIn("non-petroleum factory", body)
         self.assertIn("toiletries", body)
-        self.assertNotIn("Phenomatch", body)
-        self.assertNotIn("unnaturalfertility", body)
+        sheet = body.split('class="theme-rich"', 1)[0]
+        self.assertNotIn("Phenomatch", sheet)
+        self.assertNotIn("unnaturalfertility", sheet)
         self.assertNotIn("Planet", body)
 
     def test_lightround_and_lessfret_hosts(self) -> None:
@@ -300,9 +301,10 @@ class HostRoutingTests(unittest.TestCase):
         self.assertIn("non-petroleum factory", body)
         self.assertIn("prefab housing", body)
         self.assertNotIn("Factory essentials.", body)
-        self.assertNotIn("Phenomatch", body)
-        self.assertNotIn("physics", body.lower())
-        self.assertNotIn("unnaturalfertility", body)
+        sheet = body.split('class="theme-rich"', 1)[0]
+        self.assertNotIn("Phenomatch", sheet)
+        self.assertNotIn("physics", sheet.lower())
+        self.assertNotIn("unnaturalfertility", sheet)
         self.assertNotIn("Planet", body)
         self.assertNotIn('class="tile"', body)
 

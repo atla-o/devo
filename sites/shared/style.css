@@ -1287,8 +1287,12 @@ html:has(body.menu-open) {
   position: relative;
   flex: 1 1 auto;
   min-height: 0;
-  height: 100%;
   background: #000;
+}
+
+.offer-card h2,
+.sheet .offer-form {
+  text-align: center;
 }
 
 .offer-stage img,
@@ -1319,11 +1323,3 @@ html:has(body.menu-open) {
   color: #1a1a1a;
 }
 
-html[data-theme="rich"] .theme-rich .theme-switch {
-  position: absolute;
-  z-index: 3;
-  top: 0.65rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-}

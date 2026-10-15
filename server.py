@@ -38,6 +38,7 @@ PATH_SITES = (
     ("/acashi", "acashi"),
     ("/humanehealth", "humanehealth"),
     ("/mattercircle", "mattercircle"),
+    ("/utopiasocial", "utopiasocial"),
 )
 
 MIME = {
@@ -166,12 +167,11 @@ class Handler(BaseHTTPRequestHandler):
 
         site = site_for_host(host)
 
-        if site == "holding" or is_local_host(host):
-            for prefix, name in PATH_SITES:
-                if path == prefix or path.startswith(prefix + "/"):
-                    site = name
-                    path = path[len(prefix) :] or "/"
-                    break
+        for prefix, name in PATH_SITES:
+            if path == prefix or path.startswith(prefix + "/"):
+                site = name
+                path = path[len(prefix) :] or "/"
+                break
 
         if path == "/":
             path = "/index.html"

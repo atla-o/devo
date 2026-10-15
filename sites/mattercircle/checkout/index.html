@@ -6,7 +6,7 @@
     <title>checkout</title>
     <meta name="theme-color" content="#F4F0E8" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css?v=61" />
+    <link rel="stylesheet" href="/shared/style.css?v=62" />
     <script>
       try {
         if (localStorage.getItem("devo-theme") === "rich") {
@@ -16,37 +16,64 @@
     </script>
   </head>
   <body>
-    <main class="page page--home theme-simple sheet-page">
+
+    <main class="page page--home theme-simple">
       <h1 class="mark mark--halo" aria-label="Devo"><button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme"><span class="o-depth"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></button></h1>
-      <h2 class="offer-title">checkout</h2>
-      <p class="offer-line">Send an order for toiletries, wearables, utility, or furniture.</p>
-      <form class="offer-form" method="post" action="/offer">
+      <div class="sheet">
+        <section class="branch">
+          <h2>checkout</h2>
+          <p class="blurb">Send an order for toiletries, wearables, utility, or furniture.</p>
+          <form class="offer-form" method="post" action="/offer">
             <input type="hidden" name="house" value="mattercircle" />
             <input type="hidden" name="offering" value="checkout" />
-            <input type="hidden" name="action" value="buy" />
-            <input type="hidden" name="next" value="/checkout" />
+            <input type="hidden" name="next" value="/mattercircle/checkout" />
             <label>Name <input name="name" required autocomplete="name" /></label>
             <label>Email <input name="email" type="email" required autocomplete="email" /></label>
-            <button type="submit">Checkout</button>
+            <button type="submit" name="action" value="buy">Checkout</button>
           </form>
-    </main>
-    <div class="theme-rich offer-stage">
-      <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme"><span class="o-depth"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></button>
+        </section>
+      </div>
       
-      <div class="offer-card">
-        <h2 class="offer-title">checkout</h2>
-        <p class="offer-line">Send an order for toiletries, wearables, utility, or furniture.</p>
-        <form class="offer-form" method="post" action="/offer">
+      <footer class="support">
+        <a href="https://donate.stripe.com/7sY00ifPd8Xdb278i24Ni00">Support Devo</a>
+        <p>A gift to Atla LLC. Not tax deductible, not an investment.</p>
+      </footer>
+
+    </main>
+    <div class="theme-rich">
+      
+      <header class="topbar">
+        <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme"><span class="o-depth"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></button>
+        <nav class="topnav" aria-label="Devo">
+          <div class="topitem"><a href="/humanehealth">Humanehealth</a></div>
+          <div class="topitem"><a href="/utopiasocial">utopiasocial</a></div>
+          <div class="topitem"><a href="/mattercircle">Mattercircle</a></div>
+        </nav>
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Menu"><span class="menu-word">Menu</span></button>
+      </header>
+      <div class="menu-sheet">
+        <a href="/humanehealth">Humanehealth</a>
+        <a href="/utopiasocial">utopiasocial</a>
+        <a href="/mattercircle">Mattercircle</a>
+      </div>
+
+      <div class="offer-stage">
+        
+        <div class="offer-card">
+          <h2>checkout</h2>
+          <p class="offer-line">Send an order for toiletries, wearables, utility, or furniture.</p>
+          <form class="offer-form" method="post" action="/offer">
             <input type="hidden" name="house" value="mattercircle" />
             <input type="hidden" name="offering" value="checkout" />
-            <input type="hidden" name="action" value="buy" />
-            <input type="hidden" name="next" value="/checkout" />
+            <input type="hidden" name="next" value="/mattercircle/checkout" />
             <label>Name <input name="name" required autocomplete="name" /></label>
             <label>Email <input name="email" type="email" required autocomplete="email" /></label>
-            <button type="submit">Checkout</button>
+            <button type="submit" name="action" value="buy">Checkout</button>
           </form>
+        </div>
       </div>
     </div>
-    <script src="/shared/offer.js"></script>
+
+    <script src="/shared/theme.js?v=33"></script>
   </body>
 </html>

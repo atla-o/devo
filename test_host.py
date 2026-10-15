@@ -80,9 +80,9 @@ class HostRoutingTests(unittest.TestCase):
             bar = rich.split('class="home-panels"', 1)[0]
             nav = bar.split('class="topnav"', 1)[1].split("menu-toggle", 1)[0]
             self.assertNotIn("data-local", nav, host)
-            self.assertIn('href="https://utopiasocial.devoutshaman.com">utopiasocial</a>', bar)
-            self.assertIn('href="https://mattercircle.devoutshaman.com">Mattercircle</a>', bar)
-            self.assertIn('href="https://humanehealth.devoutshaman.com">Humanehealth</a>', bar)
+            self.assertIn('href="/utopiasocial">utopiasocial</a>', bar)
+            self.assertIn('href="/mattercircle">Mattercircle</a>', bar)
+            self.assertIn('href="/humanehealth">Humanehealth</a>', bar)
             self.assertIn(">Menu<", bar)
             self.assertNotIn(">Arcada<", bar, host)
             self.assertNotIn(">Lightround<", bar, host)
@@ -115,11 +115,11 @@ class HostRoutingTests(unittest.TestCase):
             self.assertEqual(body.count('class="panel"'), 3, host)
             self.assertNotIn('class="branch-view"', body, host)
             self.assertIn("prefab housing", body)
-            self.assertIn('href="https://utopiasocial.devoutshaman.com/clubs/ancestry"', body)
-            self.assertIn('href="https://utopiasocial.devoutshaman.com/clubs/intellectual"', body)
-            self.assertIn('href="https://utopiasocial.devoutshaman.com/clubs/leisure"', body)
-            self.assertIn('href="https://mattercircle.devoutshaman.com/climb/toiletries"', body)
-            self.assertIn('href="https://humanehealth.devoutshaman.com/ops/wellness"', body)
+            self.assertIn('href="/utopiasocial/ancestry"', body)
+            self.assertIn('href="/utopiasocial/intellectual"', body)
+            self.assertIn('href="/utopiasocial/leisure"', body)
+            self.assertIn('href="/mattercircle/climb/toiletries"', body)
+            self.assertIn('href="/humanehealth/ops/wellness"', body)
             self.assertNotIn("lightround.devoutshaman.com", body, host)
             self.assertNotIn("Lightround", body, host)
             self.assertNotIn("Terraform", body, host)
@@ -135,11 +135,7 @@ class HostRoutingTests(unittest.TestCase):
             self.assertNotIn("<p>Product</p>", body)
             self.assertNotIn("<p>Service</p>", body)
             self.assertNotIn("<p>Fund</p>", body)
-            for href in (
-                "https://utopiasocial.devoutshaman.com",
-                "https://humanehealth.devoutshaman.com",
-                "https://mattercircle.devoutshaman.com",
-            ):
+            for href in ("/utopiasocial", "/humanehealth", "/mattercircle"):
                 self.assertIn(f'href="{href}"', body, host)
             for blurb in TILE_BLURBS:
                 self.assertIn(blurb, body, host)
@@ -164,7 +160,7 @@ class HostRoutingTests(unittest.TestCase):
             positions = [body.index(name) for name in TILE_NAMES]
             self.assertEqual(positions, sorted(positions), host)
             first = simple.split("<h2>", 1)[1]
-            self.assertIn('href="https://humanehealth.devoutshaman.com"', first.split("</h2>", 1)[0])
+            self.assertIn('href="/humanehealth"', first.split("</h2>", 1)[0])
             self.assertNotIn("data-local", first.split("</h2>", 1)[0])
             self.assertNotIn("Holdings", body, host)
             self.assertNotIn("biology", body, host)
@@ -278,7 +274,7 @@ class HostRoutingTests(unittest.TestCase):
         self.assertIn("Humanehealth", body)
         self.assertIn("Products", body)
         self.assertIn("Services", body)
-        self.assertIn('href="https://acashi.devoutshaman.com"', body)
+        self.assertIn('href="/acashi"', body)
         self.assertIn(">acashi</a>", body)
         self.assertIn("schedule wellness", body)
         self.assertIn("Humanehealth store", body)

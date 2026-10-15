@@ -6,7 +6,7 @@
     <title>Humanehealth</title>
     <meta name="theme-color" content="#F4F0E8" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css?v=61" />
+    <link rel="stylesheet" href="/shared/style.css?v=62" />
     <script>
       try {
         if (localStorage.getItem("devo-theme") === "rich") {
@@ -16,42 +16,66 @@
     </script>
   </head>
   <body>
-    <main class="page page--home theme-simple sheet-page">
+
+    <main class="page page--home theme-simple">
       <h1 class="mark mark--halo" aria-label="Devo"><button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme"><span class="o-depth"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></button></h1>
-      <h2 class="offer-title">Humanehealth</h2>
-      <div class="door">
-        <section>
+      <div class="sheet">
+        <section class="branch">
+          <h2><a href="/">Humanehealth</a></h2>
+          
           <h2>Products</h2>
           <ul>
-            <li><a href="/ops/stimulants">concentrated stimulants</a></li>
-            <li><a href="/products">Humanehealth store</a></li>
+              <li><a href="/humanehealth/ops/stimulants">concentrated stimulants</a></li>
+              <li><a href="/humanehealth/products">Humanehealth store</a></li>
           </ul>
-        </section>
-        <section>
           <h2>Services</h2>
           <ul>
-            <li><a href="/ops/wellness">schedule wellness</a></li>
-            <li><a href="/ops/diagnostic">invasive diagnostic</a></li>
-            <li><a href="/ops/unnaturalfertility">unnaturalfertility</a></li>
-            <li><a href="/ops/cosmetic">cosmetic restoration</a></li>
-            <li><a href="https://acashi.devoutshaman.com">acashi</a></li>
-            <li><a href="/develop-cures">develop cures</a></li>
+              <li><a href="/humanehealth/ops/wellness">schedule wellness</a></li>
+              <li><a href="/humanehealth/ops/diagnostic">invasive diagnostic</a></li>
+              <li><a href="/humanehealth/ops/unnaturalfertility">unnaturalfertility</a></li>
+              <li><a href="/humanehealth/ops/cosmetic">cosmetic restoration</a></li>
+              <li><a href="/acashi">acashi</a></li>
+              <li><a href="/humanehealth/develop-cures">develop cures</a></li>
           </ul>
         </section>
       </div>
-    </main>
-    <div class="theme-rich offer-stage">
-      <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme"><span class="o-depth"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></button>
       
-      <div class="mosaic mosaic--health">
-        <a class="shot cell--wellness" href="/ops/wellness"><img src="/shared/offerings/wellness.jpg" alt="" /></a>
-        <a class="shot cell--diagnostic" href="/ops/diagnostic"><img src="/shared/offerings/diagnostic.jpg" alt="" /></a>
-        <a class="shot cell--stimulants" href="/ops/stimulants"><img src="/shared/offerings/stimulants.jpg" alt="" /></a>
-        <a class="shot cell--fertility" href="/ops/unnaturalfertility"><img src="/shared/offerings/fertility.jpg" alt="" /></a>
-        <a class="shot cell--cosmetic" href="/ops/cosmetic"><img src="/shared/offerings/cosmetic.jpg" alt="" /></a>
+      <footer class="support">
+        <a href="https://donate.stripe.com/7sY00ifPd8Xdb278i24Ni00">Support Devo</a>
+        <p>A gift to Atla LLC. Not tax deductible, not an investment.</p>
+      </footer>
+
+    </main>
+    <div class="theme-rich">
+      
+      <header class="topbar">
+        <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme"><span class="o-depth"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></button>
+        <nav class="topnav" aria-label="Devo">
+          <div class="topitem"><a href="/humanehealth">Humanehealth</a></div>
+          <div class="topitem"><a href="/utopiasocial">utopiasocial</a></div>
+          <div class="topitem"><a href="/mattercircle">Mattercircle</a></div>
+        </nav>
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Menu"><span class="menu-word">Menu</span></button>
+      </header>
+      <div class="menu-sheet">
+        <a href="/humanehealth">Humanehealth</a>
+        <a href="/utopiasocial">utopiasocial</a>
+        <a href="/mattercircle">Mattercircle</a>
       </div>
 
+      <div class="offer-stage">
+        
+        <div class="mosaic mosaic--health">
+          <a class="shot cell--wellness" href="/humanehealth/ops/wellness"><img src="/shared/offerings/wellness.jpg" alt="" /></a>
+          <a class="shot cell--diagnostic" href="/humanehealth/ops/diagnostic"><img src="/shared/offerings/diagnostic.jpg" alt="" /></a>
+          <a class="shot cell--stimulants" href="/humanehealth/ops/stimulants"><img src="/shared/offerings/stimulants.jpg" alt="" /></a>
+          <a class="shot cell--fertility" href="/humanehealth/ops/unnaturalfertility"><img src="/shared/offerings/fertility.jpg" alt="" /></a>
+          <a class="shot cell--cosmetic" href="/humanehealth/ops/cosmetic"><img src="/shared/offerings/cosmetic.jpg" alt="" /></a>
+        </div>
+
+      </div>
     </div>
-    <script src="/shared/offer.js"></script>
+
+    <script src="/shared/theme.js?v=33"></script>
   </body>
 </html>

@@ -133,6 +133,10 @@ class Handler(BaseHTTPRequestHandler):
             "name": name,
             "email": email,
         }
+        for extra in ("line1", "city", "region", "postal"):
+            value = fields.get(extra, "")
+            if value:
+                row[extra] = value[:200]
         with OFFERS.open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(row) + "\n")
         self._html(200, _note_page("Noted. The house will write back.", nxt))

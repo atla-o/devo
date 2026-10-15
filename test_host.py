@@ -14,10 +14,6 @@ import server
 PORT = int(os.environ.get("TEST_PORT", "18080"))
 
 TILE_NAMES = ("Humanehealth", "Utopiasocial", "Mattercircle")
-TILE_BLURBS = (
-    "utopia social club",
-    "non-petroleum factory",
-)
 
 
 class HostRoutingTests(unittest.TestCase):
@@ -71,13 +67,13 @@ class HostRoutingTests(unittest.TestCase):
             self.assertNotIn('class="tile"', body)
             self.assertIn('class="mark mark--halo"', body)
             self.assertIn('class="theme-switch"', body)
-            self.assertIn('class="theme-rich"', body)
+            self.assertIn('class="theme-complex"', body)
             self.assertIn('class="topbar"', body)
             self.assertIn('class="topnav"', body)
             self.assertEqual(body.count('class="dropdown"'), 1, host)
             self.assertEqual(body.count('class="drop-sheet"'), 3, host)
-            rich = body.split('class="theme-rich"', 1)[1]
-            bar = rich.split('class="home-panels"', 1)[0]
+            complex_theme = body.split('class="theme-complex"', 1)[1]
+            bar = complex_theme.split('class="home-panels"', 1)[0]
             nav = bar.split('class="topnav"', 1)[1].split("menu-toggle", 1)[0]
             self.assertNotIn("data-local", nav, host)
             self.assertIn('href="/utopiasocial">Utopiasocial</a>', bar)
@@ -86,7 +82,7 @@ class HostRoutingTests(unittest.TestCase):
             self.assertIn(">Menu<", bar)
             self.assertNotIn(">Arcada<", bar, host)
             self.assertNotIn(">Lightround<", bar, host)
-            sheets = rich.split('class="drop-sheet"')[1:4]
+            sheets = complex_theme.split('class="drop-sheet"')[1:4]
             map_lines = (
                 (
                     "Humanehealth store",
@@ -105,7 +101,7 @@ class HostRoutingTests(unittest.TestCase):
                     "political club",
                     "spiritual club",
                 ),
-                ("toiletries", "wearables", "utility", "furniture"),
+                ("Mattercircle store",),
             )
             for menu, labels in zip(sheets, map_lines):
                 self.assertLess(menu.index(">Products<"), menu.index(">Services<"), host)
@@ -113,11 +109,18 @@ class HostRoutingTests(unittest.TestCase):
                 self.assertEqual(spots, sorted(spots), host)
             self.assertEqual(body.count('class="panel"'), 3, host)
             self.assertNotIn('class="branch-view"', body, host)
-            self.assertIn("prefab housing", body)
+            self.assertNotIn("prefab housing", body)
+            self.assertNotIn("non-petroleum factory", body)
+            self.assertNotIn("utopia social club", body)
+            self.assertNotIn(">toiletries<", body)
+            self.assertNotIn(">wearables<", body)
+            self.assertNotIn(">utility<", body)
+            self.assertNotIn(">furniture<", body)
             self.assertIn('href="/utopiasocial/ancestry"', body)
             self.assertIn('href="/utopiasocial/intellectual"', body)
             self.assertIn('href="/utopiasocial/leisure"', body)
-            self.assertIn('href="/mattercircle/climb/toiletries"', body)
+            self.assertIn('href="/mattercircle/store"', body)
+            self.assertNotIn('href="/mattercircle/climb/', body)
             self.assertIn('href="/humanehealth/ops/wellness"', body)
             self.assertNotIn("lightround.devoutshaman.com", body, host)
             self.assertNotIn("Lightround", body, host)
@@ -136,24 +139,20 @@ class HostRoutingTests(unittest.TestCase):
             self.assertNotIn("<p>Fund</p>", body)
             for href in ("/utopiasocial", "/humanehealth", "/mattercircle"):
                 self.assertIn(f'href="{href}"', body, host)
-            for blurb in TILE_BLURBS:
-                self.assertIn(blurb, body, host)
-                self.assertLessEqual(len(blurb.split()), 3, blurb)
             self.assertNotIn("Clinic network", body, host)
             self.assertNotIn("Counterdecadence", body, host)
             self.assertNotIn("Factory essentials", body, host)
-            simple = body.split('class="theme-rich"', 1)[0]
+            simple = body.split('class="theme-complex"', 1)[0]
             for label in (
                 "ancestry club",
                 "intellectual club",
                 "leisure club",
-                "toiletries",
+                "Mattercircle store",
                 "schedule wellness",
                 "unnaturalfertility",
                 "acashi",
                 "Humanehealth store",
                 "develop cures",
-                "prefab housing",
             ):
                 self.assertIn(label, simple, host)
             positions = [body.index(name) for name in TILE_NAMES]
@@ -238,9 +237,13 @@ class HostRoutingTests(unittest.TestCase):
 
         status, body = self.fetch("localhost", "/mattercircle")
         self.assertEqual(status, 200)
-        self.assertIn("non-petroleum factory", body)
-        self.assertIn("toiletries", body)
-        sheet = body.split('class="theme-rich"', 1)[0]
+        self.assertIn("Mattercircle store", body)
+        self.assertIn('class="theme-complex"', body)
+        self.assertNotIn('class="theme-switch"', body)
+        self.assertNotIn("non-petroleum factory", body)
+        self.assertNotIn("prefab housing", body)
+        self.assertNotIn(">toiletries<", body)
+        sheet = body.split('class="theme-complex"', 1)[0]
         self.assertNotIn("Phenomatch", sheet)
         self.assertNotIn("unnaturalfertility", sheet)
         self.assertNotIn("Planet", body)
@@ -279,6 +282,8 @@ class HostRoutingTests(unittest.TestCase):
         self.assertIn("schedule wellness", body)
         self.assertIn("Humanehealth store", body)
         self.assertIn("unnaturalfertility", body)
+        self.assertIn('class="theme-complex"', body)
+        self.assertNotIn('class="theme-switch"', body)
         self.assertNotIn("Clinic network.", body)
         self.assertNotIn("Phenomatch", body)
         self.assertNotIn("Antiporn", body)
@@ -293,15 +298,40 @@ class HostRoutingTests(unittest.TestCase):
         status, store = self.fetch("humanehealth.devoutshaman.com", "/products")
         self.assertEqual(status, 200)
         self.assertIn("Humanehealth store", store)
+        self.assertIn('class="climb"', store)
+        self.assertIn(">Care kit<", store)
+        self.assertIn(">Keeping kit<", store)
+        self.assertIn(">Home kit<", store)
         self.assertNotIn("<form", store)
+        self.assertNotIn("clinic's counter", store)
+        status, goods = self.fetch("humanehealth.devoutshaman.com", "/products/care-kit")
+        self.assertEqual(status, 200)
+        self.assertIn(">purchase<", goods)
+        self.assertIn("data-slides", goods)
 
         status, body = self.fetch("mattercircle.devoutshaman.com")
         self.assertEqual(status, 200)
         self.assertIn("Mattercircle", body)
-        self.assertIn("non-petroleum factory", body)
-        self.assertIn("prefab housing", body)
+        self.assertIn("Mattercircle store", body)
+        self.assertIn('class="theme-complex"', body)
+        self.assertNotIn('class="theme-switch"', body)
+        self.assertNotIn("non-petroleum factory", body)
+        self.assertNotIn("prefab housing", body)
+        self.assertNotIn(">toiletries<", body)
         self.assertNotIn("Factory essentials.", body)
-        sheet = body.split('class="theme-rich"', 1)[0]
+        sheet = body.split('class="theme-complex"', 1)[0]
+        status, store = self.fetch("mattercircle.devoutshaman.com", "/store")
+        self.assertEqual(status, 200)
+        self.assertIn('class="climb"', store)
+        self.assertIn(">Toiletries<", store)
+        self.assertIn(">Wearables<", store)
+        self.assertIn(">Utility<", store)
+        self.assertIn(">Furniture<", store)
+        self.assertNotIn("<form", store)
+        status, goods = self.fetch("mattercircle.devoutshaman.com", "/store/toiletries/1")
+        self.assertEqual(status, 200)
+        self.assertIn("toiletry 1", goods)
+        self.assertIn(">purchase<", goods)
         self.assertNotIn("Phenomatch", sheet)
         self.assertNotIn("physics", sheet.lower())
         self.assertNotIn("unnaturalfertility", sheet)

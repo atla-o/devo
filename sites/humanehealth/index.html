@@ -3,38 +3,174 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Humanehealth — Devo</title>
-    <meta
-      name="description"
-      content="Humanehealth is Devo’s clinic network."
-    />
-    <meta name="theme-color" content="#ffffff" />
+    <title>Humanehealth</title>
+    <meta name="theme-color" content="#F4F0E8" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css" />
+    <link rel="stylesheet" href="/shared/style.css?v=64" />
+    <script>
+      try {
+        var stored = localStorage.getItem("devo-theme");
+        if (stored === "rich" || stored === "complex") {
+          document.documentElement.setAttribute("data-theme", "complex");
+        }
+      } catch (err) {}
+    </script>
   </head>
   <body>
-    <main class="page">
-      <div class="cluster">
-        <p class="mark">
-          <a href="https://devoutshaman.com" data-local="/" aria-label="Devo">o</a>
-        </p>
-        <h1 class="product-name">Humanehealth</h1>
-        <p class="product-copy">Clinic network.</p>
-        <ul class="nest">
-          <li>
-            <a href="https://acashi.devoutshaman.com" data-local="/acashi">Acashi</a>
-            <span class="nest-role">insurance</span>
-          </li>
-          <li>
-            <span class="nest-name">devoutshaman</span>
-            <span class="nest-role">sell-health</span>
-          </li>
-          <li>
-            <span class="nest-name">unnaturalfertility</span>
-          </li>
-        </ul>
+    <main class="page page--home theme-simple">
+      <h1 class="mark mark--halo" aria-label="Devo">
+        <a href="/" aria-label="Home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      </h1>
+      <div class="sheet">
+        <section class="branch">
+          <h2>Humanehealth</h2>
+          <h2>Products</h2>
+          <ul>
+            <li><a href="/humanehealth/products">Humanehealth store</a></li>
+            <li><a href="/acashi">acashi</a></li>
+          </ul>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="/humanehealth/ops/wellness">schedule wellness</a></li>
+            <li><a href="/humanehealth/ops/diagnostic">invasive diagnostic</a></li>
+            <li><a href="/humanehealth/ops/unnaturalfertility">unnaturalfertility</a></li>
+            <li><a href="/humanehealth/ops/cosmetic">cosmetic restoration</a></li>
+            <li><a href="/humanehealth/ops/stimulants">concentrated stimulants</a></li>
+            <li><a href="/humanehealth/develop-cures">develop cures</a></li>
+          </ul>
+        </section>
       </div>
+      <footer class="support">
+        <a href="https://donate.stripe.com/7sY00ifPd8Xdb278i24Ni00">Support Devo</a>
+        <p>A gift to Atla LLC. Not tax deductible, not an investment.</p>
+      </footer>
     </main>
-    <script src="/shared/preview.js"></script>
+    <div class="theme-complex">
+      <header class="topbar">
+        <a class="bar-home" href="/" aria-label="Home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        <nav class="topnav" aria-label="Devo">
+          <div class="topitem" data-cat="health">
+            <a href="/humanehealth">Humanehealth</a>
+          </div>
+          <div class="topitem" data-cat="utopia">
+            <a href="/utopiasocial">Utopiasocial</a>
+          </div>
+          <div class="topitem" data-cat="matter">
+            <a href="/mattercircle">Mattercircle</a>
+          </div>
+        </nav>
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Menu">
+          <span class="menu-word">Menu</span>
+        </button>
+        <div class="dropdown">
+          <div class="drop-frame">
+            <div class="drop-sheet" data-cat="health">
+              <div class="drop-side">
+                <p class="drop-kicker">Products</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="/humanehealth/products">Humanehealth store</a>
+                  <a class="drop-line" href="/acashi">acashi</a>
+                </div>
+              </div>
+              <div class="drop-side">
+                <p class="drop-kicker">Services</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="/humanehealth/ops/wellness">schedule wellness</a>
+                  <a class="drop-line" href="/humanehealth/ops/diagnostic">invasive diagnostic</a>
+                  <a class="drop-line" href="/humanehealth/ops/unnaturalfertility">unnaturalfertility</a>
+                  <a class="drop-line" href="/humanehealth/ops/cosmetic">cosmetic restoration</a>
+                  <a class="drop-line" href="/humanehealth/ops/stimulants">concentrated stimulants</a>
+                  <a class="drop-line" href="/humanehealth/develop-cures">develop cures</a>
+                </div>
+              </div>
+            </div>
+            <div class="drop-sheet" data-cat="utopia">
+              <div class="drop-side">
+                <p class="drop-kicker">Products</p>
+                <div class="drop-row">
+
+                </div>
+              </div>
+              <div class="drop-side">
+                <p class="drop-kicker">Services</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="/utopiasocial/ancestry">ancestry club</a>
+                  <a class="drop-line" href="/utopiasocial/intellectual">intellectual club</a>
+                  <a class="drop-line" href="/utopiasocial/leisure">leisure club</a>
+                  <a class="drop-line" href="/utopiasocial/political">political club</a>
+                  <a class="drop-line" href="/utopiasocial/spiritual">spiritual club</a>
+                </div>
+              </div>
+            </div>
+            <div class="drop-sheet" data-cat="matter">
+              <div class="drop-side">
+                <p class="drop-kicker">Products</p>
+                <div class="drop-row">
+                  <a class="drop-line" href="/mattercircle/store">Mattercircle store</a>
+                </div>
+              </div>
+              <div class="drop-side">
+                <p class="drop-kicker">Services</p>
+                <div class="drop-row">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="menu-sheet">
+        <a class="menu-house" href="/humanehealth">Humanehealth</a>
+        <a href="/humanehealth/products">Humanehealth store</a>
+        <a href="/acashi">acashi</a>
+        <a href="/humanehealth/ops/wellness">schedule wellness</a>
+        <a href="/humanehealth/ops/diagnostic">invasive diagnostic</a>
+        <a href="/humanehealth/ops/unnaturalfertility">unnaturalfertility</a>
+        <a href="/humanehealth/ops/cosmetic">cosmetic restoration</a>
+        <a href="/humanehealth/ops/stimulants">concentrated stimulants</a>
+        <a href="/humanehealth/develop-cures">develop cures</a>
+        <a class="menu-house" href="/utopiasocial">Utopiasocial</a>
+        <a href="/utopiasocial/ancestry">ancestry club</a>
+        <a href="/utopiasocial/intellectual">intellectual club</a>
+        <a href="/utopiasocial/leisure">leisure club</a>
+        <a href="/utopiasocial/political">political club</a>
+        <a href="/utopiasocial/spiritual">spiritual club</a>
+        <a class="menu-house" href="/mattercircle">Mattercircle</a>
+        <a href="/mattercircle/store">Mattercircle store</a>
+      </div>
+      <div class="home-panels house-panels">
+        <div class="offer">
+          <section class="panel" id="panel-humanehealth" data-branch="humanehealth">
+            <div class="mosaic mosaic--health">
+            <a class="shot cell--wellness" href="/humanehealth/ops/wellness">
+              <img src="/shared/offerings/wellness.jpg" alt="" />
+              <span>schedule wellness</span>
+            </a>
+            <a class="shot cell--diagnostic" href="/humanehealth/ops/diagnostic">
+              <img src="/shared/offerings/diagnostic.jpg" alt="" />
+              <span>invasive diagnostic</span>
+            </a>
+            <a class="shot cell--stimulants" href="/humanehealth/ops/stimulants">
+              <img src="/shared/offerings/stimulants.jpg" alt="" />
+              <span>concentrated stimulants</span>
+            </a>
+            <a class="shot cell--fertility" href="/humanehealth/ops/unnaturalfertility">
+              <img src="/shared/offerings/fertility.jpg" alt="" />
+              <span>unnaturalfertility</span>
+            </a>
+            <a class="shot cell--cosmetic" href="/humanehealth/ops/cosmetic">
+              <img src="/shared/offerings/cosmetic.jpg" alt="" />
+              <span>cosmetic restoration</span>
+            </a>
+            </div>
+          </section>
+        </div>
+      </div>
+      <footer class="support">
+        <a href="https://donate.stripe.com/7sY00ifPd8Xdb278i24Ni00">Support Devo</a>
+        <p>A gift to Atla LLC. Not tax deductible, not an investment.</p>
+      </footer>
+    </div>
+    <script src="/shared/theme.js?v=34"></script>
   </body>
 </html>

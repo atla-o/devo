@@ -2,12 +2,13 @@
   var key = "devo-theme";
 
   function theme() {
-    return document.documentElement.getAttribute("data-theme") === "rich" ? "rich" : "simple";
+    var value = document.documentElement.getAttribute("data-theme");
+    return value === "complex" || value === "rich" ? "complex" : "simple";
   }
 
   function apply(next) {
     document.documentElement.setAttribute("data-theme", next);
-    var pressed = next === "rich" ? "true" : "false";
+    var pressed = next === "complex" ? "true" : "false";
     document.querySelectorAll(".theme-switch").forEach(function (button) {
       button.setAttribute("aria-pressed", pressed);
     });
@@ -101,8 +102,9 @@
     { passive: true }
   );
 
-  if (new URLSearchParams(location.search).get("theme") === "rich") {
-    document.documentElement.setAttribute("data-theme", "rich");
+  var asked = new URLSearchParams(location.search).get("theme");
+  if (asked === "complex" || asked === "rich") {
+    document.documentElement.setAttribute("data-theme", "complex");
   }
 
   var flipping = false;
@@ -110,9 +112,9 @@
   document.addEventListener("click", function (event) {
     var button = event.target.closest(".theme-switch");
     if (!button || flipping) return;
-    var next = theme() === "rich" ? "simple" : "rich";
+    var next = theme() === "complex" ? "simple" : "complex";
     flipping = true;
-    var cls = next === "rich" ? "is-flipping-down" : "is-flipping-up";
+    var cls = next === "complex" ? "is-flipping-down" : "is-flipping-up";
     button.classList.remove("is-flipping-down", "is-flipping-up");
     void button.offsetWidth;
     button.classList.add(cls);

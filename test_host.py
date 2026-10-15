@@ -13,7 +13,7 @@ import server
 
 PORT = int(os.environ.get("TEST_PORT", "18080"))
 
-TILE_NAMES = ("Humanehealth", "utopiasocial", "Mattercircle")
+TILE_NAMES = ("Humanehealth", "Utopiasocial", "Mattercircle")
 TILE_BLURBS = (
     "utopia social club",
     "non-petroleum factory",
@@ -80,7 +80,7 @@ class HostRoutingTests(unittest.TestCase):
             bar = rich.split('class="home-panels"', 1)[0]
             nav = bar.split('class="topnav"', 1)[1].split("menu-toggle", 1)[0]
             self.assertNotIn("data-local", nav, host)
-            self.assertIn('href="/utopiasocial">utopiasocial</a>', bar)
+            self.assertIn('href="/utopiasocial">Utopiasocial</a>', bar)
             self.assertIn('href="/mattercircle">Mattercircle</a>', bar)
             self.assertIn('href="/humanehealth">Humanehealth</a>', bar)
             self.assertIn(">Menu<", bar)

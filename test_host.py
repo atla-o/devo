@@ -78,7 +78,8 @@ class HostRoutingTests(unittest.TestCase):
             self.assertEqual(body.count('class="drop-sheet"'), 3, host)
             rich = body.split('class="theme-rich"', 1)[1]
             bar = rich.split('class="home-panels"', 1)[0]
-            self.assertNotIn("data-local", bar, host)
+            nav = bar.split('class="topnav"', 1)[1].split("menu-toggle", 1)[0]
+            self.assertNotIn("data-local", nav, host)
             self.assertIn('href="https://utopiasocial.devoutshaman.com">utopiasocial</a>', bar)
             self.assertIn('href="https://mattercircle.devoutshaman.com">Mattercircle</a>', bar)
             self.assertIn('href="https://humanehealth.devoutshaman.com">Humanehealth</a>', bar)
@@ -229,9 +230,10 @@ class HostRoutingTests(unittest.TestCase):
 
         status, body = self.fetch("localhost", "/humanehealth")
         self.assertEqual(status, 200)
-        self.assertIn("Clinic network.", body)
-        self.assertIn("insurance", body)
-        self.assertIn("sell-health", body)
+        self.assertIn("Products", body)
+        self.assertIn("Services", body)
+        self.assertIn("schedule wellness", body)
+        self.assertIn("Humanehealth store", body)
         self.assertIn("unnaturalfertility", body)
         self.assertNotIn("Phenomatch", body)
         self.assertNotIn("Antiporn", body)
@@ -241,7 +243,8 @@ class HostRoutingTests(unittest.TestCase):
 
         status, body = self.fetch("localhost", "/mattercircle")
         self.assertEqual(status, 200)
-        self.assertIn("Factory essentials.", body)
+        self.assertIn("non-petroleum factory", body)
+        self.assertIn("toiletries", body)
         self.assertNotIn("Phenomatch", body)
         self.assertNotIn("unnaturalfertility", body)
         self.assertNotIn("Planet", body)
@@ -273,13 +276,14 @@ class HostRoutingTests(unittest.TestCase):
         status, body = self.fetch("humanehealth.devoutshaman.com")
         self.assertEqual(status, 200)
         self.assertIn("Humanehealth", body)
-        self.assertIn("Clinic network.", body)
+        self.assertIn("Products", body)
+        self.assertIn("Services", body)
         self.assertIn('href="https://acashi.devoutshaman.com"', body)
-        self.assertIn(">Acashi</a>", body)
-        self.assertIn("insurance", body)
-        self.assertIn("devoutshaman", body)
-        self.assertIn("sell-health", body)
+        self.assertIn(">acashi</a>", body)
+        self.assertIn("schedule wellness", body)
+        self.assertIn("Humanehealth store", body)
         self.assertIn("unnaturalfertility", body)
+        self.assertNotIn("Clinic network.", body)
         self.assertNotIn("Phenomatch", body)
         self.assertNotIn("Antiporn", body)
         self.assertNotIn("Lessfret", body)
@@ -287,19 +291,49 @@ class HostRoutingTests(unittest.TestCase):
         self.assertNotIn('class="tile"', body)
         self.assertNotIn("stage-6", body)
         self.assertNotIn("fineprint", body)
-        nest_names = ("Acashi", "devoutshaman", "unnaturalfertility")
-        positions = [body.index(f">{name}<") for name in nest_names]
-        self.assertEqual(positions, sorted(positions))
+        status, offer = self.fetch("humanehealth.devoutshaman.com", "/ops/wellness")
+        self.assertEqual(status, 200)
+        self.assertIn(">Book</button>", offer)
+        status, store = self.fetch("humanehealth.devoutshaman.com", "/products")
+        self.assertEqual(status, 200)
+        self.assertIn(">Buy</button>", store)
 
         status, body = self.fetch("mattercircle.devoutshaman.com")
         self.assertEqual(status, 200)
         self.assertIn("Mattercircle", body)
-        self.assertIn("Factory essentials.", body)
+        self.assertIn("non-petroleum factory", body)
+        self.assertIn("prefab housing", body)
+        self.assertNotIn("Factory essentials.", body)
         self.assertNotIn("Phenomatch", body)
         self.assertNotIn("physics", body.lower())
         self.assertNotIn("unnaturalfertility", body)
         self.assertNotIn("Planet", body)
         self.assertNotIn('class="tile"', body)
+
+    def test_offer_request(self) -> None:
+        conn = HTTPConnection("127.0.0.1", PORT, timeout=5)
+        payload = (
+            "house=humanehealth&offering=schedule+wellness&action=book"
+            "&name=Ada&email=ada@example.com&next=/ops/wellness"
+        )
+        try:
+            conn.request(
+                "POST",
+                "/offer",
+                body=payload,
+                headers={
+                    "Host": "humanehealth.devoutshaman.com",
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Content-Length": str(len(payload)),
+                },
+            )
+            res = conn.getresponse()
+            body = res.read().decode("utf-8")
+            self.assertEqual(res.status, 200)
+            self.assertIn("Noted. The house will write back.", body)
+            self.assertIn('href="/ops/wellness"', body)
+        finally:
+            conn.close()
 
     def test_fund_host_redirects_to_lightround(self) -> None:
         status, body, location = self.fetch_full("fund.devoutshaman.com")

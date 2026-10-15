@@ -3,38 +3,55 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Humanehealth — Devo</title>
-    <meta
-      name="description"
-      content="Humanehealth is Devo’s clinic network."
-    />
-    <meta name="theme-color" content="#ffffff" />
+    <title>Humanehealth</title>
+    <meta name="theme-color" content="#F4F0E8" />
     <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/shared/style.css" />
+    <link rel="stylesheet" href="/shared/style.css?v=61" />
+    <script>
+      try {
+        if (localStorage.getItem("devo-theme") === "rich") {
+          document.documentElement.setAttribute("data-theme", "rich");
+        }
+      } catch (err) {}
+    </script>
   </head>
   <body>
-    <main class="page">
-      <div class="cluster">
-        <p class="mark">
-          <a href="https://devoutshaman.com" data-local="/" aria-label="Devo">o</a>
-        </p>
-        <h1 class="product-name">Humanehealth</h1>
-        <p class="product-copy">Clinic network.</p>
-        <ul class="nest">
-          <li>
-            <a href="https://acashi.devoutshaman.com" data-local="/acashi">Acashi</a>
-            <span class="nest-role">insurance</span>
-          </li>
-          <li>
-            <span class="nest-name">devoutshaman</span>
-            <span class="nest-role">sell-health</span>
-          </li>
-          <li>
-            <span class="nest-name">unnaturalfertility</span>
-          </li>
-        </ul>
+    <main class="page page--home theme-simple sheet-page">
+      <h1 class="mark mark--halo" aria-label="Devo"><button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme"><span class="o-depth"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></button></h1>
+      <h2 class="offer-title">Humanehealth</h2>
+      <div class="door">
+        <section>
+          <h2>Products</h2>
+          <ul>
+            <li><a href="/ops/stimulants">concentrated stimulants</a></li>
+            <li><a href="/products">Humanehealth store</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="/ops/wellness">schedule wellness</a></li>
+            <li><a href="/ops/diagnostic">invasive diagnostic</a></li>
+            <li><a href="/ops/unnaturalfertility">unnaturalfertility</a></li>
+            <li><a href="/ops/cosmetic">cosmetic restoration</a></li>
+            <li><a href="https://acashi.devoutshaman.com">acashi</a></li>
+            <li><a href="/develop-cures">develop cures</a></li>
+          </ul>
+        </section>
       </div>
     </main>
-    <script src="/shared/preview.js"></script>
+    <div class="theme-rich offer-stage">
+      <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme"><span class="o-depth"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></button>
+      
+      <div class="mosaic mosaic--health">
+        <a class="shot cell--wellness" href="/ops/wellness"><img src="/shared/offerings/wellness.jpg" alt="" /></a>
+        <a class="shot cell--diagnostic" href="/ops/diagnostic"><img src="/shared/offerings/diagnostic.jpg" alt="" /></a>
+        <a class="shot cell--stimulants" href="/ops/stimulants"><img src="/shared/offerings/stimulants.jpg" alt="" /></a>
+        <a class="shot cell--fertility" href="/ops/unnaturalfertility"><img src="/shared/offerings/fertility.jpg" alt="" /></a>
+        <a class="shot cell--cosmetic" href="/ops/cosmetic"><img src="/shared/offerings/cosmetic.jpg" alt="" /></a>
+      </div>
+
+    </div>
+    <script src="/shared/offer.js"></script>
   </body>
 </html>

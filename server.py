@@ -6,7 +6,9 @@ from __future__ import annotations
 import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+import json
+from datetime import datetime, timezone
+from urllib.parse import parse_qs, unquote, urlparse
 
 ROOT = Path(__file__).resolve().parent
 SITES = ROOT / "sites"
@@ -45,7 +47,14 @@ MIME = {
     ".js": "text/javascript; charset=utf-8",
     ".svg": "image/svg+xml",
     ".txt": "text/plain; charset=utf-8",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".png": "image/png",
+    ".webp": "image/webp",
 }
+
+OFFERS = ROOT / "data" / "offers.jsonl"
+OFFER_ACTIONS = {"buy", "book", "sit", "request"}
 
 
 def normalize_host(raw: str) -> str:
@@ -82,6 +91,61 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:
         self._serve(body=True)
+
+    def do_POST(self) -> None:
+        host = normalize_host(self.headers.get("Host", ""))
+        path = self._site_path(host)
+        if path != "/offer":
+            self._plain(404, b"Not found\n")
+            return
+        length = int(self.headers.get("Content-Length", "0") or "0")
+        if length < 0 or length > 20000:
+            self._plain(413, b"Too large\n")
+            return
+        raw = self.rfile.read(length).decode("utf-8", "replace")
+        fields = {key: values[0].strip() for key, values in parse_qs(raw).items() if values}
+        name = fields.get("name", "")
+        email = fields.get("email", "")
+        house = fields.get("house", "")
+        offering = fields.get("offering", "")
+        action = fields.get("action", "")
+        nxt = fields.get("next", "/")
+        if (
+            not name
+            or len(name) > 200
+            or "@" not in email
+            or len(email) > 200
+            or not house
+            or not offering
+            or action not in OFFER_ACTIONS
+        ):
+            self._html(400, _note_page("Add a name and email.", nxt if nxt.startswith("/") else "/"))
+            return
+        if not nxt.startswith("/") or nxt.startswith("//"):
+            nxt = "/"
+        OFFERS.parent.mkdir(parents=True, exist_ok=True)
+        row = {
+            "at": datetime.now(timezone.utc).isoformat(),
+            "house": house,
+            "offering": offering,
+            "action": action,
+            "name": name,
+            "email": email,
+        }
+        with OFFERS.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(row) + "\n")
+        self._html(200, _note_page("Noted. The house will write back.", nxt))
+
+    def _site_path(self, host: str) -> str:
+        parsed = urlparse(self.path)
+        path = unquote(parsed.path) or "/"
+        site = site_for_host(host)
+        if site == "holding" or is_local_host(host):
+            for prefix, _name in PATH_SITES:
+                if path == prefix or path.startswith(prefix + "/"):
+                    path = path[len(prefix) :] or "/"
+                    break
+        return path
 
     def do_HEAD(self) -> None:
         self._serve(body=False)
@@ -151,6 +215,16 @@ class Handler(BaseHTTPRequestHandler):
         if body:
             self.wfile.write(payload)
 
+    def _html(self, code: int, payload: str) -> None:
+        data = payload.encode("utf-8")
+        self.send_response(code)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Referrer-Policy", "same-origin")
+        self.end_headers()
+        self.wfile.write(data)
+
     def _plain(self, code: int, payload: bytes) -> None:
         self.send_response(code)
         self.send_header("Content-Type", "text/plain; charset=utf-8")
@@ -158,6 +232,26 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("X-Content-Type-Options", "nosniff")
         self.end_headers()
         self.wfile.write(payload)
+
+
+def _note_page(message: str, back: str) -> str:
+    safe_back = back if back.startswith("/") and not back.startswith("//") else "/"
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{message}</title>
+  <link rel="stylesheet" href="/shared/style.css?v=61" />
+</head>
+<body>
+  <main class="page page--home">
+    <h1 class="offer-title">{message}</h1>
+    <p class="offer-back"><a href="{safe_back}">Return</a></p>
+  </main>
+</body>
+</html>
+"""
 
 
 def main() -> None:

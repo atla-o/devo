@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>utility</title>
+    <meta name="theme-color" content="#F4F0E8" />
+    <link rel="icon" href="/shared/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/shared/style.css?v=61" />
+    <script>
+      try {
+        if (localStorage.getItem("devo-theme") === "rich") {
+          document.documentElement.setAttribute("data-theme", "rich");
+        }
+      } catch (err) {}
+    </script>
+  </head>
+  <body>
+    <main class="page page--home theme-simple sheet-page">
+      <h1 class="mark mark--halo" aria-label="Devo"><button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme"><span class="o-depth"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></button></h1>
+      <h2 class="offer-title">utility</h2>
+      <p class="offer-line">Buy utility.</p>
+      <form class="offer-form" method="post" action="/offer">
+            <input type="hidden" name="house" value="mattercircle" />
+            <input type="hidden" name="offering" value="utility" />
+            <input type="hidden" name="action" value="buy" />
+            <input type="hidden" name="next" value="/climb/utility" />
+            <label>Name <input name="name" required autocomplete="name" /></label>
+            <label>Email <input name="email" type="email" required autocomplete="email" /></label>
+            <button type="submit">Buy</button>
+          </form>
+    </main>
+    <div class="theme-rich offer-stage">
+      <button type="button" class="theme-switch" aria-pressed="false" aria-label="Switch theme"><span class="o-depth"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></button>
+      <img src="/shared/offerings/utility.jpg" alt="" />
+      <div class="offer-card">
+        <h2 class="offer-title">utility</h2>
+        <p class="offer-line">Buy utility.</p>
+        <form class="offer-form" method="post" action="/offer">
+            <input type="hidden" name="house" value="mattercircle" />
+            <input type="hidden" name="offering" value="utility" />
+            <input type="hidden" name="action" value="buy" />
+            <input type="hidden" name="next" value="/climb/utility" />
+            <label>Name <input name="name" required autocomplete="name" /></label>
+            <label>Email <input name="email" type="email" required autocomplete="email" /></label>
+            <button type="submit">Buy</button>
+          </form>
+      </div>
+    </div>
+    <script src="/shared/offer.js"></script>
+  </body>
+</html>
